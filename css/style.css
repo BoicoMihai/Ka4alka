@@ -1,0 +1,125 @@
+body{
+    background-color: #061E29;
+    margin: 0;
+}
+
+.header{
+    width: 100%;
+    height: 73px;
+    background-color: #02121A;
+    border: 2px solid #E1DCC9;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;    
+    padding-right: 15px;
+}
+
+.button {
+    background: none;
+    border: none;
+    width: 40.4px;
+    height: 40.4px;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.line{
+    height: 32.4px;
+}
+
+.light-dark_button{
+    width: 32px;
+    height: 32px;
+}
+
+.logo{
+    margin-right: auto;
+    margin-left: 10px;
+    width: 42.4px;
+    height: 42.4px;
+}
+
+.account{
+    width: 40px;
+    height: 40px;
+}
+
+.programs{
+    width: 30px;
+    height: 30px;
+}
+
+.library{
+    width: 30px;
+    height: 30px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #0A1F2E;
+    border: 1px solid #E1DCC9;
+    border-radius: 10px;
+    padding: 2px 8px;
+    gap: 12px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+.search-input {
+    background: none;
+    border: none;
+    color: #E1DCC9;
+    font-size: 12px;
+    flex: 1;
+    outline: none;
+    order: 2;
+}
+
+.glass {
+    order: 1;
+}
+
+
+.search-input::placeholder {
+    color: #7A8A93;
+}
+
+.side-menu{
+    width: 180px;
+    height: 100vh;
+    background-color: #02121A;
+    border: 2px solid #E1DCC9;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    box-sizing: border-box;
+}
+
+.sidebar-button img{
+    width: 13px;
+    height: 13px;
+}
+
+.create, .workout {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.sudebar-button p{
+    color: white;
+}

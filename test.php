@@ -16,7 +16,6 @@
         $impare = 0;
 
         for ($i = 0; $i < count($numere); $i++) {
-
             if ($numere[$i] % 2 == 0) {
                 echo $numere[$i] . " este par<br>";
                 $pare++;
