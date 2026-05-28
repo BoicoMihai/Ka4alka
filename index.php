@@ -56,6 +56,46 @@
        </button>
        <p>My workouts</p>
     </div>
+
+    <div class="search-workout">
+      <input type="text" class="search-workout-input" placeholder="Search workout">
+    </div>
+
+    <div class="workout-list">
+      <div class="workout-item">Workout #1</div>
+      <div class="workout-item">Workout #2</div>
+    </div>
+
+    <div class="collapse-btn">
+      <button>❮</button>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <section class="dashboard-section">
+      <h2>Planned workout</h2>
+      
+      <div class="card">
+        <span class="card-title">Create plan</span>
+        <img src="images/copy-icon.png" alt="copy" class="card-icon">
+      </div>
+
+      <div class="card">
+        <span class="card-title">Pre-made workouts</span>
+        <img src="images/folder-icon.png" alt="folder" class="card-icon">
+        <button class="dropdown-btn">▼</button>
+      </div>
+    </section>
+
+    <section class="dashboard-section">
+      <h2>Routines</h2>
+      
+      <div class="card">
+        <span class="card-title">My routines (Number of routines in folder)</span>
+        <img src="images/folder-icon.png" alt="folder" class="card-icon">
+        <button class="dropdown-btn">▼</button>
+      </div>
+    </section>
   </div>
 
 </body>
