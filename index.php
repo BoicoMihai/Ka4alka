@@ -36,7 +36,25 @@
         <img src="images/Account.png" alt="Account">
       </button>
     </div>
-
   </header>
+
+  <div class="side-bar">
+      <button class="create-new-workout side-bar-button">
+        <img src="images/add.png" alt="Create New Workout">
+        <p>Create New Workout</p>
+      </button>
+
+      <button class="my-workouts side-bar-button">
+        <img src="images/workouts.png" alt="My Workouts">
+        <p>My Workouts</p>
+      </button>
+ 
+      <div class="searchbar-sidebar">
+        <input type="text" placeholder="Search workout..." class="siderbar-search-input">
+        <img src="images/search.png" alt="Search" class="search">
+      </div>
+
+
+    </div>
 </body>
 </html>
