@@ -1,292 +1,83 @@
-@import url('https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;900&display=swap');
-
 body{
-    background-color: #061E29;
-    margin: 0;
-    font-family: 'Blinker', sans-serif;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+    background-color: #0B0C0E;
 }
 
 .header{
     width: 100%;
-    height: 73px;
-    background-color: #02121A;
-    border: 2px solid #E1DCC9;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;    
-    padding-right: 15px;
-    flex-shrink: 0;
-}
-
-body > :not(header):not(.side-menu):not(.main-content) {
-    display: flex;
-    flex: 1;
-}
-
-body::after {
-    content: '';
-    display: flex;
-}
-
-header {
-    flex-shrink: 0;
-}
-
-body {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    grid-template-rows: 73px 1fr;
-}
-
-header {
-    grid-column: 1 / 3;
-}
-
-.side-menu {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.button {
-    background: none;
-    border: none;
-    width: 40.4px;
-    height: 40.4px;
-    display: flex;
-    flex-direction: row;
-    cursor: pointer;
-}
-
-.button img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.line{
-    height: 32.4px;
-}
-
-.light-dark_button{
-    width: 32px;
-    height: 32px;
-}
-
-.logo{
-    margin-right: auto;
-    margin-left: 10px;
-    width: 42.4px;
-    height: 42.4px;
-}
-
-.account{
-    width: 40px;
-    height: 40px;
-}
-
-.programs{
-    width: 30px;
-    height: 30px;
-}
-
-.library{
-    width: 30px;
-    height: 30px;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    background-color: #0A1F2E;
-    border: 1px solid #E1DCC9;
-    border-radius: 10px;
-    padding: 2px 8px;
-    gap: 12px;
-    height: 35px;
-    margin-right: 10px;
-}
-
-.search-input {
-    background: none;
-    border: none;
-    color: #E1DCC9;
-    font-size: 12px;
-    flex: 1;
-    outline: none;
-    order: 2;
-}
-
-.search-input::placeholder {
-    color: #7A8A93;
-}
-
-.side-menu{
-    width: 180px;
-    height: 100vh;
-    background-color: #02121A;
-    border: 2px solid #E1DCC9;
-    border-left: none;
-    border-top: none;
-    border-bottom: none;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    padding: 0;
-    position: relative;
-}
-
-.sidebar-button{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-bottom: 1px solid rgba(225, 220, 201, 0.1);
-}
-
-.sidebar-button img{
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-}
-
-.create, .workout {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sidebar-button p{
-    color: white;
-    font-size: 12px;
-    margin: 0;
-}
-
-.search-workout {
-    margin-top: 0;
-    padding: 12px;
-    border-bottom: 1px solid rgba(225, 220, 201, 0.1);
-}
-
-.search-workout-input {
-    width: 100%;
-    padding: 8px;
-    background-color: #0A1F2E;
-    border: 1px solid #E1DCC9;
-    border-radius: 5px;
-    color: #E1DCC9;
-    font-size: 12px;
-    box-sizing: border-box;
-}
-
-.search-workout-input::placeholder {
-    color: #7A8A93;
-}
-
-.workout-list {
-    margin-top: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-}
-
-.workout-item {
-    color: #E1DCC9;
-    font-size: 12px;
-    padding: 12px;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(225, 220, 201, 0.1);
-}
-
-.workout-item:hover {
-    background-color: rgba(225, 220, 201, 0.1);
-}
-
-.collapse-btn {
-    position: absolute;
-    bottom: 30px;
-    left: 75px;
-    background: none;
-    border: 1px solid #E1DCC9;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    color: #E1DCC9;
-}
-
-.collapse-btn button {
-    background: none;
-    border: none;
-    color: #E1DCC9;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.main-content {
-    flex: 1;
-    padding: 40px;
-    overflow-y: auto;
-}
-
-.dashboard-section {
-    margin-bottom: 50px;
-}
-
-.dashboard-section h2 {
-    color: #E1DCC9;
-    font-size: 24px;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
-.card {
-    background-color: rgba(10, 31, 46, 0.6);
-    border: 2px solid #00A5D8;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 15px;
+    max-width: 1863px;
+    height: 60px;
+    background-color: #18191B;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: #E1DCC9;
-    font-size: 16px;
+    flex-direction: row;
+    padding: 0 20px;
+}
+
+.header-left,
+.header-right{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-right{
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.header button{
+    background-color: transparent;
+    border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.card:hover {
-    background-color: rgba(10, 31, 46, 0.8);
-    border-color: #00D9FF;
+.header p{
+    font-family: 'League Spartan', sans-serif;
+    font-size: 32px;
+    color: #FFFFFF;
+    margin: 0;
 }
 
-.card-title {
-    flex: 1;
+.logo{
+    height: 27px;
+    width: 27px;
+    padding: 0px 5px 0px 0px;
 }
 
-.card-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 15px;
+.search{
+    width: 13.54px;
+    height: 13.2px;
 }
 
-.dropdown-btn {
+.search-input{
     background: none;
     border: none;
-    color: #E1DCC9;
-    font-size: 14px;
-    cursor: pointer;
-    padding: 5px 10px;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 16px;
+    padding: 0px 10px;
+    color: #47494D;
+
+}
+
+.searchbar{
+  width: 229px;
+  height: 35.2px;
+  border-radius: 16.5px;
+  background-color: #0B0C0E;
+  display: flex;
+  align-items: center;
+
+
+}
+
+.header-icon img{
+    width: 22.4px;
+    height: 22.4px;
+}
+
+.account img{
+    width: 32px;
+    height: 32px;
 }
