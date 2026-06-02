@@ -32,9 +32,8 @@
         <img src="images/Exercise library.png" alt="Exercise Library">
       </button>
 
-      <button class="header-icon account">
-        <img src="images/Account.png" alt="Account">
-      </button>
+      <button class="header-auth signup">Sign Up</button>
+      <button class="header-auth login">Log In</button>
     </div>
   </header>
 
@@ -56,5 +55,23 @@
 
 
     </div>
+
+  <div class="modal-overlay" id="signup-modal">
+    <div class="modal">
+      <button class="modal-close" id="close-signup">&times;</button>
+      <h2>Sign Up</h2>
+      <form class="signup-form">
+        <label for="signup-email">Gmail</label>
+        <input type="email" id="signup-email" name="email" placeholder="you@gmail.com" required>
+
+        <label for="signup-password">Password</label>
+        <input type="password" id="signup-password" name="password" placeholder="Enter password" required>
+
+        <button type="submit" class="modal-submit">Create account</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
