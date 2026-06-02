@@ -166,6 +166,29 @@ body{
     font-size: 14px;
 }
 
+/* Login form mirrors signup form styles */
+.login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.login-form label{
+    color: #B0B1B5;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 14px;
+}
+
+.login-form input{
+    background-color: #0B0C0E;
+    border: 1px solid #34363A;
+    border-radius: 14px;
+    padding: 12px 14px;
+    color: #FFFFFF;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 14px;
+}
+
 .modal-submit{
     margin-top: 6px;
     border: none;
@@ -182,6 +205,26 @@ body{
 .modal-submit:hover{
     transform: translateY(-1px);
     background-color: #E5E5E5;
+}
+
+.modal-switch-text{
+    text-align: center;
+    margin-top: 12px;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 13px;
+    color: #B0B1B5;
+}
+
+.modal-switch-text a{
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.modal-switch-text a:hover{
+    color: #E5E5E5;
 }
 
 /*side bar*/
@@ -244,4 +287,14 @@ body{
     padding: 0px 15px;
     color: #47494D;
     
+}
+
+.error-message{
+    padding: 12px;
+    background-color: #FF4C4C;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 20px;
 }

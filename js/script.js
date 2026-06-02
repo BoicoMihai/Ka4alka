@@ -8,7 +8,9 @@ if (signupButton && signupModal && closeSignup) {
     signupModal.classList.add('active');
   });
 
-  closeSignup.addEventListener('click', () => {
+  closeSignup.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     signupModal.classList.remove('active');
   });
 
@@ -19,15 +21,46 @@ if (signupButton && signupModal && closeSignup) {
   });
 }
 
-if (signupForm) {
-  signupForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const email = signupForm.querySelector('#signup-email').value;
-    const password = signupForm.querySelector('#signup-password').value;
-
-    console.log('Sign up submitted:', { email, password });
-
+// Modal switcher: signup to login
+const switchToLogin = document.getElementById('switch-to-login');
+if (switchToLogin) {
+  switchToLogin.addEventListener('click', (e) => {
+    e.preventDefault();
     signupModal.classList.remove('active');
-    signupForm.reset();
+    loginModal.classList.add('active');
+  });
+}
+
+// Modal switcher: login to signup
+const switchToSignup = document.getElementById('switch-to-signup');
+if (switchToSignup) {
+  switchToSignup.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginModal.classList.remove('active');
+    signupModal.classList.add('active');
+  });
+}
+
+// Login modal logic
+const loginButton = document.querySelector('.header-auth.login');
+const loginModal = document.getElementById('login-modal');
+const closeLogin = document.getElementById('close-login');
+const loginForm = document.querySelector('.login-form');
+
+if (loginButton && loginModal && closeLogin) {
+  loginButton.addEventListener('click', () => {
+    loginModal.classList.add('active');
+  });
+
+  closeLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    loginModal.classList.remove('active');
+  });
+
+  loginModal.addEventListener('click', (event) => {
+    if (event.target === loginModal) {
+      loginModal.classList.remove('active');
+    }
   });
 }
