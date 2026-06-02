@@ -5,7 +5,9 @@ $errors = [
     'login'    => $_SESSION['login_error']    ?? '',
     'register' => $_SESSION['register_error'] ?? ''
 ];
-$activeForm = $_SESSION['active_form'] ?? 'register';
+
+// If user is logged in, don't show any modal; otherwise default to signup
+$activeForm = (isset($_SESSION['name']) && isset($_SESSION['email'])) ? '' : ($_SESSION['active_form'] ?? 'register');
 
 // Only unset the temporary flash keys — do NOT call session_unset()
 // which would wipe the logged-in user's session data too
