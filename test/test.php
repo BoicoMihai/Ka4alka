@@ -1,9 +1,18 @@
-<?php require("register.php"); ?>
-
 <?php
-   if(isset($_POST['submit'])){
-    $user = new RegisterUser($_POST['username'], $_POST['password'])
-   }
+require("register_class.php");
+
+if (isset($_POST['submit_signup'])) {
+    $user = new RegisterUser(
+        $_POST['signup_email'] ?? '',
+        $_POST['signup_password'] ?? '',
+        $_POST['confirm_password'] ?? null
+    );
+
+    if (!empty($user->success)) {
+        header('Location: index.php');
+        exit;
+    }
+}
 ?>
 
 
@@ -41,7 +50,7 @@
             </form>
 
             
-            <form id="signupForm" class="auth-form">
+            <form id="signupForm" class="auth-form <?= (isset($user) && !empty($user->error ?? '') || !empty($user->success ?? '')) ? 'active' : '' ?>" method="post" autocomplete="off">
                 <h2>Create Account</h2>
 
                 <div class="form-group">
@@ -51,7 +60,7 @@
 
                 <div class="form-group">
                     <label for="signup_email">Email</label>
-                    <input type="email" id="signup_email" name="signup_email" required>
+                    <input type="email" id="signup_email" name="signup_email" value="<?= isset($_POST['signup_email']) ? htmlspecialchars($_POST['signup_email']) : '' ?>" required>
                 </div>
 
                 <div class="form-group">
@@ -65,12 +74,21 @@
                     <input type="password" id="confirm_password" name="confirm_password" required>
                 </div>
 
-                <button type="submit" class="btn-primary">Sign Up</button>
+                <button type="submit" name="submit_signup" class="btn-primary">Sign Up</button>
 
                 <p class="form-footer">
                     Already have an account? 
                     <a href="#" id="toggleLogin">Login</a>
                 </p>
+
+                <?php if(isset($user) && !empty($user->error ?? '')): ?>
+                    <p class="error"><?= htmlspecialchars($user->error) ?></p>
+                <?php endif; ?>
+
+                <?php if(isset($user) && !empty($user->success ?? '')): ?>
+                    <p class="success"><?= htmlspecialchars($user->success) ?></p>
+                <?php endif; ?>
+
             </form>
         </div>
     </div>
