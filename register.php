@@ -8,14 +8,13 @@ if (isset($_POST['register'])) {
     $email    = trim($_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    // Check if email already exists using a prepared statement
     $stmt = $conn->prepare("SELECT email FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // Email already taken — send error back to index.php
+
         $_SESSION['register_error'] = 'An account with that email already exists.';
         $_SESSION['active_form']    = 'register';
         $stmt->close();
@@ -25,7 +24,6 @@ if (isset($_POST['register'])) {
 
     $stmt->close();
 
-    // Insert new user using a prepared statement (prevents SQL injection)
     $insert = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
     $insert->bind_param("sss", $name, $email, $password);
 
@@ -42,6 +40,5 @@ if (isset($_POST['register'])) {
     }
 }
 
-// If accessed directly without a POST request, redirect home
 header("Location: index.php");
 exit();
