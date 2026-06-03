@@ -1,32 +1,80 @@
+<?php require("register.php"); ?>
+
+<?php
+   if(isset($_POST['submit'])){
+    $user = new RegisterUser($_POST['username'], $_POST['password'])
+   }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login & Sign Up</title>
+    <link rel="stylesheet" href="css/test.css">
 </head>
 <body>
-    <h1><?php echo "Hello World!"; ?></h1>
+    <div class="auth-container">
+        <div class="form-wrapper">
+           
+            <form id="loginForm" class="auth-form active">
+                <h2>Login</h2>
 
-    <?php echo "<script> console.log('Hello world!'); </script>"; ?>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
 
-    <?php
-        $numere = [12, 7, 5, 18, 22, 9, 14, 3, 8, 11];
-        $pare = 0;
-        $impare = 0;
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
 
-        for ($i = 0; $i < count($numere); $i++) {
-            if ($numere[$i] % 2 == 0) {
-                echo $numere[$i] . " este par<br>";
-                $pare++;
-            } else {
-                echo $numere[$i] . " este impar<br>";
-                $impare++;
-            }
-        }
+                <button type="submit" class="btn-primary">Login</button>
 
-        echo "<br>Total numere pare: " . $pare . "<br>";
-        echo "Total numere impare: " . $impare;
-    ?>
+                <p class="form-footer">
+                    Don't have an account? 
+                    <a href="#" id="toggleSignup">Sign Up</a>
+                </p>
+            </form>
+
+            
+            <form id="signupForm" class="auth-form">
+                <h2>Create Account</h2>
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup_email">Email</label>
+                    <input type="email" id="signup_email" name="signup_email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup_password">Password</label>
+                    <input type="password" id="signup_password" name="signup_password" required>
+                    <small>Minimum 6 characters</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+                </div>
+
+                <button type="submit" class="btn-primary">Sign Up</button>
+
+                <p class="form-footer">
+                    Already have an account? 
+                    <a href="#" id="toggleLogin">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

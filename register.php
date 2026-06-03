@@ -1,44 +1,55 @@
 <?php
+class RegisterUser{
+    private $username;
+    private $raw_password;
+    private $encrypted_password;
+    public $error;
+    public $success;
+    private $storage = "data.json";
+    private $stored_users;
+    private $new_user;
 
-session_start();
-require_once "config.php";
 
-if (isset($_POST['register'])) {
-    $name     = trim($_POST['username']);
-    $email    = trim($_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    public function __construct($username, $password){
 
-    $stmt = $conn->prepare("SELECT email FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $this->username = trim($this->username);
+    $this->username = filter_var($username, FILTER_SANITIZE_STRING)
 
-    if ($result->num_rows > 0) {
+    $this->raw_password = filter_var(trim($password), FILTER_SANITIZE_STRING);
+    $this->encrypted_password = password_hash($password, PASSWORD_DEFAULT)
 
-        $_SESSION['register_error'] = 'An account with that email already exists.';
-        $_SESSION['active_form']    = 'register';
-        $stmt->close();
-        header("Location: index.php");
-        exit();
+    $this->stored_users = json_decode(file_get_contents($this->storage), true);
+
+    $this->new_user = [
+        "username" => $this->username,
+        "password" => $this->encrypted_password
+    ]
+
     }
 
-    $stmt->close();
-
-    $insert = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-    $insert->bind_param("sss", $name, $email, $password);
-
-    if ($insert->execute()) {
-        $insert->close();
-        header("Location: index.php");
-        exit();
-    } else {
-        $_SESSION['register_error'] = 'Registration failed. Please try again.';
-        $_SESSION['active_form']    = 'register';
-        $insert->close();
-        header("Location: index.php");
-        exit();
+    private function checkFieldValues(){
+        if(empty($this->username) || empty($this->raw_password)){
+            $this->error = "All fields are required.";
+            return false;
+        } else {
+            return true;
+        }
     }
-}
 
-header("Location: index.php");
-exit();
+    private function usernameExists(){
+        foreach($this->stored_users as $user){
+            if($user['username'] === $this->username){
+                $this->error = "Username already exists.";
+                return true;
+            }
+        }
+        return false;
+    }
+    private function insertUser(){
+
+       if($this->usernameExists() == FALSE){
+            array_push($his->stored_users, $this->new_user);
+            if(file_put_contents($this->storage, json_encode))
+        }
+    }
+?>
