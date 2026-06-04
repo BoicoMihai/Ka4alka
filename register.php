@@ -21,8 +21,7 @@ if (isset($_POST['submit_signup'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Sign Up</title>
-    <link rel="stylesheet" href="css/test.css">
-    <link rel="stylesheet" href="test/logged_styles.css">
+    <link rel="stylesheet" href="css/register_login.css">
 </head>
 <body>
     <div class="auth-container">
@@ -41,7 +40,7 @@ if (isset($_POST['submit_signup'])) {
                     <?php endif; ?>
 
                     <form id="signupForm" class="signup-form" method="post" autocomplete="off">
-                        <label for="name">Full Name</label>
+                        <label for="name">Username</label>
                         <input type="text" id="name" name="name" required>
 
                         <label for="signup_email">Email</label>

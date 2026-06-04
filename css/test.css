@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #3f70f5 0%, #15181b 100%);
+    background: linear-gradient(135deg, #141414 0%, #535455 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -163,6 +163,7 @@ body {
     animation: slideIn 0.3s ease-out;
 }
 
+
 /* Responsive Design */
 @media (max-width: 480px) {
     .form-wrapper {
@@ -182,3 +183,4 @@ body {
         margin-bottom: 15px;
     }
 }
+    

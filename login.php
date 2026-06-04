@@ -12,35 +12,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Sign Up</title>
-    <link rel="stylesheet" href="css/test.css">
+    <link rel="stylesheet" href="css/register_login.css">
 </head>
 <body>
     <div class="auth-container">
         <div class="form-wrapper">
-           
-            <form id="loginForm" class="auth-form active" action="" method="post" autocomplete="off">
-                <h2>Login</h2>
+            <div class="modal" role="dialog" aria-labelledby="loginTitle">
+                <h2 id="loginTitle">Login</h2>
 
-                <div class="form-group">
+                <form id="loginForm" class="signup-form" action="" method="post" autocomplete="off">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="username" required>
-                </div>
 
-                <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
-                </div>
 
-                <button type="submit" name="submit" class="btn-primary">Login</button>
+                    <button type="submit" name="submit" class="modal-submit">Login</button>
 
-                <p class="form-footer">
-                    Don't have an account? 
-                    <a href="register.php">Sign Up</a>
-                </p>
+                    <p class="modal-switch-text">
+                        Don't have an account? <a href="register.php">Sign Up</a>
+                    </p>
 
-                <p class="error"><?php echo @$user->error ?></p>
-                <p class="success"><?php echo @$user->success ?></p>
-            </form>
+                    <p class="error"><?php echo @$user->error ?></p>
+                    <p class="success"><?php echo @$user->success ?></p>
+                </form>
+            </div>
         </div>
     </div>
 
