@@ -42,14 +42,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (loginModal) loginModal.classList.remove('active');
     }
 
-    if (switchToSignup) {
+    if (signupModal && switchToSignup) {
         switchToSignup.addEventListener('click', function(e) {
             e.preventDefault();
             openSignupModal();
         });
     }
 
-    if (switchToLogin) {
+    if (loginModal && switchToLogin) {
         switchToLogin.addEventListener('click', function(e) {
             e.preventDefault();
             openLoginModal();
