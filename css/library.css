@@ -109,6 +109,7 @@ body{
     display: flex;
     flex-direction: column;
     position: sticky;
+    top: 18px;
     padding: 20px;
 }
 
@@ -179,67 +180,81 @@ body{
 
 }
 
-.main-containers{
-    width: 100%;
-    max-width: 1054px;
-    height: 77px;
-    background-color: #18191B;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-    margin: 10px;
-    transition-duration: 0.4s;
+/*exercises*/
+.exercise-card {
+  background: #242424;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #333;
+  transition: border-color 0.2s;
+}
+.exercise-card:hover { border-color: #555; }
+
+.card-image {
+  width: 130px;
+  min-width: 130px;
+  height: 110px;
+  object-fit: cover;
+}
+.card-body {
+  padding: 14px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card-name {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.tag {
+  background: #333;
+  color: #aaa;
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  border: 1px solid #444;
+}
+.card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2563eb;
+  color: #fff;
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  width: fit-content;
+}
+.card-btn:hover { background: #1d4ed8; }
+.arrow {
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.main-containers:hover{
-    background-color: #262729;
+.library-content {
+  flex: 1;
+  overflow-y: auto;
 }
 
-.main-containers button{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    gap: 20px;
-    
-}
-
-.main-containers button img:last-child{
-    margin-left: auto;
-}
-
-.main-button{
-    width: 24px;
-    height: 24px;
-}
-
-.main-containers button p{
-    font-family: 'League Spartan', sans-serif;
-    font-size: 32px;
-    color: #FFFFFF;
-}
-
-.boxes{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
-}
-
-#Routines-text{
-    font-family: 'League Spartan', sans-serif;
-    font-size: 32px;
-    color: #ffffff;
-    align-self: flex-start;
-    margin-left: 215px;
-}
-
-.more-image{
-    width: 17px;
-    height: 10px;
+.exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }

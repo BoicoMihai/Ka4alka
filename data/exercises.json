@@ -1,0 +1,114 @@
+[
+  {
+    "id": 1,
+    "name": "Dumbbell Bench Press",
+    "tags": ["Chest", "Shoulders", "Triceps"],
+    "category": "Dumbbell",
+    "image": "exercise-images/dumbbell-bench-press.png",
+    "url": "https://www.muscleandstrength.com/exercises/dumbbell-bench-press.html"
+  },
+  {
+    "id": 2,
+    "name": "Incline Bench Press",
+    "tags": ["Chest", "Shoulders", "Triceps"],
+    "category": "Barbell",
+    "image": "exercise-images/incline-bench-press.png",
+    "url": "https://www.muscleandstrength.com/exercises/incline-bench-press.html"
+  },
+  {
+    "id": 3,
+    "name": "Chest Dip",
+    "tags": ["Chest", "Shoulders", "Triceps", "Abs"],
+    "category": "Bodyweight",
+    "image": "exercise-images/chest-dip.png",
+    "url": "https://www.muscleandstrength.com/exercises/chest-dip.html"
+  },
+  {
+    "id": 4,
+    "name": "Incline Dumbbell Bench Press",
+    "tags": ["Chest", "Shoulders", "Triceps"],
+    "category": "Dumbbell",
+    "image": "exercise-images/incline-dumbbell-bench-press.png",
+    "url": "https://www.muscleandstrength.com/exercises/incline-dumbbell-bench-press.html"
+  },
+  {
+    "id": 5,
+    "name": "Dumbbell Flys",
+    "tags": ["Chest", "Shoulders", "Triceps"],
+    "category": "Dumbbell",
+    "image": "exercise-images/dumbbell-flys.png",
+    "url": "https://www.muscleandstrength.com/exercises/dumbbell-flys.html"
+  },
+  {
+    "id": 6,
+    "name": "Bench Press",
+    "tags": ["Chest", "Shoulders", "Triceps"],
+    "category": "Barbell",
+    "image": "exercise-images/bench-press.png",
+    "url": "https://www.muscleandstrength.com/exercises/barbell-bench-press.html"
+  },
+  {
+    "id": 7,
+    "name": "Pec Deck",
+    "tags": ["Chest", "Shoulders"],
+    "category": "Machines",
+    "image": "exercise-images/pec-deck.png",
+    "url": "https://www.muscleandstrength.com/exercises/pec-dec.html"
+  },
+  {
+    "id": 8,
+    "name": "Standing Cable Fly",
+    "tags": ["Chest", "Shoulders", "Triceps"],
+    "category": "Cable",
+    "image": "exercise-images/standing-cable-fly.png",
+    "url": "https://www.muscleandstrength.com/exercises/cable-crossovers-(mid-chest).html"
+  },
+  {
+    "id": 9,
+    "name": "Hammer Strength Bench Press",
+    "tags": ["Chest", "Shoulders", "Triceps"],
+    "category": "Machines",
+    "image": "exercise-images/hammer-strength-bench-press.png",
+    "url": "https://www.muscleandstrength.com/exercises/hammer-strength-bench-press.html"
+  },
+  {
+    "id": 10,
+    "name": "Smith Machine Incline Bench Press",
+    "tags": ["Chest", "Shoulders", "Triceps"],
+    "category": "Machines",
+    "image": "exercise-images/smith-machine-incline-bench-press.png",
+    "url": "https://www.muscleandstrength.com/exercises/incline-smith-machine-bench-press.html"
+  },
+  {
+    "id": 11,
+    "name": "Wide Grip Pushups",
+    "tags": ["Chest", "Shoulders", "Triceps"],
+    "category": "Bodyweight",
+    "image": "exercise-images/wide-grip-pushups.png",
+    "url": "https://www.muscleandstrength.com/exercises/wide-grip-push-ups.html"
+  },
+  {
+    "id": 12,
+    "name": "Pushups",
+    "tags": ["Chest", "Shoulders", "Triceps"],
+    "category": "Bodyweight",
+    "image": "exercise-images/pushups.png",
+    "url": "https://www.muscleandstrength.com/exercises/push-up.html"
+  },
+  {
+    "id": 13,
+    "name": "Standing Low To High Cable Fly",
+    "tags": ["Chest", "Shoulders", "Triceps"],
+    "category": "Cable",
+    "image": "exercise-images/standing-low-to-high-cable-fly.png",
+    "url": "https://www.muscleandstrength.com/exercises/cable-lower-chest-raise.html"
+  },
+  {
+    "id": 14,
+    "name": "Cable Iron Cross",
+    "tags": ["Chest", "Shoulders", "Triceps"],
+    "category": "Cable",
+    "image": "exercise-images/cable-iron-cross.png",
+    "url": "https://www.muscleandstrength.com/exercises/cable-crossovers.html"
+  }
+]
