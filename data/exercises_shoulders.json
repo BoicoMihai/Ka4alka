@@ -1,0 +1,114 @@
+[
+  {
+    "id": 1,
+    "name": "Dumbbell Lateral Raise",
+    "tags": ["Shoulders"],
+    "category": "Dumbbell",
+    "image": "exercise-images/dumbbell-lateral-raise.png",
+    "url": "https://www.muscleandstrength.com/exercises/lateral-raise.html"
+  },
+  {
+    "id": 2,
+    "name": "Seated Dumbbell Press",
+    "tags": ["Traps", "Shoulders", "Triceps"],
+    "category": "Dumbbell",
+    "image": "exercise-images/seated-dumbbell-press.png",
+    "url": "https://www.muscleandstrength.com/exercises/seated-dumbbell-press.html"
+  },
+  {
+    "id": 3,
+    "name": "Military Press",
+    "tags": ["Traps", "Shoulders", "Triceps", "Abs"],
+    "category": "Barbell",
+    "image": "exercise-images/military-press.png",
+    "url": "https://www.muscleandstrength.com/exercises/military-press.html"
+  },
+  {
+    "id": 4,
+    "name": "Bent Over Dumbbell Reverse Fly",
+    "tags": ["Traps", "Shoulders", "Triceps"],
+    "category": "Dumbbell",
+    "image": "exercise-images/bent-over-dumbbell-reverse-fly.png",
+    "url": "https://www.muscleandstrength.com/exercises/bent-over-dumbbell-reverse-fly.html"
+  },
+  {
+    "id": 5,
+    "name": "Standing Dumbbell Press",
+    "tags": ["Traps", "Shoulders", "Triceps"],
+    "category": "Dumbbell",
+    "image": "exercise-images/standing-dumbbell-press.png",
+    "url": "https://www.muscleandstrength.com/exercises/standing-dumbbell-press.html"
+  },
+  {
+    "id": 6,
+    "name": "Cable Face Pull",
+    "tags": ["Traps", "Shoulders", "Upper Back"],
+    "category": "Cable",
+    "image": "exercise-images/cable-face-pull.png",
+    "url": "https://www.muscleandstrength.com/exercises/face-pull.html"
+  },
+  {
+    "id": 7,
+    "name": "Machine Reverse Fly",
+    "tags": ["Traps", "Shoulders"],
+    "category": "Machines",
+    "image": "exercise-images/machine-reverse-fly.png",
+    "url": "https://www.muscleandstrength.com/exercises/machine-reverse-fly.html"
+  },
+  {
+    "id": 8,
+    "name": "Cable Lateral Raise",
+    "tags": ["Shoulders"],
+    "category": "Cable",
+    "image": "exercise-images/cable-lateral-raise.png",
+    "url": "https://www.muscleandstrength.com/exercises/cable-lateral-raise.html"
+  },
+  {
+    "id": 9,
+    "name": "Standing Cable Reverse Fly",
+    "tags": ["Traps", "Shoulders", "Upper Back"],
+    "category": "Cable",
+    "image": "exercise-images/standing-cable-reverse-fly.png",
+    "url": "https://www.muscleandstrength.com/exercises/standing-cable-reverse-fly.html"
+  },
+  {
+    "id": 10,
+    "name": "Incline Rear Delt Fly",
+    "tags": ["Traps", "Shoulders", "Triceps"],
+    "category": "Dumbbell",
+    "image": "exercise-images/incline-rear-delt-fly.png",
+    "url": "https://www.muscleandstrength.com/exercises/incline-rear-delt-fly.html"
+  },
+  {
+    "id": 11,
+    "name": "Machine Shoulder Press",
+    "tags": ["Traps", "Shoulders", "Triceps"],
+    "category": "Machines",
+    "image": "exercise-images/machine-shoulder-press.png",
+    "url": "https://www.muscleandstrength.com/exercises/machine-shoulder-press.html"
+  },
+  {
+    "id": 12,
+    "name": "Single Arm Cable Lateral Raise",
+    "tags": ["Traps", "Shoulders"],
+    "category": "Cable",
+    "image": "exercise-images/single-arm-cable-lateral-raise.png",
+    "url": "https://www.muscleandstrength.com/exercises/single-arm-cable-lateral-raise.html"
+  },
+  {
+    "id": 13,
+    "name": "Lateral Raise Machine",
+    "tags": ["Shoulders"],
+    "category": "Machines",
+    "image": "exercise-images/lateral-raise-machine.png",
+    "url": "https://www.muscleandstrength.com/exercises/lateral-raise-machine.html"
+  },
+  {
+    "id": 14,
+    "name": "Cable Upright Row",
+    "tags": ["Biceps", "Shoulders", "Traps"],
+    "category": "Cable",
+    "image": "exercise-images/cable-upright-row.png",
+    "url": "https://www.muscleandstrength.com/exercises/cable-upright-row.html"
+  }
+]
