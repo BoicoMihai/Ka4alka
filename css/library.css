@@ -103,7 +103,7 @@ body{
 
 .side-bar{
     width: 264px;
-    height: 83vh;
+    height: 90vh;
     border-radius: 20px;
     background-color: #18191B;
     display: flex;
@@ -182,20 +182,19 @@ body{
 
 /*exercises*/
 .exercise-card {
-  background: #242424;
-  border-radius: 10px;
+  background: #18191B;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   overflow: hidden;
-  border: 1px solid #333;
-  transition: border-color 0.2s;
+  height: 120px;
+  width: 528px;
 }
-.exercise-card:hover { border-color: #555; }
 
 .card-image {
   width: 130px;
-  min-width: 130px;
-  height: 110px;
+  min-width: 150px;
+  height: 120px;
   object-fit: cover;
 }
 .card-body {
@@ -208,7 +207,7 @@ body{
 .card-name {
   color: #fff;
   font-size: 16px;
-  font-weight: 600;
+  font-family: 'League Spartan', sans-serif;
   margin: 0;
 }
 .card-tags {
@@ -217,24 +216,24 @@ body{
   gap: 5px;
 }
 .tag {
-  background: #333;
-  color: #aaa;
+  background: #313131;
+  color: #ffffff;
   font-size: 11px;
   padding: 3px 9px;
   border-radius: 20px;
-  border: 1px solid #444;
+  font-family: 'League Spartan', sans-serif;
 }
+
 .card-btn {
   display: inline-flex;
+  font-family: 'League Spartan', sans-serif;
   align-items: center;
   gap: 8px;
   background: #2563eb;
   color: #fff;
   text-decoration: none;
   padding: 7px 14px;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
+  border-radius: 20px;
   width: fit-content;
 }
 .card-btn:hover { background: #1d4ed8; }
@@ -251,10 +250,14 @@ body{
 .library-content {
   flex: 1;
   overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 }
 
 .exercise-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(2, 528px);
+  gap: 30px;
+  align-content: start;
 }
