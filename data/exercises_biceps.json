@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Cable Curl (Rope Extension)",
+    "tags": ["Biceps"],
+    "category": "Cable",
+    "image": "exercise-images/cable-curl-rope-extension.png",
+    "url": "https://www.muscleandstrength.com/exercises/rope-cable-curl.html"
+  },
+  {
+    "id": 2,
+    "name": "Incline Dumbbell Curl",
+    "tags": ["Biceps"],
+    "category": "Dumbbell",
+    "image": "exercise-images/incline-dumbbell-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/incline-dumbbell-curl.html"
+  },
+  {
+    "id": 3,
+    "name": "Cable Curl",
+    "tags": ["Biceps"],
+    "category": "Cable",
+    "image": "exercise-images/cable-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/cable-curl.html"
+  },
+  {
+    "id": 4,
+    "name": "Standing Barbell Curl",
+    "tags": ["Biceps"],
+    "category": "Barbell",
+    "image": "exercise-images/standing-barbell-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/standing-barbell-curl.html"
+  },
+  {
+    "id": 5,
+    "name": "Cross Body Hammer Curl",
+    "tags": ["Biceps", "Forearms"],
+    "category": "Dumbbell",
+    "image": "exercise-images/cross-body-hammer-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/hammer-curl-across-the-body.html"
+  },
+  {
+    "id": 6,
+    "name": "EZ Bar Preacher Curl",
+    "tags": ["Biceps"],
+    "category": "Barbell",
+    "image": "exercise-images/ez-bar-preacher-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/ez-bar-preacher-curl.html"
+  },
+  {
+    "id": 7,
+    "name": "EZ Bar Curl",
+    "tags": ["Biceps"],
+    "category": "Barbell",
+    "image": "exercise-images/ez-bar-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/ez-bar-curl.html"
+  },
+  {
+    "id": 8,
+    "name": "Dumbbell Hammer Preacher Curl",
+    "tags": ["Biceps", "Forearms"],
+    "category": "Dumbbell",
+    "image": "exercise-images/dumbbell-hammer-preacher-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/dumbbell-hammer-preacher-curl.html"
+  },
+  {
+    "id": 9,
+    "name": "Spider Curl",
+    "tags": ["Biceps"],
+    "category": "Barbell",
+    "image": "exercise-images/spider-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/spider-curl.html"
+  },
+  {
+    "id": 10,
+    "name": "Dumbbell Preacher Curl",
+    "tags": ["Biceps"],
+    "category": "Dumbbell",
+    "image": "exercise-images/dumbbell-preacher-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/dumbbell-preacher-curl.html"
+  },
+  {
+    "id": 11,
+    "name": "Standing High Pulley Cable Curl",
+    "tags": ["Biceps"],
+    "category": "Cable",
+    "image": "exercise-images/standing-high-pulley-cable-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/standing-high-pulley-cable-curl.html"
+  },
+  {
+    "id": 12,
+    "name": "Machine Bicep Curl",
+    "tags": ["Biceps"],
+    "category": "Machines",
+    "image": "exercise-images/machine-bicep-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/bicep-machine-curl.html"
+  },
+  {
+    "id": 13,
+    "name": "Incline Bench Hammer Curl",
+    "tags": ["Biceps", "Forearms"],
+    "category": "Dumbbell",
+    "image": "exercise-images/incline-bench-hammer-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/incline-bench-hammer-curl.html"
+  },
+  {
+    "id": 14,
+    "name": "One-Arm Cable Curl",
+    "tags": ["Biceps"],
+    "category": "Cable",
+    "image": "exercise-images/one-arm-cable-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/one-arm-cable-curl.html"
+  },
+  {
+    "id": 15,
+    "name": "Two-Arm Low Pulley Cable Curl",
+    "tags": ["Biceps"],
+    "category": "Cable",
+    "image": "exercise-images/two-arm-low-pulley-cable-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/two-arm-cable-curl.html"
+  }
+]

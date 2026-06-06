@@ -67,7 +67,7 @@
         $filtered = array_values($filtered);
 
         // Pagination
-        $perPage = 14;
+        $perPage = 18;
         $totalPages = max(1, ceil(count($filtered) / $perPage));
         $currentPage = max(1, min((int)($_GET['page'] ?? 1), $totalPages));
         $offset = ($currentPage - 1) * $perPage;
@@ -97,16 +97,16 @@
   </div>
 
  <?php
-$muscles = ['chest', 'shoulders', 'back', 'legs', 'biceps', 'triceps', 'abs'];
-$currentIndex = array_search($muscle, $muscles);
-$nextMuscle = $muscles[$currentIndex + 1] ?? $muscles[0];
-?>
+    $muscles = ['chest', 'shoulders', 'biceps', 'legs', 'back', 'triceps', 'abs'];
+    $currentIndex = array_search($muscle, $muscles);
+    $nextMuscle = $muscles[$currentIndex + 1] ?? $muscles[0];
+    ?>
 
-<div class="pagination">
-  <?php foreach ($muscles as $i => $m): ?>
-    <a href="?muscle=<?= $m ?>" class="page-btn <?= $muscle === $m ? 'active' : '' ?>">
-      <?= $i + 1 ?>
-    </a>
+    <div class="pagination">
+    <?php foreach ($muscles as $i => $m): ?>
+        <a href="?muscle=<?= $m ?>" class="page-btn <?= $muscle === $m ? 'active' : '' ?>">
+        <?= $i + 1 ?>
+        </a>
   <?php endforeach; ?>
   <a href="?muscle=<?= $nextMuscle ?>" class="page-btn next">next</a>
 </div>
