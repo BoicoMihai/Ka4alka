@@ -103,7 +103,7 @@ body{
 
 .side-bar{
     width: 264px;
-    height: 90vh;
+    height: 89vh;
     border-radius: 20px;
     background-color: #18191B;
     display: flex;
@@ -260,4 +260,47 @@ body{
   grid-template-columns: repeat(2, 528px);
   gap: 30px;
   align-content: start;
+}
+
+/*changing pages*/
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 0;
+  width: 100%;
+}
+
+.page-btn {
+  background: #2a2a2a;
+  color: #aaa;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.page-btn:hover {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+.page-btn.active {
+  background: #fff;
+  color: #000;
+}
+
+/* "next" button is pill shaped not circle */
+.page-btn:last-child {
+  border-radius: 20px;
+  width: auto;
+  padding: 0 14px;
 }

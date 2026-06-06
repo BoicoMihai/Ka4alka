@@ -53,38 +53,62 @@
         <img src="images/search.png" alt="Search" class="search">
       </div>
     </div>
-    <!-- ↑ sidebar ends here -->
 
-    <!-- ↓ main area starts here -->
     <div class="library-content">
       <?php
-        $exercises = json_decode(file_get_contents('data/exercises.json'), true);
+        $muscle = $_GET['muscle'] ?? 'chest';
+        $exercises = json_decode(file_get_contents(__DIR__ . "/data/exercises_{$muscle}.json"), true);
         $activeFilter = $_GET['category'] ?? 'all';
+
+        // Filter
+        $filtered = array_filter($exercises, function($ex) use ($activeFilter) {
+          return $activeFilter === 'all' || strtolower($ex['category']) === strtolower($activeFilter);
+        });
+        $filtered = array_values($filtered);
+
+        // Pagination
+        $perPage = 14;
+        $totalPages = max(1, ceil(count($filtered) / $perPage));
+        $currentPage = max(1, min((int)($_GET['page'] ?? 1), $totalPages));
+        $offset = ($currentPage - 1) * $perPage;
+        $pageExercises = array_slice($filtered, $offset, $perPage);
       ?>
 
       <div class="exercise-grid">
-        <?php foreach ($exercises as $ex): ?>
-          <?php if ($activeFilter === 'all' || strtolower($ex['category']) === strtolower($activeFilter)): ?>
-            <div class="exercise-card" data-category="<?= htmlspecialchars($ex['category']) ?>">
-              <img class="card-image" src="<?= htmlspecialchars($ex['image']) ?>" alt="<?= htmlspecialchars($ex['name']) ?>">
-              <div class="card-body">
-                <p class="card-name"><?= htmlspecialchars($ex['name']) ?></p>
-                <div class="card-tags">
-                  <?php foreach ($ex['tags'] as $tag): ?>
-                    <span class="tag"><?= htmlspecialchars($tag) ?></span>
-                  <?php endforeach; ?>
-                </div>
-                <a class="card-btn" href="<?= htmlspecialchars($ex['url']) ?>" target="_blank">
-                  More details <span class="arrow">›</span>
-                </a>
+        <?php foreach ($pageExercises as $ex): ?>
+          <div class="exercise-card" data-category="<?= htmlspecialchars($ex['category']) ?>">
+            <img class="card-image" src="<?= htmlspecialchars($ex['image']) ?>" alt="<?= htmlspecialchars($ex['name']) ?>">
+            <div class="card-body">
+              <p class="card-name"><?= htmlspecialchars($ex['name']) ?></p>
+              <div class="card-tags">
+                <?php foreach ($ex['tags'] as $tag): ?>
+                  <span class="tag"><?= htmlspecialchars($tag) ?></span>
+                <?php endforeach; ?>
               </div>
+              <a class="card-btn" href="<?= htmlspecialchars($ex['url']) ?>" target="_blank">
+                More details <span class="arrow">›</span>
+              </a>
             </div>
-          <?php endif; ?>
+          </div>
         <?php endforeach; ?>
       </div>
-
     </div>
 
   </div>
+
+ <?php
+$muscles = ['chest', 'shoulders', 'back', 'legs', 'biceps', 'triceps', 'abs'];
+$currentIndex = array_search($muscle, $muscles);
+$nextMuscle = $muscles[$currentIndex + 1] ?? $muscles[0];
+?>
+
+<div class="pagination">
+  <?php foreach ($muscles as $i => $m): ?>
+    <a href="?muscle=<?= $m ?>" class="page-btn <?= $muscle === $m ? 'active' : '' ?>">
+      <?= $i + 1 ?>
+    </a>
+  <?php endforeach; ?>
+  <a href="?muscle=<?= $nextMuscle ?>" class="page-btn next">next</a>
+</div>
 </body>
 </html>
