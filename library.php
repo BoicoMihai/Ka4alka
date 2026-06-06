@@ -67,7 +67,7 @@
         $filtered = array_values($filtered);
 
         // Pagination
-        $perPage = 18;
+        $perPage = 15;
         $totalPages = max(1, ceil(count($filtered) / $perPage));
         $currentPage = max(1, min((int)($_GET['page'] ?? 1), $totalPages));
         $offset = ($currentPage - 1) * $perPage;
