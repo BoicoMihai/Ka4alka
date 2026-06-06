@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1,
+    "name": "Squat",
+    "tags": [
+      "Quads",
+      "Glutes",
+      "Hamstrings",
+      "Legs"
+    ],
+    "category": "Barbell",
+    "image": "exercise-images/squat.png",
+    "url": "https://www.muscleandstrength.com/exercises/squat.html"
+  },
+  {
+    "id": 2,
+    "name": "45 Degree Leg Press",
+    "tags": [
+      "Quads",
+      "Glutes",
+      "Hamstrings",
+      "Legs"
+    ],
+    "category": "Machines",
+    "image": "exercise-images/45-degree-leg-press.png",
+    "url": "https://www.muscleandstrength.com/exercises/45-degree-leg-press.html"
+  },
+  {
+    "id": 3,
+    "name": "Hack Squat",
+    "tags": [
+      "Quads",
+      "Glutes",
+      "Legs"
+    ],
+    "category": "Machines",
+    "image": "exercise-images/hack-squat.png",
+    "url": "https://www.muscleandstrength.com/exercises/hack-squat.html"
+  },
+  {
+    "id": 4,
+    "name": "Dumbbell Squat",
+    "tags": [
+      "Quads",
+      "Glutes",
+      "Hamstrings",
+      "Legs"
+    ],
+    "category": "Dumbbell",
+    "image": "exercise-images/dumbbell-squat.png",
+    "url": "https://www.muscleandstrength.com/exercises/dumbbell-squat.html"
+  },
+  {
+    "id": 5,
+    "name": "Leg Extension",
+    "tags": [
+      "Quads",
+      "Legs"
+    ],
+    "category": "Machines",
+    "image": "exercise-images/leg-extension.png",
+    "url": "https://www.muscleandstrength.com/exercises/leg-extension.html"
+  },
+  {
+    "id": 6,
+    "name": "Dumbbell Lunge",
+    "tags": [
+      "Quads",
+      "Glutes",
+      "Hamstrings",
+      "Legs"
+    ],
+    "category": "Dumbbell",
+    "image": "exercise-images/dumbbell-lunge.png",
+    "url": "https://www.muscleandstrength.com/exercises/dumbbell-lunge.html"
+  },
+  {
+    "id": 7,
+    "name": "Bulgarian Split Squat",
+    "tags": [
+      "Quads",
+      "Glutes",
+      "Hamstrings",
+      "Legs"
+    ],
+    "category": "Dumbbell",
+    "image": "exercise-images/bulgarian-split-squat.png",
+    "url": "https://www.muscleandstrength.com/exercises/one-leg-dumbbell-squat-aka-bulgarian-squat.html"
+  },
+  {
+    "id": 8,
+    "name": "Dumbbell Rear Lunge",
+    "tags": [
+      "Quads",
+      "Glutes",
+      "Hamstrings",
+      "Legs"
+    ],
+    "category": "Dumbbell",
+    "image": "exercise-images/dumbbell-rear-lunge.png",
+    "url": "https://www.muscleandstrength.com/exercises/dumbbell-rear-lunge.html"
+  },
+  {
+    "id": 9,
+    "name": "Box Squat",
+    "tags": [
+      "Quads",
+      "Glutes",
+      "Hamstrings",
+      "Legs"
+    ],
+    "category": "Barbell",
+    "image": "exercise-images/box-squat.png",
+    "url": "https://www.muscleandstrength.com/exercises/box-squat-shown-with-bench.html"
+  },
+  {
+    "id": 10,
+    "name": "Smith Machine Squat",
+    "tags": [
+      "Quads",
+      "Glutes",
+      "Legs"
+    ],
+    "category": "Machines",
+    "image": "exercise-images/smith-machine-squat.png",
+    "url": "https://www.muscleandstrength.com/exercises/smith-machine-squat.html"
+  },
+  {
+    "id": 11,
+    "name": "Hip Abduction Machine",
+    "tags": [
+      "Glutes",
+      "Abductors",
+      "Legs"
+    ],
+    "category": "Machines",
+    "image": "exercise-images/hip-abduction-machine.png",
+    "url": "https://www.muscleandstrength.com/exercises/hip-abduction-machine.html"
+  },
+  {
+    "id": 12,
+    "name": "Front Squat",
+    "tags": [
+      "Quads",
+      "Glutes",
+      "Hamstrings",
+      "Legs"
+    ],
+    "category": "Barbell",
+    "image": "exercise-images/front-squat.png",
+    "url": "https://www.muscleandstrength.com/exercises/front-squat.html"
+  },
+  {
+    "id": 13,
+    "name": "Hip Adduction Machine",
+    "tags": [
+      "Adductors",
+      "Legs"
+    ],
+    "category": "Machines",
+    "image": "exercise-images/hip-adduction-machine.png",
+    "url": "https://www.muscleandstrength.com/exercises/hip-adduction-machine.html"
+  },
+  {
+    "id": 14,
+    "name": "Cable Hip Abduction",
+    "tags": [
+      "Glutes",
+      "Abductors",
+      "Legs"
+    ],
+    "category": "Cable",
+    "image": "exercise-images/cable-hip-abduction.png",
+    "url": "https://www.muscleandstrength.com/exercises/cable-hip-abduction.html"
+  },
+  {
+    "id": 15,
+    "name": "Lateral Kneeling Adductor Mobilization",
+    "tags": [
+      "Adductors",
+      "Legs"
+    ],
+    "category": "Bodyweight",
+    "image": "exercise-images/lateral-kneeling-adductor-mobilization.png",
+    "url": "https://www.muscleandstrength.com/exercises/lateral-kneeling-adductor-mobilization"
+  },
+  {
+    "id": 16,
+    "name": "Barbell Hip Thrust",
+    "tags": [
+      "Glutes",
+      "Hamstrings",
+      "Legs"
+    ],
+    "category": "Barbell",
+    "image": "exercise-images/barbell-hip-thrust.png",
+    "url": "https://www.muscleandstrength.com/exercises/barbell-hip-thrust"
+  },
+  {
+    "id": 17,
+    "name": "Hyperextension",
+    "tags": [
+      "Hamstrings",
+      "Glutes",
+      "Lower Back",
+      "Legs"
+    ],
+    "category": "Bodyweight",
+    "image": "exercise-images/hyperextension.png",
+    "url": "https://www.muscleandstrength.com/exercises/hyperextension.html"
+  },
+  {
+    "id": 18,
+    "name": "Fire Hydrant Circles",
+    "tags": [
+      "Glutes",
+      "Abductors",
+      "Legs"
+    ],
+    "category": "Bodyweight",
+    "image": "exercise-images/fire-hydrant-circles.png",
+    "url": "https://www.muscleandstrength.com/exercises/fire-hydrant-circles"
+  },
+  {
+    "id": 19,
+    "name": "Kneeling Posterior Hip Capsule Mobilization",
+    "tags": [
+      "Glutes",
+      "Hips",
+      "Legs"
+    ],
+    "category": "Bodyweight",
+    "image": "exercise-images/kneeling-posterior-hip-capsule-mobilization.png",
+    "url": "https://www.muscleandstrength.com/exercises/kneeling-posterior-hip-capsule-mobilization"
+  },
+  {
+    "id": 20,
+    "name": "Standing Hip Flexion With Bands",
+    "tags": [
+      "Hip Flexors",
+      "Legs"
+    ],
+    "category": "Bodyweight",
+    "image": "exercise-images/standing-hip-flexion-with-bands.png",
+    "url": "https://www.muscleandstrength.com/exercises/standing-hip-flexion-with-bands"
+  },
+  {
+    "id": 21,
+    "name": "Stiff Leg Deadlift",
+    "tags": [
+      "Hamstrings",
+      "Glutes",
+      "Lower Back",
+      "Legs"
+    ],
+    "category": "Barbell",
+    "image": "exercise-images/stiff-leg-deadlift.png",
+    "url": "https://www.muscleandstrength.com/exercises/stiff-leg-deadlift-aka-romanian-deadlift.html"
+  },
+  {
+    "id": 22,
+    "name": "Leg Curl",
+    "tags": [
+      "Hamstrings",
+      "Legs"
+    ],
+    "category": "Machines",
+    "image": "exercise-images/leg-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/leg-curl.html"
+  },
+  {
+    "id": 23,
+    "name": "Deadlift",
+    "tags": [
+      "Hamstrings",
+      "Glutes",
+      "Lower Back",
+      "Quads",
+      "Legs"
+    ],
+    "category": "Barbell",
+    "image": "exercise-images/deadlift.png",
+    "url": "https://www.muscleandstrength.com/exercises/deadlifts.html"
+  },
+  {
+    "id": 24,
+    "name": "Romanian Deadlift",
+    "tags": [
+      "Hamstrings",
+      "Glutes",
+      "Lower Back",
+      "Legs"
+    ],
+    "category": "Barbell",
+    "image": "exercise-images/romanian-deadlift.png",
+    "url": "https://www.muscleandstrength.com/exercises/romanian-deadlift"
+  },
+  {
+    "id": 25,
+    "name": "Seated Leg Curl",
+    "tags": [
+      "Hamstrings",
+      "Legs"
+    ],
+    "category": "Machines",
+    "image": "exercise-images/seated-leg-curl.png",
+    "url": "https://www.muscleandstrength.com/exercises/seated-leg-curl"
+  },
+  {
+    "id": 26,
+    "name": "Sumo Deadlift",
+    "tags": [
+      "Hamstrings",
+      "Glutes",
+      "Adductors",
+      "Legs"
+    ],
+    "category": "Barbell",
+    "image": "exercise-images/sumo-deadlift.png",
+    "url": "https://www.muscleandstrength.com/exercises/sumo-deadlift"
+  },
+  {
+    "id": 27,
+    "name": "Trap Bar Deadlift",
+    "tags": [
+      "Hamstrings",
+      "Glutes",
+      "Quads",
+      "Lower Back",
+      "Legs"
+    ],
+    "category": "Barbell",
+    "image": "exercise-images/trap-bar-deadlift.png",
+    "url": "https://www.muscleandstrength.com/exercises/trap-bar-deadlift"
+  },
+  {
+    "id": 28,
+    "name": "Landmine Romanian Deadlift",
+    "tags": [
+      "Hamstrings",
+      "Glutes",
+      "Lower Back",
+      "Legs"
+    ],
+    "category": "Barbell",
+    "image": "exercise-images/landmine-romanian-deadlift.png",
+    "url": "https://www.muscleandstrength.com/exercises/landmine-romanian-deadlift"
+  },
+  {
+    "id": 29,
+    "name": "Trap Bar Romanian Deadlift",
+    "tags": [
+      "Hamstrings",
+      "Glutes",
+      "Lower Back",
+      "Legs"
+    ],
+    "category": "Barbell",
+    "image": "exercise-images/trap-bar-romanian-deadlift.png",
+    "url": "https://www.muscleandstrength.com/content/trap-bar-romanian-deadlift"
+  }
+]
