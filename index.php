@@ -59,9 +59,9 @@
     <div class="boxes">
       <div class="empty-workout main-containers">
         <button>
-          <img src="images/add.png" alt="Add">
+          <img src="images/add.png" alt="Add" class="main-button">
           <p>Start Empty Workout</p>
-          <img src="images/Programs.png" alt="Programs">
+          <img src="images/Programs.png" alt="Programs" class="main-button">
         </button>
       </div>
 
@@ -71,15 +71,15 @@
         <button>
           <img src="images/more.png" alt="Add" class="more-image">
           <p>Explore Workout</p>
-          <img src="images/Folder.png" alt="Programs">
+          <img src="images/Folder.png" alt="Programs" class="main-button">
         </button>
       </div>
 
-      <div class="My-Workouts main-containers">
+      <div class="workouts-main main-containers">
         <button>
           <img src="images/more.png" alt="Add" class="more-image">
           <p>My Workoutst</p>
-          <img src="images/workouts.png" alt="Programs">
+          <img src="images/workouts.png" alt="Programs" class="main-button">
         </button>
       </div>
     </div> 

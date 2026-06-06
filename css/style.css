@@ -64,8 +64,7 @@ body{
     font-family: 'League Spartan', sans-serif;
     font-size: 16px;
     padding: 0px 15px;
-    color: #47494D;
-
+    color: #ffffff;
 }
 
 .searchbar{
@@ -114,19 +113,38 @@ body{
     padding: 20px;
 }
 
-.side-bar button{
+.my-workouts{
     background-color: transparent;
     border: none;
     cursor: pointer;
     display: flex;
     flex-direction: row;
-    padding: 15px 10px;
+    padding: 12px 10px;
     border-radius: 20px;
     transition-duration: 0.4s;
+    margin-top: 15px;
+    width: 200px;
 }
 
-.side-bar button:hover{
+.create-new-workout{
+    background-color: #0568F6;
+    border-radius: 20px;
+    width: 195px;
+    height: 35px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    transition-duration: 0.4s;
+    padding: 11px 10px;
+}
+
+.my-workouts:hover{
     background-color: #34363A;
+}
+
+.create-new-workout:hover{
+    background-color: #114a99;
 }
 
 .side-bar-button img{
@@ -149,8 +167,7 @@ body{
     border-radius: 16.5px;
     display: flex;
     align-items: center;
-    margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .searchbar-sidebar input{
@@ -159,7 +176,7 @@ body{
     font-family: 'League Spartan', sans-serif;
     font-size: 16px;
     padding: 0px 15px;
-    color: #47494D;
+    color: #ffffff;
 
 }
 
@@ -172,16 +189,12 @@ body{
     display: flex;
     align-items: center;
     padding: 0 24px;
+    margin: 10px;
+    transition-duration: 0.4s;
 }
 
-.empty-workout{
-    width: 100%;
-    min-height: 77px;
-    background-color: #18191B;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
+.main-containers:hover{
+    background-color: #262729;
 }
 
 .main-containers button{
@@ -192,13 +205,14 @@ body{
     align-items: center;
     width: 100%;
     gap: 20px;
+    
 }
 
 .main-containers button img:last-child{
     margin-left: auto;
 }
 
-.main-containers button img{
+.main-button{
     width: 24px;
     height: 24px;
 }
@@ -221,12 +235,12 @@ body{
 #Routines-text{
     font-family: 'League Spartan', sans-serif;
     font-size: 32px;
-    color: #FFFFFF;
+    color: #ffffff;
     align-self: flex-start;
     margin-left: 215px;
 }
 
 .more-image{
-    width: 10px;
-    height: 16px;
+    width: 17px;
+    height: 10px;
 }
