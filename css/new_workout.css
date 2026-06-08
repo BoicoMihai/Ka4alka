@@ -1,0 +1,609 @@
+.workout-area {
+  flex: 1;
+  min-height: 89vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Empty state */
+.empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: #4A4C50;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 18px;
+  user-select: none;
+}
+
+.empty-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px dashed #2A2C30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #2A2C30;
+}
+
+.empty-icon img{
+    width: 20px;
+    height: 20px;
+    opacity: 0.2;
+}
+
+.empty-state strong {
+  color: #6A6C70;
+}
+
+/* on click*/
+.builder {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 40px;
+}
+
+.builder-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+.workout-title-input {
+  flex: 1;
+  background: #18191B;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 20px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+  outline: none;
+  transition: background 0.2s;
+}
+
+.workout-title-input::placeholder { color: #3A3C40; }
+.workout-title-input:focus { background: #1F2023; }
+
+.save-workout-btn {
+  background: #0568F6;
+  border: none;
+  border-radius: 14px;
+  padding: 11px 24px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.25s, scale 0.15s;
+  white-space: nowrap;
+}
+
+.save-workout-btn:hover { background: #1256c4; }
+.save-workout-btn:active { scale: 0.97; }
+
+/* ── Exercise card ── */
+.exercise-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.exercise-card {
+  background: #18191B;
+  border-radius: 20px;
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  animation: cardSlideIn 0.25s ease;
+}
+
+@keyframes cardSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Card top row: image + info + rest timer */
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.card-exercise-img {
+  width: 110px;
+  height: 72px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #0B0C0E;
+  flex-shrink: 0;
+}
+
+.card-exercise-img.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3A3C40;
+  font-size: 28px;
+}
+
+.card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-exercise-name {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.card-muscles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.muscle-tag {
+  background: #26282C;
+  border-radius: 8px;
+  padding: 3px 10px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 13px;
+  color: #9A9C9F;
+}
+
+.card-timer-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.timer-icon {
+  font-size: 15px;
+  color: #9A9C9F;
+}
+
+.card-timer-text {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 15px;
+  color: #9A9C9F;
+}
+
+.card-timer-text strong {
+  color: #C8CACD;
+}
+
+.edit-timer-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  color: #5A5C60;
+  font-size: 14px;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.edit-timer-btn:hover { color: #0568F6; }
+
+/* Card delete button */
+.card-delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #3A3C40;
+  font-size: 18px;
+  padding: 4px;
+  margin-left: auto;
+  transition: color 0.2s, scale 0.15s;
+  align-self: flex-start;
+}
+
+.card-delete-btn:hover { color: #e05555; scale: 1.15; }
+
+/* Sets table */
+.sets-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sets-table thead th {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5A5C60;
+  text-align: center;
+  padding-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+
+.sets-table thead th:first-child { text-align: left; width: 44px; }
+
+.sets-table tbody tr {
+  animation: rowIn 0.2s ease;
+}
+
+@keyframes rowIn {
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.set-number-cell {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #5A5C60;
+  width: 36px;
+  padding: 5px 0;
+  vertical-align: middle;
+}
+
+.set-input-cell {
+  padding: 4px 6px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.set-input {
+  width: 100%;
+  background: #0B0C0E;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 6px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  outline: none;
+  transition: background 0.2s, box-shadow 0.2s;
+  /* hide number spinners */
+  -moz-appearance: textfield;
+}
+
+.set-input::-webkit-outer-spin-button,
+.set-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.set-input:focus {
+  background: #141517;
+  box-shadow: 0 0 0 2px #0568F6;
+}
+
+.set-input::placeholder { color: #2E3035; }
+
+.set-delete-cell {
+  width: 32px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.set-delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2E3035;
+  font-size: 16px;
+  padding: 4px;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.set-delete-btn:hover { color: #e05555; }
+
+/* Add Set button */
+.add-set-btn {
+  width: 100%;
+  margin-top: 10px;
+  background: #0568F6;
+  border: none;
+  border-radius: 12px;
+  padding: 9px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, scale 0.15s;
+}
+
+.add-set-btn:hover { background: #1256c4; }
+.add-set-btn:active { scale: 0.98; }
+
+/* Add exercise button */
+.add-exercise-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: #18191B;
+  border: 2px dashed #2A2C30;
+  border-radius: 20px;
+  padding: 18px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #4A4C50;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.add-exercise-btn:hover {
+  border-color: #0568F6;
+  color: #0568F6;
+  background: #0F1218;
+}
+
+.plus-icon {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* ── Modal overlay ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.72);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal {
+  background: #18191B;
+  border-radius: 20px;
+  width: 680px;
+  max-width: 95vw;
+  max-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalSlide 0.2s ease;
+}
+
+@keyframes modalSlide {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px 14px;
+  border-bottom: 1px solid #26282C;
+}
+
+.modal-title {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #5A5C60;
+  font-size: 18px;
+  transition: color 0.2s;
+  padding: 4px 8px;
+}
+
+.modal-close:hover { color: #ffffff; }
+
+/* Category tabs */
+.category-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 14px 22px 0;
+  flex-wrap: wrap;
+}
+
+.cat-tab {
+  background: #0B0C0E;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 16px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6A6C70;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cat-tab:hover { background: #1F2023; color: #C8CACD; }
+
+.cat-tab.active {
+  background: #0568F6;
+  color: #ffffff;
+}
+
+/* Modal search */
+.modal-search-wrap {
+  padding: 12px 22px 6px;
+}
+
+.modal-search-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #0B0C0E;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 15px;
+  color: #ffffff;
+  outline: none;
+}
+
+.modal-search-input::placeholder { color: #3A3C40; }
+
+/* Exercise grid inside modal */
+.exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  padding: 14px 22px 22px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.exercise-grid::-webkit-scrollbar { width: 6px; }
+.exercise-grid::-webkit-scrollbar-track { background: transparent; }
+.exercise-grid::-webkit-scrollbar-thumb { background: #2A2C30; border-radius: 3px; }
+
+.exercise-tile {
+  background: #0B0C0E;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 0.2s, scale 0.15s;
+  border: 2px solid transparent;
+}
+
+.exercise-tile:hover {
+  background: #141517;
+  scale: 1.03;
+  border-color: #0568F6;
+}
+
+.exercise-tile img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  display: block;
+  background: #141517;
+}
+
+.exercise-tile-placeholder {
+  width: 100%;
+  height: 90px;
+  background: #141517;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3A3C40;
+  font-size: 26px;
+}
+
+.exercise-tile-name {
+  padding: 8px 10px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #C8CACD;
+  line-height: 1.3;
+}
+
+.loading-text {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 15px;
+  color: #4A4C50;
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 30px 0;
+  margin: 0;
+}
+
+/* ── Rest Timer modal ── */
+.timer-modal {
+  width: 340px;
+  max-height: unset;
+}
+
+.timer-edit-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 28px 22px 20px;
+}
+
+.timer-label {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 13px;
+  color: #5A5C60;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.timer-number-input {
+  width: 88px;
+  background: #0B0C0E;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 10px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  outline: none;
+  transition: box-shadow 0.2s;
+  -moz-appearance: textfield;
+}
+
+.timer-number-input::-webkit-outer-spin-button,
+.timer-number-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.timer-number-input:focus { box-shadow: 0 0 0 2px #0568F6; }
+
+.timer-colon {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #5A5C60;
+}
+
+.save-timer-btn {
+  display: block;
+  width: calc(100% - 44px);
+  margin: 0 22px 22px;
+  background: #0568F6;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.save-timer-btn:hover { background: #1256c4; }
+
+/* ── Scrollbar for workout area ── */
+.workout-area::-webkit-scrollbar { width: 6px; }
+.workout-area::-webkit-scrollbar-track { background: transparent; }
+.workout-area::-webkit-scrollbar-thumb { background: #2A2C30; border-radius: 3px; }
