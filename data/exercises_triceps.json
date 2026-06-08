@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Lying Floor Leg Raise",
+    "tags": ["Abs", "Hip Flexors"],
+    "category": "Bodyweight",
+    "image": "exercise-images/lying-floor-leg-raise.png",
+    "url": "https://www.muscleandstrength.com/exercises/lying-floor-leg-raise.html"
+  },
+  {
+    "id": 2,
+    "name": "Cable Crunch",
+    "tags": ["Abs"],
+    "category": "Cable",
+    "image": "exercise-images/cable-crunch.png",
+    "url": "https://www.muscleandstrength.com/exercises/cable-crunch.html"
+  },
+  {
+    "id": 3,
+    "name": "Weighted Crunch",
+    "tags": ["Abs"],
+    "category": "Bodyweight",
+    "image": "exercise-images/weighted-crunch.png",
+    "url": "https://www.muscleandstrength.com/exercises/weighted-crunch.html"
+  },
+  {
+    "id": 4,
+    "name": "Hover (Plank)",
+    "tags": ["Abs", "Core"],
+    "category": "Bodyweight",
+    "image": "exercise-images/hover.png",
+    "url": "https://www.muscleandstrength.com/exercises/hover.html"
+  },
+  {
+    "id": 5,
+    "name": "Decline Sit Up",
+    "tags": ["Abs"],
+    "category": "Bodyweight",
+    "image": "exercise-images/decline-situp.png",
+    "url": "https://www.muscleandstrength.com/exercises/decline-situp.html"
+  },
+  {
+    "id": 6,
+    "name": "Chair Knee Raise",
+    "tags": ["Abs", "Hip Flexors"],
+    "category": "Bodyweight",
+    "image": "exercise-images/chair-knee-raise.png",
+    "url": "https://www.muscleandstrength.com/exercises/chair-knee-raise.html"
+  },
+  {
+    "id": 7,
+    "name": "Weighted Side Touches",
+    "tags": ["Abs", "Obliques"],
+    "category": "Dumbbell",
+    "image": "exercise-images/weighted-side-touches.png",
+    "url": "https://www.muscleandstrength.com/exercises/weighted-side-touches.html"
+  },
+  {
+    "id": 8,
+    "name": "Twisting Cable Crunch",
+    "tags": ["Abs", "Obliques"],
+    "category": "Cable",
+    "image": "exercise-images/twisting-cable-crunch.png",
+    "url": "https://www.muscleandstrength.com/exercises/twisting-cable-crunch.html"
+  }
+]

@@ -97,7 +97,7 @@
   </div>
 
  <?php
-    $muscles = ['chest', 'shoulders', 'biceps', 'legs', 'Back', 'triceps', 'abs'];
+    $muscles = ['chest', 'shoulders', 'biceps', 'legs', 'Back', 'Abs', 'triceps'];
     $currentIndex = array_search($muscle, $muscles);
     $nextMuscle = $muscles[$currentIndex + 1] ?? $muscles[0];
     ?>
