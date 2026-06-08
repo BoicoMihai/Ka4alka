@@ -574,8 +574,13 @@
     renderWorkoutList();
   });
 
-  /* ─── Init ─── */
-  loadWorkoutsFromStorage();
-  renderWorkoutList();
+/* ─── Init ─── */
+loadWorkoutsFromStorage();
+renderWorkoutList();
+
+/* ─── Load from URL param ─── */
+const urlParams = new URLSearchParams(window.location.search);
+const idFromUrl = urlParams.get("id");
+if (idFromUrl) loadWorkoutIntoBuilder(idFromUrl);
 
 })();

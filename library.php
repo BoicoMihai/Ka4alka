@@ -49,19 +49,20 @@
   <div class="main-content">
 
     <div class="side-bar">
-      <button class="create-new-workout side-bar-button">
+    <button class="create-new-workout side-bar-button" onclick="location.href='new_workout.php'">
         <img src="images/add.png" alt="Create New Workout">
         <p>Create New Workout</p>
-      </button>
-      <button class="my-workouts side-bar-button">
+    </button>
+    <button class="my-workouts side-bar-button">
         <img src="images/workouts.png" alt="My Workouts">
         <p>My Workouts</p>
-      </button>
-      <div class="searchbar-sidebar">
-        <input type="text" placeholder="Search workout..." class="siderbar-search-input">
+    </button>
+    <div class="searchbar-sidebar">
+        <input type="text" placeholder="Search workout..." id="sidebar-search">
         <img src="images/search.png" alt="Search" class="search">
-      </div>
     </div>
+    <div class="workout-list" id="workout-list"></div>
+</div>
 
     <div class="library-content">
       <?php
