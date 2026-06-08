@@ -97,5 +97,63 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// theme.js — include on every page that has a header
 
+(function () {
+    const STORAGE_KEY = 'ka4alka-theme';
+
+    // ── Apply saved theme immediately (prevents flash) ──
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === 'light') document.body.classList.add('light-mode');
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle     = document.getElementById('account-toggle');
+        const dropdown   = document.getElementById('account-dropdown');
+        const themeBtn   = document.getElementById('theme-toggle');
+        const themeIcon  = document.getElementById('theme-toggle-icon');
+        const themeLabel = document.getElementById('theme-toggle-label');
+
+        if (!toggle || !dropdown) return;
+
+        // ── Sync label/icon to current state ──
+        function syncUI() {
+            const isLight = document.body.classList.contains('light-mode');
+            themeIcon.textContent  = isLight ? '🌙' : '☀️';
+            themeLabel.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+        }
+        syncUI();
+
+        // ── Toggle dropdown ──
+        toggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const isOpen = dropdown.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // ── Close on outside click ──
+        document.addEventListener('click', function (e) {
+            if (!dropdown.contains(e.target) && e.target !== toggle) {
+                dropdown.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // ── Close on Escape ──
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && dropdown.classList.contains('open')) {
+                dropdown.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.focus();
+            }
+        });
+
+        // ── Theme switch ──
+        themeBtn.addEventListener('click', function () {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            localStorage.setItem(STORAGE_KEY, isLight ? 'light' : 'dark');
+            syncUI();
+        });
+    });
+})();
 
