@@ -85,7 +85,7 @@
       <div class="workouts-main main-containers">
         <button>
           <img src="images/more.png" alt="Add" class="more-image">
-          <p>My Workoutst</p>
+          <p>My Workouts</p>
           <img src="images/workouts.png" alt="Programs" class="main-button">
         </button>
       </div>
