@@ -67,7 +67,7 @@
         $filtered = array_values($filtered);
 
         // Pagination
-        $perPage = 15;
+        $perPage = 30;
         $totalPages = max(1, ceil(count($filtered) / $perPage));
         $currentPage = max(1, min((int)($_GET['page'] ?? 1), $totalPages));
         $offset = ($currentPage - 1) * $perPage;
@@ -97,7 +97,7 @@
   </div>
 
  <?php
-    $muscles = ['chest', 'shoulders', 'biceps', 'legs', 'back', 'triceps', 'abs'];
+    $muscles = ['chest', 'shoulders', 'biceps', 'legs', 'Back', 'triceps', 'abs'];
     $currentIndex = array_search($muscle, $muscles);
     $nextMuscle = $muscles[$currentIndex + 1] ?? $muscles[0];
     ?>
