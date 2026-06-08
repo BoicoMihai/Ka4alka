@@ -268,3 +268,115 @@ body{
 .workout-list-delete:hover {
   color: #e05555;
 }
+
+/* ── Account dropdown ── */
+
+.account-menu-wrapper {
+    position: relative;
+}
+
+.account-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 160px;
+    background-color: #18191B;
+    border-radius: 14px;
+    padding: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px) scale(0.97);
+    transform-origin: top right;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 999;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.account-dropdown.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.account-dropdown-item {
+    width: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    transition: background-color 0.2s;
+}
+
+.account-dropdown-item:hover {
+    background-color: #34363A;
+}
+
+.account-dropdown-item span {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+.theme-toggle-icon {
+    font-size: 16px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+/* ── Light mode overrides ── */
+
+body.light-mode {
+    background-color: #F0F1F3;
+}
+
+body.light-mode .header,
+body.light-mode .side-bar,
+body.light-mode .main-containers,
+body.light-mode .account-dropdown {
+    background-color: #FFFFFF;
+}
+
+body.light-mode .header p,
+body.light-mode .side-bar-button p,
+body.light-mode .main-containers button p,
+body.light-mode .account-dropdown-item span,
+body.light-mode #Routines-text {
+    color: #0B0C0E;
+}
+
+body.light-mode .searchbar,
+body.light-mode .searchbar-sidebar {
+    background-color: #E4E5E7;
+}
+
+body.light-mode .search-input,
+body.light-mode .searchbar-sidebar input {
+    color: #0B0C0E;
+}
+
+body.light-mode .search-input::placeholder,
+body.light-mode .searchbar-sidebar input::placeholder {
+    color: #888;
+}
+
+body.light-mode .my-workouts:hover {
+    background-color: #E8E9EB;
+}
+
+body.light-mode .main-containers:hover {
+    background-color: #F5F6F8;
+}
+
+body.light-mode .account-dropdown-item:hover {
+    background-color: #F0F1F3;
+}
+
+body.light-mode .account-dropdown {
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
