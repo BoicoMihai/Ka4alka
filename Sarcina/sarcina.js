@@ -15,8 +15,6 @@ function updateCarousel() {
   const maxIndex = cards.length - VISIBLE;
   const cardWidth = cards[0].offsetWidth + 24; 
   track.style.transform = `translateX(-${current * cardWidth}px)`;
-  prevBtn.style.opacity = current === 0 ? '0.3' : '1';
-  nextBtn.style.opacity = current >= maxIndex ? '0.3' : '1';
 }
 
 function slide(dir) {
