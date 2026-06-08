@@ -50,14 +50,15 @@
         <p>My Workouts</p>
       </button>
       <div class="searchbar-sidebar">
-        <input type="text" placeholder="Search workout..." class="siderbar-search-input">
+        <input type="text" placeholder="Search workout..." class="sidebar-search-input" id="sidebar-search">
         <img src="images/search.png" alt="Search" class="search">
       </div>
+      <div class="workout-list" id="workout-list"></div>
     </div>
 
     <div class="workout-area">
 
-      <div class="empty-state">
+      <div class="empty-state" id="empty-state">
         <div class="empty-icon">
             <img src="images/add.png" alt="">
         </div>

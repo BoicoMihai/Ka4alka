@@ -1,9 +1,13 @@
 (function () {
   "use strict";
 
+  const STORAGE_KEY = "ka4alka_workouts";
+
   /* ─── State ─── */
   let exerciseCards = [];          // array of card state objects
   let currentTimerCardId = null;   // which card's timer is being edited
+  let currentWorkoutId = null;     // id of workout being edited (null = new)
+  let savedWorkouts = [];          // workouts from localStorage
 
   /* ─── DOM refs ─── */
   const btnCreateNew   = document.getElementById("btn-create-new");
@@ -11,6 +15,9 @@
   const builder        = document.getElementById("builder");
   const exerciseList   = document.getElementById("exercise-list");
   const btnAddExercise = document.getElementById("btn-add-exercise");
+  const workoutTitle   = document.getElementById("workout-title");
+  const workoutList    = document.getElementById("workout-list");
+  const sidebarSearch  = document.getElementById("sidebar-search");
 
   // Exercise picker modal
   const modalOverlay   = document.getElementById("modal-overlay");
@@ -48,11 +55,162 @@
     return `exercise-images/${image}`;
   }
 
-  /* ─── Show builder ─── */
-  btnCreateNew.addEventListener("click", function () {
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  /* ─── Local storage ─── */
+  function loadWorkoutsFromStorage() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      savedWorkouts = raw ? JSON.parse(raw) : [];
+      if (!Array.isArray(savedWorkouts)) savedWorkouts = [];
+    } catch (e) {
+      savedWorkouts = [];
+    }
+  }
+
+  function persistWorkouts() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(savedWorkouts));
+  }
+
+  function showBuilder() {
     emptyState.style.display = "none";
     builder.style.display    = "flex";
+  }
+
+  function clearBuilder() {
+    exerciseCards = [];
+    currentWorkoutId = null;
+    workoutTitle.value = "";
+    exerciseList.innerHTML = "";
+  }
+
+  function startNewWorkout() {
+    clearBuilder();
+    showBuilder();
+    renderWorkoutList();
+    workoutTitle.focus();
+  }
+
+  function buildWorkoutPayload(title) {
+    return {
+      name: title,
+      exercises: exerciseCards.map(function (card) {
+        return {
+          name:     card.exercise.name,
+          muscles:  card.exercise.muscles,
+          image:    card.exercise.image,
+          timerMin: card.timerMin,
+          timerSec: card.timerSec,
+          sets: card.sets.map(function (s) {
+            return {
+              weight: s.weight === "" ? "" : (parseFloat(s.weight) || 0),
+              reps:   s.reps === "" ? "" : (parseInt(s.reps, 10) || 0)
+            };
+          })
+        };
+      })
+    };
+  }
+
+  function workoutToCards(workout) {
+    return workout.exercises.map(function (ex) {
+      return {
+        id: uid(),
+        exercise: {
+          name:    ex.name,
+          muscles: ex.muscles || [],
+          image:   ex.image || ""
+        },
+        timerMin: ex.timerMin != null ? ex.timerMin : 1,
+        timerSec: ex.timerSec != null ? ex.timerSec : 30,
+        sets: (ex.sets && ex.sets.length)
+          ? ex.sets.map(function (s) {
+              return {
+                id: uid(),
+                weight: s.weight != null ? String(s.weight) : "",
+                reps:   s.reps != null ? String(s.reps) : ""
+              };
+            })
+          : [{ id: uid(), weight: "", reps: "" }]
+      };
+    });
+  }
+
+  function loadWorkoutIntoBuilder(workoutId) {
+    const workout = savedWorkouts.find(function (w) { return w.id === workoutId; });
+    if (!workout) return;
+
+    clearBuilder();
+    currentWorkoutId = workout.id;
+    workoutTitle.value = workout.name;
+    exerciseCards = workoutToCards(workout);
+    exerciseCards.forEach(renderCard);
+    showBuilder();
+    renderWorkoutList();
+  }
+
+  function deleteWorkout(workoutId) {
+    savedWorkouts = savedWorkouts.filter(function (w) { return w.id !== workoutId; });
+    persistWorkouts();
+    if (currentWorkoutId === workoutId) {
+      clearBuilder();
+      emptyState.style.display = "flex";
+      builder.style.display = "none";
+    }
+    renderWorkoutList();
+  }
+
+  function renderWorkoutList() {
+    const query = sidebarSearch ? sidebarSearch.value.trim().toLowerCase() : "";
+    const filtered = savedWorkouts.filter(function (w) {
+      return !query || w.name.toLowerCase().includes(query);
+    });
+
+    if (!filtered.length) {
+      workoutList.innerHTML = query
+        ? '<p class="workout-list-empty">No workouts match your search.</p>'
+        : '<p class="workout-list-empty">No saved workouts yet.</p>';
+      return;
+    }
+
+    workoutList.innerHTML = filtered.map(function (w) {
+      const count = (w.exercises && w.exercises.length) || 0;
+      const label = count === 1 ? "1 exercise" : count + " exercises";
+      const active = w.id === currentWorkoutId ? " active" : "";
+      return `<button type="button" class="workout-list-item${active}" data-workout-id="${escapeHtml(w.id)}">
+        <div class="workout-list-item-info">
+          <p class="workout-list-item-name">${escapeHtml(w.name)}</p>
+          <p class="workout-list-item-meta">${label}</p>
+        </div>
+        <span class="workout-list-delete" data-delete-id="${escapeHtml(w.id)}" title="Delete workout">✕</span>
+      </button>`;
+    }).join("");
+  }
+
+  workoutList.addEventListener("click", function (e) {
+    const deleteBtn = e.target.closest(".workout-list-delete");
+    if (deleteBtn) {
+      e.stopPropagation();
+      const id = deleteBtn.dataset.deleteId;
+      if (confirm("Delete this workout?")) deleteWorkout(id);
+      return;
+    }
+    const item = e.target.closest(".workout-list-item");
+    if (item) loadWorkoutIntoBuilder(item.dataset.workoutId);
   });
+
+  if (sidebarSearch) {
+    sidebarSearch.addEventListener("input", renderWorkoutList);
+  }
+
+  /* ─── Show builder ─── */
+  btnCreateNew.addEventListener("click", startNewWorkout);
 
   /* ─── Add Exercise button ─── */
   btnAddExercise.addEventListener("click", openExercisePicker);
@@ -133,7 +291,7 @@
                    data-muscles="${(ex.tags||[]).join(",") }"
                    data-image="${imgSrc}">
                 ${imgEl}
-                <div class="exercise-tile-name">${ex.name}</div>
+                <div class="exercise-tile-name">${escapeHtml(ex.name)}</div>
               </div>`;
     }).join("");
 
@@ -379,13 +537,13 @@
   });
 
   /* ════════════════════════════════════════════
-     SAVE WORKOUT (stub – hook up to your PHP)
+     SAVE WORKOUT (localStorage)
   ════════════════════════════════════════════ */
 
   document.getElementById("btn-save-workout").addEventListener("click", function () {
-    const title = document.getElementById("workout-title").value.trim();
+    const title = workoutTitle.value.trim();
     if (!title) {
-      document.getElementById("workout-title").focus();
+      workoutTitle.focus();
       return;
     }
     if (!exerciseCards.length) {
@@ -393,26 +551,31 @@
       return;
     }
 
-    const payload = {
-      name:      title,
-      exercises: exerciseCards.map(function (card) {
-        return {
-          name:      card.exercise.name,
-          muscles:   card.exercise.muscles,
-          image:     card.exercise.image,
-          timerMin:  card.timerMin,
-          timerSec:  card.timerSec,
-          sets:      card.sets.map(function (s) {
-            return { weight: parseFloat(s.weight) || 0, reps: parseInt(s.reps) || 0 };
-          })
-        };
-      })
-    };
+    const payload = buildWorkoutPayload(title);
+    const now = new Date().toISOString();
 
-    console.log("Workout payload:", JSON.stringify(payload, null, 2));
-    // TODO: POST to save_workout.php
-    // fetch("save_workout.php", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify(payload) })
-    alert(`Workout "${title}" saved! (check console for payload)`);
+    if (currentWorkoutId) {
+      const idx = savedWorkouts.findIndex(function (w) { return w.id === currentWorkoutId; });
+      if (idx !== -1) {
+        savedWorkouts[idx] = Object.assign({}, savedWorkouts[idx], payload, { updatedAt: now });
+      }
+    } else {
+      currentWorkoutId = uid();
+      savedWorkouts.unshift({
+        id: currentWorkoutId,
+        createdAt: now,
+        updatedAt: now,
+        name: payload.name,
+        exercises: payload.exercises
+      });
+    }
+
+    persistWorkouts();
+    renderWorkoutList();
   });
+
+  /* ─── Init ─── */
+  loadWorkoutsFromStorage();
+  renderWorkoutList();
 
 })();
