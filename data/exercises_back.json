@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "name": "Bent Over Barbell Row",
+    "tags": ["Back", "Lats", "Traps"],
+    "category": "Barbell",
+    "image": "exercise-images/bent-over-barbell-row.png",
+    "url": "https://www.muscleandstrength.com/exercises/bent-over-barbell-row.html"
+  },
+  {
+    "id": 2,
+    "name": "Seated Row",
+    "tags": ["Back", "Lats", "Biceps"],
+    "category": "Cable",
+    "image": "exercise-images/seated-row.png",
+    "url": "https://www.muscleandstrength.com/exercises/seated-row.html"
+  },
+  {
+    "id": 3,
+    "name": "Machine Row",
+    "tags": ["Back", "Lats"],
+    "category": "Machines",
+    "image": "exercise-images/machine-row.png",
+    "url": "https://www.muscleandstrength.com/exercises/machine-row.html"
+  },
+  {
+    "id": 4,
+    "name": "Bent Over Dumbbell Row",
+    "tags": ["Back", "Lats", "Biceps"],
+    "category": "Dumbbell",
+    "image": "exercise-images/bent-over-row.png",
+    "url": "https://www.muscleandstrength.com/exercises/bent-over-row.html"
+  },
+  {
+    "id": 5,
+    "name": "Machine T-Bar Row",
+    "tags": ["Back", "Lats", "Traps"],
+    "category": "Machines",
+    "image": "exercise-images/machine-t-bar-row.png",
+    "url": "https://www.muscleandstrength.com/exercises/machine-t-bar-row.html"
+  },
+  {
+    "id": 6,
+    "name": "One Arm Cable Row",
+    "tags": ["Back", "Lats", "Biceps"],
+    "category": "Cable",
+    "image": "exercise-images/one-arm-cable-row.png",
+    "url": "https://www.muscleandstrength.com/exercises/one-arm-cable-row.html"
+  },
+  {
+    "id": 7,
+    "name": "Close Grip Pull Down",
+    "tags": ["Back", "Lats", "Biceps"],
+    "category": "Cable",
+    "image": "exercise-images/close-grip-pull-down.png",
+    "url": "https://www.muscleandstrength.com/exercises/close-grip-pull-down.html"
+  },
+  {
+    "id": 8,
+    "name": "Lat Pull Down",
+    "tags": ["Back", "Lats", "Biceps"],
+    "category": "Cable",
+    "image": "exercise-images/lat-pull-down.png",
+    "url": "https://www.muscleandstrength.com/exercises/lat-pull-down.html"
+  },
+  {
+    "id": 9,
+    "name": "Wide Grip Pull Up",
+    "tags": ["Back", "Lats", "Biceps"],
+    "category": "Bodyweight",
+    "image": "exercise-images/wide-grip-pull-up.png",
+    "url": "https://www.muscleandstrength.com/exercises/wide-grip-pull-up.html"
+  },
+  {
+    "id": 10,
+    "name": "Pull Up",
+    "tags": ["Back", "Lats", "Biceps"],
+    "category": "Bodyweight",
+    "image": "exercise-images/pull-up.png",
+    "url": "https://www.muscleandstrength.com/exercises/pull-up"
+  },
+  {
+    "id": 11,
+    "name": "Chin Up",
+    "tags": ["Back", "Lats", "Biceps"],
+    "category": "Bodyweight",
+    "image": "exercise-images/chin-up.png",
+    "url": "https://www.muscleandstrength.com/exercises/chin-up.html"
+  },
+  {
+    "id": 12,
+    "name": "Wide Grip Pull Down",
+    "tags": ["Back", "Lats", "Biceps"],
+    "category": "Cable",
+    "image": "exercise-images/wide-grip-pull-down.png",
+    "url": "https://www.muscleandstrength.com/exercises/wide-grip-pull-down"
+  },
+  {
+    "id": 13,
+    "name": "Reverse Grip Lat Pull Down",
+    "tags": ["Back", "Lats", "Biceps"],
+    "category": "Cable",
+    "image": "exercise-images/reverse-grip-lat-pull-down.png",
+    "url": "https://www.muscleandstrength.com/exercises/reverse-grip-lat-pull-down.html"
+  },
+  {
+    "id": 14,
+    "name": "Weighted Pull Up",
+    "tags": ["Back", "Lats", "Biceps"],
+    "category": "Bodyweight",
+    "image": "exercise-images/weighted-pull-up.png",
+    "url": "https://www.muscleandstrength.com/exercises/weighted-pull-up"
+  },
+  {
+    "id": 15,
+    "name": "V-Bar Pull Down",
+    "tags": ["Back", "Lats", "Biceps"],
+    "category": "Cable",
+    "image": "exercise-images/v-bar-pull-down.png",
+    "url": "https://www.muscleandstrength.com/exercises/v-bar-pull-down"
+  },
+  {
+    "id": 16,
+    "name": "Dumbbell Shrugs",
+    "tags": ["Back", "Traps"],
+    "category": "Dumbbell",
+    "image": "exercise-images/dumbbell-shrugs.png",
+    "url": "https://www.muscleandstrength.com/exercises/dumbbell-shrugs.html"
+  },
+  {
+    "id": 17,
+    "name": "Barbell Shrug",
+    "tags": ["Back", "Traps"],
+    "category": "Barbell",
+    "image": "exercise-images/barbell-shrug.png",
+    "url": "https://www.muscleandstrength.com/exercises/barbell-shrug.html"
+  },
+  {
+    "id": 18,
+    "name": "T-Bar Machine Shrug",
+    "tags": ["Back", "Traps"],
+    "category": "Machines",
+    "image": "exercise-images/t-bar-machine-shrug.png",
+    "url": "https://www.muscleandstrength.com/exercises/t-bar-machine-shrug"
+  }
+]
