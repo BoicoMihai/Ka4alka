@@ -157,3 +157,51 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 })();
 
+(function () {
+    const STORAGE_KEY = "ka4alka_workouts";
+
+    function loadWorkouts() {
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            const workouts = raw ? JSON.parse(raw) : [];
+            return Array.isArray(workouts) ? workouts : [];
+        } catch (e) { return []; }
+    }
+
+    function renderSidebarList() {
+        const workoutList = document.getElementById("workout-list");
+        const sidebarSearch = document.getElementById("sidebar-search");
+        if (!workoutList) return;
+
+        const query = sidebarSearch ? sidebarSearch.value.trim().toLowerCase() : "";
+        const workouts = loadWorkouts().filter(function (w) {
+            return !query || w.name.toLowerCase().includes(query);
+        });
+
+        if (!workouts.length) {
+            workoutList.innerHTML = query
+                ? '<p class="workout-list-empty">No workouts match your search.</p>'
+                : '<p class="workout-list-empty">No saved workouts yet.</p>';
+            return;
+        }
+
+        workoutList.innerHTML = workouts.map(function (w) {
+            const count = (w.exercises && w.exercises.length) || 0;
+            const label = count === 1 ? "1 exercise" : count + " exercises";
+            return `<a href="new_workout.php?id=${w.id}" class="workout-list-item">
+                <div class="workout-list-item-info">
+                    <p class="workout-list-item-name">${w.name}</p>
+                    <p class="workout-list-item-meta">${label}</p>
+                </div>
+            </a>`;
+        }).join("");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        renderSidebarList();
+        const sidebarSearch = document.getElementById("sidebar-search");
+        if (sidebarSearch) {
+            sidebarSearch.addEventListener("input", renderSidebarList);
+        }
+    });
+})();

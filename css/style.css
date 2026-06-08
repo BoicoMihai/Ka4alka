@@ -375,3 +375,101 @@ body.light-mode .create-new-workout img{
 body.light-mode .create-new-workout p {
     color: #FFFFFF;
 }
+
+/* ── Sidebar workout list ── */
+
+.workout-list {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.workout-list::-webkit-scrollbar { width: 5px; }
+.workout-list::-webkit-scrollbar-track { background: transparent; }
+.workout-list::-webkit-scrollbar-thumb { background: #2A2C30; border-radius: 3px; }
+
+.workout-list-empty {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 14px;
+    color: #4A4C50;
+    text-align: center;
+    padding: 20px 8px;
+    margin: 0;
+}
+
+.workout-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 200px;
+    background: #0B0C0E;
+    border: 2px solid transparent;
+    border-radius: 14px;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    text-decoration: none;
+}
+
+.workout-list-item:hover {
+    background: #141517;
+}
+
+.workout-list-item.active {
+    border-color: #0568F6;
+    background: #0F1218;
+}
+
+.workout-list-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.workout-list-item-name {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.workout-list-item-meta {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 12px;
+    color: #5A5C60;
+    margin: 2px 0 0;
+}
+
+/* ── Light mode: sidebar workout list ── */
+
+body.light-mode .workout-list-item {
+    background: #F0F1F3;
+}
+
+body.light-mode .workout-list-item:hover {
+    background: #E8E9EB;
+}
+
+body.light-mode .workout-list-item.active {
+    background: #EBF1FF;
+}
+
+body.light-mode .workout-list-item-name {
+    color: #0B0C0E;
+}
+
+body.light-mode .workout-list-item-meta {
+    color: #888;
+}
+
+body.light-mode .workout-list-empty {
+    color: #AAAAAA;
+}

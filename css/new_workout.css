@@ -1,3 +1,333 @@
+body{
+    background-color: #0B0C0E;
+}
+
+
+/*header*/
+
+.header{
+    width: 98%;
+    height: 60px;
+    background-color: #18191B;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0 20px;
+}
+
+.header-left,
+.header-right{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-right{
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.header button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.header button:hover{
+    scale: 1.2;
+}
+
+.header p{
+    font-family: 'League Spartan', sans-serif;
+    font-size: 32px;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.logo{
+    height: 27px;
+    width: 27px;
+    padding: 0px 5px 0px 0px;
+}
+
+.search{
+    width: 13.54px;
+    height: 13.2px;
+}
+
+.search-input{
+    background: none;
+    border: none;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 16px;
+    padding: 0px 15px;
+    color: #ffffff;
+}
+
+.searchbar{
+  width: 229px;
+  height: 35.2px;
+  border-radius: 16.5px;
+  background-color: #0B0C0E;
+  display: flex;
+  align-items: center;
+
+
+}
+
+.header-icon img{
+    width: 22.4px;
+    height: 22.4px;
+}
+
+.account img{
+    width: 32px;
+    height: 32px;
+}
+
+/*main content*/
+
+.main-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    width: 98%;
+    margin: 18px auto 0;
+    padding-bottom: 20px;
+}
+
+/*side bar*/
+
+.side-bar{
+    width: 264px;
+    height: 89vh;
+    border-radius: 20px;
+    background-color: #18191B;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 18px;
+    padding: 20px;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.my-workouts{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    padding: 12px 10px;
+    border-radius: 20px;
+    transition-duration: 0.4s;
+    margin-top: 15px;
+    width: 200px;
+}
+
+.create-new-workout{
+    background-color: #0568F6;
+    border-radius: 20px;
+    width: 195px;
+    height: 35px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    transition-duration: 0.4s;
+    padding: 11px 10px;
+}
+
+.my-workouts:hover{
+    background-color: #34363A;
+}
+
+.create-new-workout:hover{
+    background-color: #114a99;
+}
+
+.side-bar-button img{
+    width: 12px;
+    height: 12px;
+}
+
+.side-bar-button p{
+    font-family: 'League Spartan', sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin: 0;
+    padding-left: 10px;
+}
+
+.searchbar-sidebar{
+    width: 229px;
+    height: 35.2px;
+    background-color: #0B0C0E;
+    border-radius: 16.5px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.searchbar-sidebar input{
+    background: none;
+    border: none;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 16px;
+    padding: 0px 15px;
+    color: #ffffff;
+    flex: 1;
+    outline: none;
+}
+
+.workout-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.workout-list::-webkit-scrollbar { width: 5px; }
+.workout-list::-webkit-scrollbar-track { background: transparent; }
+.workout-list::-webkit-scrollbar-thumb { background: #2A2C30; border-radius: 3px; }
+
+.workout-list-empty {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 14px;
+  color: #4A4C50;
+  text-align: center;
+  padding: 20px 8px;
+  margin: 0;
+}
+
+.workout-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 200px;
+  background: #0B0C0E;
+  border: 2px solid transparent;
+  border-radius: 14px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  text-align: left;
+}
+
+.workout-list-item:hover {
+  background: #141517;
+}
+
+.workout-list-item.active {
+  border-color: #0568F6;
+  background: #0F1218;
+}
+
+.workout-list-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.workout-list-item-name {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.workout-list-item-meta {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 12px;
+  color: #5A5C60;
+  margin: 2px 0 0;
+}
+
+.workout-list-delete {
+  background: none;
+  border: none;
+  color: #3A3C40;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.workout-list-delete:hover {
+  color: #e05555;
+}
+
+/* ── Account dropdown ── */
+
+.account-menu-wrapper {
+    position: relative;
+}
+
+.account-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 160px;
+    background-color: #18191B;
+    border-radius: 14px;
+    padding: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px) scale(0.97);
+    transform-origin: top right;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 999;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.account-dropdown.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.account-dropdown-item {
+    width: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    transition: background-color 0.2s;
+}
+
+.account-dropdown-item:hover {
+    background-color: #34363A;
+}
+
+.account-dropdown-item span {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+.theme-toggle-icon {
+    font-size: 16px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
 .workout-area {
   flex: 1;
   min-height: 89vh;
@@ -141,7 +471,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 20px;
 }
 
 .card-exercise-name {
@@ -618,3 +948,280 @@
 .workout-area::-webkit-scrollbar { width: 6px; }
 .workout-area::-webkit-scrollbar-track { background: transparent; }
 .workout-area::-webkit-scrollbar-thumb { background: #2A2C30; border-radius: 3px; }
+
+/* ── Light mode overrides ── */
+body.light-mode {
+    background-color: #F0F1F3;
+}
+
+body.light-mode .header,
+body.light-mode .side-bar,
+body.light-mode .main-containers,
+body.light-mode .account-dropdown {
+    background-color: #FFFFFF;
+}
+
+body.light-mode .header p,
+body.light-mode .side-bar-button p,
+body.light-mode .main-containers button p,
+body.light-mode .account-dropdown-item span,
+body.light-mode #Routines-text {
+    color: #0B0C0E;
+}
+
+body.light-mode .searchbar,
+body.light-mode .searchbar-sidebar {
+    background-color: #E4E5E7;
+}
+
+body.light-mode .search-input,
+body.light-mode .searchbar-sidebar input {
+    color: #0B0C0E;
+}
+
+body.light-mode .search-input::placeholder,
+body.light-mode .searchbar-sidebar input::placeholder {
+    color: #888;
+}
+
+body.light-mode .my-workouts:hover {
+    background-color: #E8E9EB;
+}
+
+body.light-mode .main-containers:hover {
+    background-color: #F5F6F8;
+}
+
+body.light-mode .account-dropdown-item:hover {
+    background-color: #F0F1F3;
+}
+
+body.light-mode .account-dropdown {
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+body.light-mode .main-containers button img,
+body.light-mode .side-bar-button img {
+    filter: invert(1);
+}
+
+body.light-mode .header-icon img,
+body.light-mode .account img,
+body.light-mode .searchbar .search,
+body.light-mode .search {
+    filter: invert(1);
+}
+
+body.light-mode .create-new-workout img{
+    filter: invert(0);
+}
+
+body.light-mode .create-new-workout p {
+    color: #FFFFFF;
+}
+
+/* ── Light mode: workout builder ── */
+
+body.light-mode .workout-title-input {
+    background: #FFFFFF;
+    color: #0B0C0E;
+}
+
+body.light-mode .workout-title-input:focus {
+    background: #F0F1F3;
+}
+
+body.light-mode .workout-title-input::placeholder {
+    color: #AAAAAA;
+}
+
+body.light-mode .exercise-card {
+    background: #FFFFFF;
+}
+
+body.light-mode .card-exercise-name {
+    color: #0B0C0E;
+}
+
+body.light-mode .muscle-tag {
+    background: #E4E5E7;
+    color: #555;
+}
+
+body.light-mode .card-timer-text {
+    color: #555;
+}
+
+body.light-mode .card-timer-text strong {
+    color: #0B0C0E;
+}
+
+body.light-mode .set-input {
+    background: #F0F1F3;
+    color: #0B0C0E;
+}
+
+body.light-mode .set-input:focus {
+    background: #E4E5E7;
+}
+
+body.light-mode .set-input::placeholder {
+    color: #BBBBBB;
+}
+
+body.light-mode .sets-table thead th {
+    color: #888;
+}
+
+body.light-mode .set-number-cell {
+    color: #888;
+}
+
+body.light-mode .add-set-btn {
+    background: #0568F6;
+}
+
+body.light-mode .add-exercise-btn {
+    background: #FFFFFF;
+    color: #888;
+    border-color: #CCCCCC;
+}
+
+body.light-mode .add-exercise-btn:hover {
+    background: #F5F6F8;
+    border-color: #0568F6;
+    color: #0568F6;
+}
+
+/* ── Light mode: sidebar workout list ── */
+
+body.light-mode .side-bar {
+    background-color: #FFFFFF;
+}
+
+body.light-mode .workout-list-item {
+    background: #F0F1F3;
+}
+
+body.light-mode .workout-list-item:hover {
+    background: #E8E9EB;
+}
+
+body.light-mode .workout-list-item.active {
+    background: #EBF1FF;
+}
+
+body.light-mode .workout-list-item-name {
+    color: #0B0C0E;
+}
+
+body.light-mode .workout-list-item-meta {
+    color: #888;
+}
+
+body.light-mode .workout-list-empty {
+    color: #AAAAAA;
+}
+
+body.light-mode .searchbar-sidebar input {
+    color: #0B0C0E;
+}
+
+/* ── Light mode: modal ── */
+
+body.light-mode .modal {
+    background: #FFFFFF;
+}
+
+body.light-mode .modal-header {
+    border-bottom-color: #E4E5E7;
+}
+
+body.light-mode .modal-title {
+    color: #0B0C0E;
+}
+
+body.light-mode .modal-close {
+    color: #888;
+}
+
+body.light-mode .modal-close:hover {
+    color: #0B0C0E;
+}
+
+body.light-mode .cat-tab {
+    background: #F0F1F3;
+    color: #555;
+}
+
+body.light-mode .cat-tab:hover {
+    background: #E4E5E7;
+    color: #0B0C0E;
+}
+
+body.light-mode .cat-tab.active {
+    background: #0568F6;
+    color: #FFFFFF;
+}
+
+body.light-mode .modal-search-input {
+    background: #F0F1F3;
+    color: #0B0C0E;
+}
+
+body.light-mode .modal-search-input::placeholder {
+    color: #AAAAAA;
+}
+
+body.light-mode .exercise-tile {
+    background: #F0F1F3;
+}
+
+body.light-mode .exercise-tile:hover {
+    background: #E4E5E7;
+}
+
+body.light-mode .exercise-tile-name {
+    color: #0B0C0E;
+}
+
+body.light-mode .exercise-tile-placeholder {
+    background: #E4E5E7;
+    color: #888;
+}
+
+body.light-mode .loading-text {
+    color: #888;
+}
+
+/* ── Light mode: timer modal ── */
+
+body.light-mode .timer-number-input {
+    background: #F0F1F3;
+    color: #0B0C0E;
+}
+
+body.light-mode .timer-colon {
+    color: #888;
+}
+
+/* ── Light mode: header icons ── */
+
+body.light-mode .header-icon img,
+body.light-mode .account img,
+body.light-mode .searchbar .search {
+    filter: invert(1);
+}
+
+body.light-mode .side-bar-button img {
+    filter: invert(1);
+}
+
+body.light-mode .create-new-workout img {
+    filter: invert(0);
+}
+
+body.light-mode .create-new-workout p {
+    color: #FFFFFF;
+}

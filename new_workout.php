@@ -7,36 +7,45 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/new_exercise.css">
   <link rel="stylesheet" href="css/new_workout.css">
 </head>
 <body>
 
   <header class="header">
-    <div class="header-left">
-      <button>
+  <div class="header-left">
+    <a href="index.php">
+      <button type="button">
         <img src="images/logo.png" alt="Logo" class="logo">
       </button>
-      <p>Ka4alka</p>
+    </a>
+    <p>Ka4alka</p>
+  </div>
+  <div class="header-right">
+    <div class="searchbar">
+      <input type="text" placeholder="Search exercise..." class="search-input">
+      <img src="images/search.png" alt="Search" class="search">
     </div>
-    <div class="header-right">
-      <div class="searchbar">
-        <input type="text" placeholder="Search exercise..." class="search-input">
-        <img src="images/search.png" alt="Search" class="search">
-      </div>
-      <button class="header-icon programs">
-        <img src="images/programs.png" alt="Programs">
+    <button class="header-icon programs" type="button">
+      <img src="images/programs.png" alt="Programs">
+    </button>
+    <a href="library.php">
+      <button class="header-icon exercise-library" type="button">
+        <img src="images/Exercise library.png" alt="Exercise Library">
       </button>
-      <a href="library.php">
-        <button class="header-icon exercise-library">
-          <img src="images/Exercise library.png" alt="Exercise Library">
-        </button>
-      </a>
-      <button class="header-icon account">
+    </a>
+    <div class="account-menu-wrapper">
+      <button class="header-icon account" id="account-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="Account menu">
         <img src="images/Account.png" alt="Account">
       </button>
+      <div class="account-dropdown" id="account-dropdown" role="menu">
+        <button class="account-dropdown-item" id="theme-toggle" type="button" role="menuitem">
+          <span class="theme-toggle-icon" id="theme-toggle-icon" aria-hidden="true"></span>
+          <span id="theme-toggle-label">Light Mode</span>
+        </button>
+      </div>
     </div>
-  </header>
+  </div>
+</header>
 
   <div class="main-content">
 
@@ -136,5 +145,6 @@
   </div>
 
   <script src="js/workout.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
