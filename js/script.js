@@ -205,3 +205,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 })();
+
+// Filter bar toggle
+document.addEventListener('DOMContentLoaded', function () {
+  const filterToggle = document.getElementById('filter-toggle');
+  const filterBar    = filterToggle && filterToggle.closest('.filter-bar');
+  if (!filterToggle || !filterBar) return;
+
+  filterToggle.addEventListener('click', function () {
+    filterBar.classList.toggle('open');
+  });
+
+  // Auto-open if a non-"all" filter is active (so user sees their active chip)
+  const activeChip = filterBar.querySelector('.filter-chip.active');
+  if (activeChip && !activeChip.href.includes('category=all')) {
+    filterBar.classList.add('open');
+  }
+});

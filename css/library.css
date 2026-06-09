@@ -562,3 +562,124 @@ body.light-mode .workout-list-item-meta {
 body.light-mode .workout-list-empty {
     color: #AAAAAA;
 }
+
+/* ── Filter bar ── */
+
+.library-content {
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 1086px; /* matches 2-col grid */
+}
+
+.filter-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #18191B;
+  color: #fff;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 15px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.filter-trigger:hover {
+  background: #2a2b2e;
+}
+
+.filter-chevron {
+  transition: transform 0.25s ease;
+}
+
+.filter-bar.open .filter-chevron {
+  transform: rotate(180deg);
+}
+
+.filter-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.filter-bar.open .filter-chips {
+  max-height: 80px;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #18191B;
+  color: #aaa;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 14px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.filter-chip:hover {
+  background: #2a2b2e;
+  color: #fff;
+}
+
+.filter-chip.active {
+  border-color: #0568F6;
+  color: #fff;
+  background: #0F1624;
+}
+
+.chip-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* ── Light mode: filter bar ── */
+
+body.light-mode .filter-trigger {
+  background: #FFFFFF;
+  color: #0B0C0E;
+}
+
+body.light-mode .filter-trigger:hover {
+  background: #E8E9EB;
+}
+
+body.light-mode .filter-chip {
+  background: #FFFFFF;
+  color: #555;
+}
+
+body.light-mode .filter-chip:hover {
+  background: #E8E9EB;
+  color: #0B0C0E;
+}
+
+body.light-mode .filter-chip.active {
+  background: #EBF1FF;
+  border-color: #0568F6;
+  color: #0B0C0E;
+}

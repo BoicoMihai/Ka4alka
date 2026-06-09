@@ -1,4 +1,3 @@
-// ── CAROUSEL ──
 let current = 0;
 const VISIBLE = 3;
 
@@ -26,17 +25,3 @@ function slide(dir) {
 
 prevBtn.addEventListener('click', () => slide(-1));
 nextBtn.addEventListener('click', () => slide(1));
-
-window.addEventListener('resize', () => updateCarousel());
-
-updateCarousel();
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));

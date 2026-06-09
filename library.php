@@ -11,60 +11,64 @@
 </head>
 <body>
   <header class="header">
-  <div class="header-left">
-    <a href="index.php">
-      <button type="button">
-        <img src="images/logo.png" alt="Logo" class="logo">
-      </button>
-    </a>
-    <p>Ka4alka</p>
-  </div>
-  <div class="header-right">
-    <div class="searchbar">
-      <input type="text" placeholder="Search exercise..." class="search-input">
-      <img src="images/search.png" alt="Search" class="search">
+    <div class="header-left">
+      <a href="index.php">
+        <button type="button">
+          <img src="images/logo.png" alt="Logo" class="logo">
+        </button>
+      </a>
+      <p>Ka4alka</p>
     </div>
-    <button class="header-icon programs" type="button">
-      <img src="images/programs.png" alt="Programs">
-    </button>
-    <a href="library.php">
-      <button class="header-icon exercise-library" type="button">
-        <img src="images/Exercise library.png" alt="Exercise Library">
+    <div class="header-right">
+      <div class="searchbar">
+        <input type="text" placeholder="Search exercise..." class="search-input">
+        <img src="images/search.png" alt="Search" class="search">
+      </div>
+      <button class="header-icon programs" type="button">
+        <img src="images/programs.png" alt="Programs">
       </button>
-    </a>
-    <div class="account-menu-wrapper">
+      <a href="library.php">
+        <button class="header-icon exercise-library" type="button">
+          <img src="images/Exercise library.png" alt="Exercise Library">
+        </button>
+      </a>
+       <div class="account-menu-wrapper">
       <button class="header-icon account" id="account-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="Account menu">
         <img src="images/Account.png" alt="Account">
       </button>
       <div class="account-dropdown" id="account-dropdown" role="menu">
-        <button class="account-dropdown-item" id="theme-toggle" type="button" role="menuitem">
-          <span class="theme-toggle-icon" id="theme-toggle-icon" aria-hidden="true"></span>
-          <span id="theme-toggle-label">Light Mode</span>
-        </button>
+    <button class="account-dropdown-item" id="theme-toggle" type="button" role="menuitem">
+        <span class="theme-toggle-icon" id="theme-toggle-icon" aria-hidden="true"></span>
+        <span id="theme-toggle-label">Light Mode</span>
+    </button>
+    <a href="logout.php" class="account-dropdown-item" role="menuitem">
+        <span class="theme-toggle-icon"></span>
+        <span>Log Out</span>
+    </a>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
   <div class="main-content">
 
     <div class="side-bar">
-    <button class="create-new-workout side-bar-button" onclick="location.href='new_workout.php'">
+      <button class="create-new-workout side-bar-button" onclick="location.href='new_workout.php'">
         <img src="images/add.png" alt="Create New Workout">
         <p>Create New Workout</p>
-    </button>
-    <button class="my-workouts side-bar-button">
+      </button>
+      <button class="my-workouts side-bar-button">
         <img src="images/workouts.png" alt="My Workouts">
         <p>My Workouts</p>
-    </button>
-    <div class="searchbar-sidebar">
+      </button>
+      <div class="searchbar-sidebar">
         <input type="text" placeholder="Search workout..." id="sidebar-search">
         <img src="images/search.png" alt="Search" class="search">
+      </div>
+      <div class="workout-list" id="workout-list"></div>
     </div>
-    <div class="workout-list" id="workout-list"></div>
-</div>
 
     <div class="library-content">
+
       <?php
         $muscle = $_GET['muscle'] ?? 'chest';
         $exercises = json_decode(file_get_contents(__DIR__ . "/data/exercises_{$muscle}.json"), true);
@@ -84,6 +88,39 @@
         $pageExercises = array_slice($filtered, $offset, $perPage);
       ?>
 
+      <div class="filter-bar">
+        <div class="filter-trigger" id="filter-toggle">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M1 2h12M3 7h8M5 12h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <span>Filter</span>
+          <svg class="filter-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="filter-chips" id="filter-chips">
+          <?php
+            $categories = [
+              ['value' => 'all',         'label' => 'All'],
+              ['value' => 'dumbbell',    'label' => 'Dumbbell',    'icon' => '🏋️'],
+              ['value' => 'body weight', 'label' => 'Body weight', 'icon' => '🚶'],
+              ['value' => 'machine',     'label' => 'Machines',    'icon' => '⚙️'],
+            ];
+            foreach ($categories as $cat):
+              $isActive = $activeFilter === $cat['value'];
+          ?>
+            <a href="?muscle=<?= urlencode($muscle) ?>&category=<?= urlencode($cat['value']) ?>"
+               class="filter-chip <?= $isActive ? 'active' : '' ?>">
+              <?php if (!empty($cat['icon'])): ?>
+                <span class="chip-icon"><?= $cat['icon'] ?></span>
+              <?php endif; ?>
+              <?= htmlspecialchars($cat['label']) ?>
+            </a>
+          <?php endforeach; ?>
+        </div>
+      </div>
+
       <div class="exercise-grid">
         <?php foreach ($pageExercises as $ex): ?>
           <div class="exercise-card" data-category="<?= htmlspecialchars($ex['category']) ?>">
@@ -102,24 +139,25 @@
           </div>
         <?php endforeach; ?>
       </div>
+
     </div>
 
   </div>
 
- <?php
+  <?php
     $muscles = ['chest', 'shoulders', 'biceps', 'legs', 'Back', 'Abs', 'triceps'];
     $currentIndex = array_search($muscle, $muscles);
     $nextMuscle = $muscles[$currentIndex + 1] ?? $muscles[0];
-    ?>
+  ?>
 
-    <div class="pagination">
+  <div class="pagination">
     <?php foreach ($muscles as $i => $m): ?>
-        <a href="?muscle=<?= $m ?>" class="page-btn <?= $muscle === $m ? 'active' : '' ?>">
+      <a href="?muscle=<?= $m ?>" class="page-btn <?= $muscle === $m ? 'active' : '' ?>">
         <?= $i + 1 ?>
-        </a>
-  <?php endforeach; ?>
-  <a href="?muscle=<?= $nextMuscle ?>" class="page-btn next">next</a>
-</div>
+      </a>
+    <?php endforeach; ?>
+    <a href="?muscle=<?= $nextMuscle ?>" class="page-btn next">next</a>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
