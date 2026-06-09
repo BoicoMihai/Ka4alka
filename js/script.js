@@ -154,6 +154,57 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem(STORAGE_KEY, isLight ? 'light' : 'dark');
             syncUI();
         });
+
+        // ── Contact modal ──
+        const contactOpen = document.getElementById('contact-open');
+        const contactModal = document.getElementById('contact-modal-overlay');
+        const contactClose = document.getElementById('contact-modal-close');
+        const contactForm = document.getElementById('contact-modal-form');
+        const contactStatus = document.getElementById('contact-modal-status');
+
+        function openContactModal() {
+            if (!contactModal) return;
+            contactModal.classList.add('open');
+            contactModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            if (!contactModal) return;
+            contactModal.classList.remove('open');
+            contactModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            if (contactStatus) contactStatus.textContent = '';
+        }
+
+        if (contactOpen) {
+            contactOpen.addEventListener('click', function (e) {
+                e.stopPropagation();
+                dropdown.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+                openContactModal();
+            });
+        }
+
+        if (contactClose) {
+            contactClose.addEventListener('click', closeContactModal);
+        }
+
+        if (contactModal) {
+            contactModal.addEventListener('click', function (e) {
+                if (e.target === contactModal) closeContactModal();
+            });
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (contactStatus) {
+                    contactStatus.textContent = 'Thanks for reaching out — your message is ready to be sent.';
+                }
+                contactForm.reset();
+            });
+        }
     });
 })();
 
