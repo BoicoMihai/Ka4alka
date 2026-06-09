@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/session_user.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,52 +12,62 @@
 </head>
 <body>
 
-  <header class="header">
-  <div class="header-left">
-    <a href="index.php">
-      <button type="button">
-        <img src="images/logo.png" alt="Logo" class="logo">
-      </button>
-    </a>
-    <p>Ka4alka</p>
-  </div>
-  <div class="header-right">
-    <div class="searchbar">
-      <input type="text" placeholder="Search exercise..." class="search-input">
-      <img src="images/search.png" alt="Search" class="search">
-    </div>
-    <button class="header-icon programs" type="button">
-      <img src="images/programs.png" alt="Programs">
-    </button>
-    <a href="library.php">
-      <button class="header-icon exercise-library" type="button">
-        <img src="images/Exercise library.png" alt="Exercise Library">
-      </button>
-    </a>
-    <div class="account-menu-wrapper">
-      <button class="header-icon account" id="account-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="Account menu">
-        <img src="images/Account.png" alt="Account">
-      </button>
-      <div class="account-dropdown" id="account-dropdown" role="menu">
-    <button class="account-dropdown-item" id="theme-toggle" type="button" role="menuitem">
-        <span class="theme-toggle-icon" id="theme-toggle-icon" aria-hidden="true"></span>
-        <span id="theme-toggle-label">Light Mode</span>
-    </button>
+  <!-- Inject user so sidebar localStorage key matches other pages -->
+  <script>
+    window.KA4ALKA_USER    = <?= json_encode($safe_raw) ?>;
+    window.KA4ALKA_DISPLAY = <?= json_encode($safe_display) ?>;
+  </script>
 
-    <button class="account-dropdown-item" id="lang-toggle" type="button" role="menuitem">
-        <span class="theme-toggle-icon">🌐</span>
-        <span id="lang-toggle-label">Română</span>
-    </button>
-    <button class="account-dropdown-item" id="contact-open" type="button" role="menuitem">
-      <span class="theme-toggle-icon">📩</span>
-      <span>Contact</span>
-    </button>
-    <a href="logout.php" class="account-dropdown-item" role="menuitem">
-        <span class="theme-toggle-icon"></span>
-        <span>Log Out</span>
-    </a>
-  </div>
-</header>
+  <header class="header">
+    <div class="header-left">
+      <a href="index.php">
+        <button type="button">
+          <img src="images/logo.png" alt="Logo" class="logo">
+        </button>
+      </a>
+      <p>Ka4alka</p>
+    </div>
+    <div class="header-right">
+      <div class="searchbar">
+        <input type="text" placeholder="Search exercise..." class="search-input">
+        <img src="images/search.png" alt="Search" class="search">
+      </div>
+      <button class="header-icon programs" type="button">
+        <img src="images/programs.png" alt="Programs">
+      </button>
+      <a href="library.php">
+        <button class="header-icon exercise-library" type="button">
+          <img src="images/Exercise library.png" alt="Exercise Library">
+        </button>
+      </a>
+      <div class="account-menu-wrapper">
+        <button class="header-icon account" id="account-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="Account menu">
+          <img src="images/Account.png" alt="Account">
+        </button>
+        <div class="account-dropdown" id="account-dropdown" role="menu">
+          <div class="account-dropdown-user">
+            <span class="account-dropdown-username"><?= $safe_display ?></span>
+          </div>
+          <button class="account-dropdown-item" id="theme-toggle" type="button" role="menuitem">
+            <span class="theme-toggle-icon" id="theme-toggle-icon" aria-hidden="true"></span>
+            <span id="theme-toggle-label">Light Mode</span>
+          </button>
+          <button class="account-dropdown-item" id="lang-toggle" type="button" role="menuitem">
+            <span class="theme-toggle-icon">🌐</span>
+            <span id="lang-toggle-label">Română</span>
+          </button>
+          <button class="account-dropdown-item" id="contact-open" type="button" role="menuitem">
+            <span class="theme-toggle-icon">📩</span>
+            <span>Contact</span>
+          </button>
+          <a href="logout.php" class="account-dropdown-item" role="menuitem">
+            <span class="theme-toggle-icon">🚪</span>
+            <span>Log Out</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <div class="main-content">
 
@@ -80,41 +91,32 @@
 
       <div class="empty-state" id="empty-state">
         <div class="empty-icon">
-            <img src="images/add.png" alt="">
+          <img src="images/add.png" alt="">
         </div>
         <p>Click <strong>Create New Workout</strong> to get started</p>
       </div>
 
-      <!-- Builder (hidden until Create clicked) -->
       <div class="builder" id="builder" style="display:none;">
-
-        <!-- Workout title row -->
         <div class="builder-header">
-          <input type="text" id="workout-title" class="workout-title-input" placeholder="Workout name..." maxlength="60" >
+          <input type="text" id="workout-title" class="workout-title-input" placeholder="Workout name..." maxlength="60">
           <button class="save-workout-btn" id="btn-save-workout">Save Workout</button>
         </div>
-
-        <!-- Exercise cards list -->
         <div class="exercise-list" id="exercise-list"></div>
-
-        <!-- Add exercise button -->
         <button class="add-exercise-btn" id="btn-add-exercise">
           <span class="plus-icon">+</span> Add Exercise
         </button>
-
       </div>
+
     </div>
   </div>
 
-  <!-- ═══ EXERCISE PICKER MODAL ═══ -->
+  <!-- Exercise picker modal -->
   <div class="modal-overlay" id="modal-overlay" style="display:none;">
     <div class="modal" id="exercise-modal">
       <div class="modal-header">
         <span class="modal-title">Add Exercise</span>
         <button class="modal-close" id="modal-close">✕</button>
       </div>
-
-      <!-- Category tabs -->
       <div class="category-tabs" id="category-tabs">
         <button class="cat-tab active" data-file="exercises_abs">Abs</button>
         <button class="cat-tab" data-file="exercises_back">Back</button>
@@ -124,45 +126,33 @@
         <button class="cat-tab" data-file="exercises_shoulders">Shoulders</button>
         <button class="cat-tab" data-file="exercises_triceps">Triceps</button>
       </div>
-
-      <!-- Search inside modal -->
       <div class="modal-search-wrap">
         <input type="text" id="modal-search" placeholder="Search..." class="modal-search-input">
       </div>
-
-      <!-- Exercise grid -->
       <div class="exercise-grid" id="exercise-grid">
         <p class="loading-text">Loading exercises...</p>
       </div>
     </div>
   </div>
 
+  <!-- Contact modal -->
   <div class="contact-modal-overlay" id="contact-modal-overlay" aria-hidden="true">
     <div class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
       <button class="contact-modal-close" id="contact-modal-close" type="button" aria-label="Close contact modal">×</button>
       <p class="contact-modal-eyebrow">Support</p>
       <h2 id="contact-modal-title">Contact us</h2>
-      <p class="contact-modal-text">Need help with your workouts or the app? Send us a quick message and we’ll get back to you soon.</p>
+      <p class="contact-modal-text">Need help with your workouts or the app? Send us a quick message and we'll get back to you soon.</p>
       <form class="contact-modal-form" id="contact-modal-form">
-        <label>
-          Full name
-          <input type="text" name="name" placeholder="Your name" required>
-        </label>
-        <label>
-          Email
-          <input type="email" name="email" placeholder="you@example.com" required>
-        </label>
-        <label>
-          Message
-          <textarea name="message" rows="4" placeholder="Tell us how we can help..." required></textarea>
-        </label>
+        <label>Full name<input type="text" name="name" placeholder="Your name" required></label>
+        <label>Email<input type="email" name="email" placeholder="you@example.com" required></label>
+        <label>Message<textarea name="message" rows="4" placeholder="Tell us how we can help..." required></textarea></label>
         <button class="contact-modal-submit" type="submit">Send message</button>
         <p class="contact-modal-status" id="contact-modal-status" aria-live="polite"></p>
       </form>
     </div>
   </div>
 
-  <!-- ═══ REST TIMER EDIT MODAL ═══ -->
+  <!-- Rest timer modal -->
   <div class="modal-overlay" id="timer-overlay" style="display:none;">
     <div class="modal timer-modal" id="timer-modal">
       <div class="modal-header">
@@ -180,7 +170,7 @@
     </div>
   </div>
 
-  <script src="js/workout.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/workout.js"></script>
 </body>
 </html>
