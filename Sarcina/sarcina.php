@@ -40,56 +40,62 @@
 
 <section id="stiri">
   <h2 class="section-title reveal">ULTIMELE ȘTIRI</h2>
-  <a class="see-all reveal">vezi toate</a>
 
-  <div class="carousel-wrapper reveal">
-    <button class="carousel-btn prev" id="prevBtn">&#8249;</button>
-    <div class="carousel-track-outer">
-      <div class="carousel-track" id="carouselTrack">
+  <div class="newsMain-wrap reveal">
+    <div class="newsMain">
+      <a class="see-all">vezi toate</a>
 
-        <div class="news-card">
-          <img src="sarcinaimg/image1.png" alt="Revenirea lui Dorin Recean">
-          <div class="news-card-body">
-            <p>Revenirea lui Dorin Recean în satul de baștină</p>
-            <button class="btn-vezi">Vezi</button>
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev" id="prevBtn">&#8249;</button>
+        <div class="carousel-track-outer">
+          <div class="carousel-track" id="carouselTrack">
+
+            <div class="news-card">
+              <img src="sarcinaimg/image1.png" alt="Revenirea lui Dorin Recean">
+              <div class="news-card-body">
+                <p>Revenirea lui Dorin Recean în satul de baștină</p>
+                <button class="btn-vezi">Vezi</button>
+              </div>
+            </div>
+
+            <div class="news-card">
+              <img src="sarcinaimg/image2.png" alt="Vila Ohanovicz">
+              <div class="news-card-body">
+                <p>Vila Ohanovicz în 2024. Oportunități</p>
+                <button class="btn-vezi">Vezi</button>
+              </div>
+            </div>
+
+            <div class="news-card">
+              <img src="sarcinaimg/image3.png" alt="Festivalul Portului Popular">
+              <div class="news-card-body">
+                <p>A șaptea ediție a festivalului "Portului Popular și al Pâinii"</p>
+                <button class="btn-vezi">Vezi</button>
+              </div>
+            </div>
+
+            <div class="news-card">
+              <img src="sarcinaimg/image4.png" alt="Stire 4">
+              <div class="news-card-body">
+                <p>Eveniment cultural în satul Mîndic, ediția 2024</p>
+                <button class="btn-vezi">Vezi</button>
+              </div>
+            </div>
+
+            <div class="news-card">
+              <img src="sarcinaimg/image5.png" alt="Stire 5">
+              <div class="news-card-body">
+                <p>Activități educaționale la liceul din Mîndic</p>
+                <button class="btn-vezi">Vezi</button>
+              </div>
+            </div>
+
           </div>
         </div>
-
-        <div class="news-card">
-          <img src="sarcinaimg/image2.png" alt="Vila Ohanovicz">
-          <div class="news-card-body">
-            <p>Vila Ohanovicz în 2024. Oportunități</p>
-            <button class="btn-vezi">Vezi</button>
-          </div>
-        </div>
-
-        <div class="news-card">
-          <img src="sarcinaimg/image3.png" alt="Festivalul Portului Popular">
-          <div class="news-card-body">
-            <p>A șaptea ediție a festivalului "Portului Popular și al Pâinii"</p>
-            <button class="btn-vezi">Vezi</button>
-          </div>
-        </div>
-
-        <div class="news-card">
-          <img src="sarcinaimg/image4.png" alt="Stire 4">
-          <div class="news-card-body">
-            <p>Eveniment cultural în satul Mîndic, ediția 2024</p>
-            <button class="btn-vezi">Vezi</button>
-          </div>
-        </div>
-
-        <div class="news-card">
-          <img src="sarcinaimg/image5.png" alt="Stire 5">
-          <div class="news-card-body">
-            <p>Activități educaționale la liceul din Mîndic</p>
-            <button class="btn-vezi">Vezi</button>
-          </div>
-        </div>
-
+        <button class="carousel-btn next" id="nextBtn">&#8250;</button>
       </div>
+
     </div>
-    <button class="carousel-btn next" id="nextBtn">&#8250;</button>
   </div>
 </section>
 
@@ -113,13 +119,13 @@
     </div>
 
     <div class="despre-map reveal">
-      <img src="sarcinaimg/Property 1=Default.png" alt="Harta Mîndic">
-      <div class="map-overlay">
-        <span>View Full Map</span>
-      </div>
+      <img class="map-img" src="sarcinaimg/Property 1=Default.png" alt="Harta Mîndic">
+      <div class="map-shadow"></div>
+      <a href="#" class="map-overlay"><span>View Full Map</span></a>
     </div>
   </div>
 </section>
+
 <script src="sarcina.js"></script>
 </body>
 </html>
