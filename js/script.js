@@ -205,3 +205,51 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 })();
+
+(function () {
+    const STORAGE_KEY = "ka4alka_workouts";
+
+    function loadWorkouts() {
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            const w = raw ? JSON.parse(raw) : [];
+            return Array.isArray(w) ? w : [];
+        } catch (e) { return []; }
+    }
+
+    function renderMainDropdown() {
+        const dropdown = document.getElementById("main-workout-dropdown");
+        if (!dropdown) return;
+
+        const workouts = loadWorkouts();
+
+        if (!workouts.length) {
+            dropdown.innerHTML = '<p class="main-workout-dropdown-empty">No saved workouts yet.</p>';
+            return;
+        }
+
+        dropdown.innerHTML = workouts.map(function (w) {
+            const count = (w.exercises && w.exercises.length) || 0;
+            const label = count === 1 ? "1 exercise" : count + " exercises";
+            return `<a href="new_workout.php?id=${w.id}" class="main-workout-dropdown-item">
+                <div>
+                    <p class="main-workout-dropdown-item-name">${w.name}</p>
+                    <p class="main-workout-dropdown-item-meta">${label}</p>
+                </div>
+            </a>`;
+        }).join("");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggle   = document.getElementById("my-workouts-toggle");
+        const dropdown = document.getElementById("main-workout-dropdown");
+        if (!toggle || !dropdown) return;
+
+        renderMainDropdown();
+
+        toggle.addEventListener("click", function () {
+            const isOpen = dropdown.classList.toggle("open");
+            toggle.setAttribute("aria-expanded", isOpen);
+        });
+    });
+})();

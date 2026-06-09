@@ -27,8 +27,6 @@ function slide(dir) {
 prevBtn.addEventListener('click', () => slide(-1));
 nextBtn.addEventListener('click', () => slide(1));
 
-window.addEventListener('resize', () => updateCarousel());
-
 // init button opacity
 updateCarousel();
 

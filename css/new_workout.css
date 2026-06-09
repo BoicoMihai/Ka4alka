@@ -56,6 +56,7 @@ body{
 .search{
     width: 13.54px;
     height: 13.2px;
+    margin-right: 25px;
 }
 
 .search-input{
@@ -63,7 +64,6 @@ body{
     border: none;
     font-family: 'League Spartan', sans-serif;
     font-size: 16px;
-    padding: 0px 15px;
     color: #ffffff;
 }
 
@@ -74,7 +74,6 @@ body{
   background-color: #0B0C0E;
   display: flex;
   align-items: center;
-
 
 }
 
@@ -1224,4 +1223,7 @@ body.light-mode .create-new-workout img {
 
 body.light-mode .create-new-workout p {
     color: #FFFFFF;
+}
+
+  min-width: 0; /* allows flex children to shrink properly */
 }

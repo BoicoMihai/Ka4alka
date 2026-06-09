@@ -65,7 +65,7 @@
 
     <div class="boxes">
       <div class="empty-workout main-containers">
-        <button>
+        <button onclick="location.href='new_workout.php'">
           <img src="images/add.png" alt="Add" class="main-button">
           <p>Start Empty Workout</p>
           <img src="images/Programs.png" alt="Programs" class="main-button">
@@ -82,12 +82,14 @@
         </button>
       </div>
 
-      <div class="workouts-main main-containers">
-        <button>
-          <img src="images/more.png" alt="Add" class="more-image">
+      <div class="workouts-main main-containers expandable" id="my-workouts-main">
+        <button type="button" id="my-workouts-toggle">
+          <img src="images/more.png" alt="Add" class="more-image" id="my-workouts-chevron">
           <p>My Workouts</p>
           <img src="images/workouts.png" alt="Programs" class="main-button">
         </button>
+        <div class="main-workout-dropdown" id="main-workout-dropdown">
+        </div>
       </div>
     </div> 
   </div>
