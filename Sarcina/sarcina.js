@@ -1,4 +1,3 @@
-// ── CAROUSEL ──
 let current = 0;
 const VISIBLE = 3;
 

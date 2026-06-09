@@ -91,7 +91,7 @@
     "id": 12,
     "name": "Machine Bicep Curl",
     "tags": ["Biceps"],
-    "category": "Machines",
+    "category": "Machine",
     "image": "exercise-images/machine-bicep-curl.png",
     "url": "https://www.muscleandstrength.com/exercises/bicep-machine-curl.html"
   },

@@ -37,11 +37,15 @@
         <img src="images/Account.png" alt="Account">
       </button>
       <div class="account-dropdown" id="account-dropdown" role="menu">
-        <button class="account-dropdown-item" id="theme-toggle" type="button" role="menuitem">
-          <span class="theme-toggle-icon" id="theme-toggle-icon" aria-hidden="true"></span>
-          <span id="theme-toggle-label">Light Mode</span>
-        </button>
-      </div>
+    <button class="account-dropdown-item" id="theme-toggle" type="button" role="menuitem">
+        <span class="theme-toggle-icon" id="theme-toggle-icon" aria-hidden="true"></span>
+        <span id="theme-toggle-label">Light Mode</span>
+    </button>
+    <a href="logout.php" class="account-dropdown-item" role="menuitem">
+        <span class="theme-toggle-icon"></span>
+        <span>Log Out</span>
+    </a>
+</div>
     </div>
   </div>
 </header>

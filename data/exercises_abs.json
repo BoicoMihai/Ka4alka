@@ -19,7 +19,7 @@
     "id": 3,
     "name": "Weighted Crunch",
     "tags": ["Abs"],
-    "category": "Bodyweight",
+    "category": "Dumbbell",
     "image": "exercise-images/weighted-crunch.png",
     "url": "https://www.muscleandstrength.com/exercises/weighted-crunch.html"
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "name": "Decline Sit Up",
     "tags": ["Abs"],
-    "category": "Bodyweight",
+    "category": "Machine",
     "image": "exercise-images/decline-situp.png",
     "url": "https://www.muscleandstrength.com/exercises/decline-situp.html"
   },
@@ -43,7 +43,7 @@
     "id": 6,
     "name": "Chair Knee Raise",
     "tags": ["Abs", "Hip Flexors"],
-    "category": "Bodyweight",
+    "category": "Machine",
     "image": "exercise-images/chair-knee-raise.png",
     "url": "https://www.muscleandstrength.com/exercises/chair-knee-raise.html"
   },

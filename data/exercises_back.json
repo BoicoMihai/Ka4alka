@@ -19,7 +19,7 @@
     "id": 3,
     "name": "Machine Row",
     "tags": ["Back", "Lats"],
-    "category": "Machines",
+    "category": "Machine",
     "image": "exercise-images/machine-row.png",
     "url": "https://www.muscleandstrength.com/exercises/machine-row.html"
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "name": "Machine T-Bar Row",
     "tags": ["Back", "Lats", "Traps"],
-    "category": "Machines",
+    "category": "Machine",
     "image": "exercise-images/machine-t-bar-row.png",
     "url": "https://www.muscleandstrength.com/exercises/machine-t-bar-row.html"
   },
@@ -51,7 +51,7 @@
     "id": 7,
     "name": "Close Grip Pull Down",
     "tags": ["Back", "Lats", "Biceps"],
-    "category": "Cable",
+    "category": "Machine",
     "image": "exercise-images/close-grip-pull-down.png",
     "url": "https://www.muscleandstrength.com/exercises/close-grip-pull-down.html"
   },
@@ -59,7 +59,7 @@
     "id": 8,
     "name": "Lat Pull Down",
     "tags": ["Back", "Lats", "Biceps"],
-    "category": "Cable",
+    "category": "Machine",
     "image": "exercise-images/lat-pull-down.png",
     "url": "https://www.muscleandstrength.com/exercises/lat-pull-down.html"
   },
@@ -91,7 +91,7 @@
     "id": 12,
     "name": "Wide Grip Pull Down",
     "tags": ["Back", "Lats", "Biceps"],
-    "category": "Cable",
+    "category": "Machine",
     "image": "exercise-images/wide-grip-pull-down.png",
     "url": "https://www.muscleandstrength.com/exercises/wide-grip-pull-down"
   },
@@ -99,7 +99,7 @@
     "id": 13,
     "name": "Reverse Grip Lat Pull Down",
     "tags": ["Back", "Lats", "Biceps"],
-    "category": "Cable",
+    "category": "Machine",
     "image": "exercise-images/reverse-grip-lat-pull-down.png",
     "url": "https://www.muscleandstrength.com/exercises/reverse-grip-lat-pull-down.html"
   },
@@ -107,7 +107,7 @@
     "id": 14,
     "name": "Weighted Pull Up",
     "tags": ["Back", "Lats", "Biceps"],
-    "category": "Bodyweight",
+    "category": "Dumbbell",
     "image": "exercise-images/weighted-pull-up.png",
     "url": "https://www.muscleandstrength.com/exercises/weighted-pull-up"
   },
@@ -115,7 +115,7 @@
     "id": 15,
     "name": "V-Bar Pull Down",
     "tags": ["Back", "Lats", "Biceps"],
-    "category": "Cable",
+    "category": "Machine",
     "image": "exercise-images/v-bar-pull-down.png",
     "url": "https://www.muscleandstrength.com/exercises/v-bar-pull-down"
   },
@@ -139,7 +139,7 @@
     "id": 18,
     "name": "T-Bar Machine Shrug",
     "tags": ["Back", "Traps"],
-    "category": "Machines",
+    "category": "Machine",
     "image": "exercise-images/t-bar-machine-shrug.png",
     "url": "https://www.muscleandstrength.com/exercises/t-bar-machine-shrug"
   }
