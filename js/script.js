@@ -270,3 +270,144 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 })();
+
+(function () {
+    const LANG_KEY = 'ka4alka-lang';
+
+    const translations = {
+        en: {
+            searchExercise:         'Search exercise...',
+            searchWorkout:          'Search workout...',
+            createNewWorkout:       'Create New Workout',
+            myWorkouts:             'My Workouts',
+            startEmpty:             'Start Empty Workout',
+            routines:               'Routines',
+            exploreWorkout:         'Explore Workout',
+            workoutNamePlaceholder: 'Workout name...',
+            addExercise:            '+ Add Exercise',
+            saveWorkout:            'Save Workout',
+            noWorkouts:             'No saved workouts yet.',
+            noMatch:                'No workouts match your search.',
+            langToggle:             'Română',
+            logOut:                 'Log Out',
+            modalTitle:             'Add Exercise',
+            searchModal:            'Search...',
+            tabAbs:                 'Abs',
+            tabBack:                'Back',
+            tabBiceps:              'Biceps',
+            tabChest:               'Chest',
+            tabLegs:                'Legs',
+            tabShoulders:           'Shoulders',
+            tabTriceps:             'Triceps',
+            emptyState:             'Click <strong>Create New Workout</strong> to get started',
+        },
+        ro: {
+            searchExercise:         'Caută exercițiu...',
+            searchWorkout:          'Caută antrenament...',
+            createNewWorkout:       'Antrenament Nou',
+            myWorkouts:             'Antrenamentele Mele',
+            startEmpty:             'Începe Antrenament Gol',
+            routines:               'Rutine',
+            exploreWorkout:         'Explorează Antrenamente',
+            workoutNamePlaceholder: 'Numele antrenamentului...',
+            addExercise:            '+ Adaugă Exercițiu',
+            saveWorkout:            'Salvează',
+            noWorkouts:             'Niciun antrenament salvat.',
+            noMatch:                'Niciun rezultat găsit.',
+            langToggle:             'English',
+            logOut:                 'Deconectare',
+            modalTitle:             'Adaugă Exercițiu',
+            searchModal:            'Caută...',
+            tabAbs:                 'Abdomen',
+            tabBack:                'Spate',
+            tabBiceps:              'Biceps',
+            tabChest:               'Piept',
+            tabLegs:                'Picioare',
+            tabShoulders:           'Umeri',
+            tabTriceps:             'Triceps',
+            emptyState:             'Apasă <strong>Antrenament Nou</strong> pentru a începe',
+        }
+    };
+
+    function applyLang(lang) {
+        const t = translations[lang];
+
+        // header search
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) searchInput.placeholder = t.searchExercise;
+
+        // sidebar
+        const sidebarSearch = document.getElementById('sidebar-search');
+        const createNewBtn  = document.querySelector('.create-new-workout p');
+        const myWorkoutsBtn = document.querySelector('.my-workouts p');
+        if (sidebarSearch) sidebarSearch.placeholder = t.searchWorkout;
+        if (createNewBtn)  createNewBtn.textContent  = t.createNewWorkout;
+        if (myWorkoutsBtn) myWorkoutsBtn.textContent = t.myWorkouts;
+
+        // index.php main area
+        const startEmpty   = document.querySelector('.empty-workout p');
+        const routinesText = document.getElementById('Routines-text');
+        const exploreBtn   = document.querySelector('.explore-workouts p');
+        const mainWorkouts = document.querySelector('#my-workouts-toggle p');
+        if (startEmpty)   startEmpty.textContent   = t.startEmpty;
+        if (routinesText) routinesText.textContent = t.routines;
+        if (exploreBtn)   exploreBtn.textContent   = t.exploreWorkout;
+        if (mainWorkouts) mainWorkouts.textContent = t.myWorkouts;
+
+        // new_workout.php builder
+        const workoutTitleInput = document.getElementById('workout-title');
+        const saveWorkoutBtn    = document.getElementById('btn-save-workout');
+        const addExerciseBtn    = document.getElementById('btn-add-exercise');
+        const emptyStateText    = document.querySelector('.empty-state p');
+        if (workoutTitleInput) workoutTitleInput.placeholder = t.workoutNamePlaceholder;
+        if (saveWorkoutBtn)    saveWorkoutBtn.textContent    = t.saveWorkout;
+        if (addExerciseBtn)    addExerciseBtn.innerHTML      = t.addExercise;
+        if (emptyStateText)    emptyStateText.innerHTML      = t.emptyState;
+
+        // exercise picker modal
+        const modalTitle  = document.querySelector('.modal-title');
+        const modalSearch = document.getElementById('modal-search');
+        if (modalTitle)  modalTitle.textContent  = t.modalTitle;
+        if (modalSearch) modalSearch.placeholder = t.searchModal;
+
+        const tabMap = {
+            exercises_abs:       t.tabAbs,
+            exercises_back:      t.tabBack,
+            exercises_biceps:    t.tabBiceps,
+            exercises_chest:     t.tabChest,
+            exercises_legs:      t.tabLegs,
+            exercises_shoulders: t.tabShoulders,
+            exercises_triceps:   t.tabTriceps,
+        };
+        document.querySelectorAll('.cat-tab').forEach(function (tab) {
+            const label = tabMap[tab.dataset.file];
+            if (label) tab.textContent = label;
+        });
+
+        // dropdown items
+        const langLabel  = document.getElementById('lang-toggle-label');
+        const logoutSpan = document.querySelector('a[href="logout.php"] span:last-child');
+        if (langLabel)  langLabel.textContent  = t.langToggle;
+        if (logoutSpan) logoutSpan.textContent = t.logOut;
+
+        document.documentElement.lang = lang;
+    }
+
+    // Apply immediately to prevent flash
+    const savedLang = localStorage.getItem(LANG_KEY) || 'en';
+    if (savedLang === 'ro') applyLang('ro');
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const langBtn = document.getElementById('lang-toggle');
+        if (!langBtn) return;
+
+        applyLang(localStorage.getItem(LANG_KEY) || 'en');
+
+        langBtn.addEventListener('click', function () {
+            const current = localStorage.getItem(LANG_KEY) || 'en';
+            const next = current === 'en' ? 'ro' : 'en';
+            localStorage.setItem(LANG_KEY, next);
+            applyLang(next);
+        });
+    });
+})();

@@ -65,6 +65,7 @@ body{
     font-family: 'League Spartan', sans-serif;
     font-size: 16px;
     color: #ffffff;
+    margin-left: 20px;
 }
 
 .searchbar{
@@ -1225,5 +1226,6 @@ body.light-mode .create-new-workout p {
     color: #FFFFFF;
 }
 
-  min-width: 0; /* allows flex children to shrink properly */
+body.light-mode .empty-icon img{
+  color: #0B0C0E;
 }

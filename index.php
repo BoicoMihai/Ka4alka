@@ -41,6 +41,11 @@
         <span class="theme-toggle-icon" id="theme-toggle-icon" aria-hidden="true"></span>
         <span id="theme-toggle-label">Light Mode</span>
     </button>
+
+    <button class="account-dropdown-item" id="lang-toggle" type="button" role="menuitem">
+      <span class="theme-toggle-icon">🌐</span>
+      <span id="lang-toggle-label">Română</span>
+  </button>
     <a href="logout.php" class="account-dropdown-item" role="menuitem">
         <span class="theme-toggle-icon"></span>
         <span>Log Out</span>
