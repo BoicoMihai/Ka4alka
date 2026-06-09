@@ -1,13 +1,14 @@
 (function () {
   "use strict";
 
-  const STORAGE_KEY = "ka4alka_workouts";
+  // getWorkoutStorageKey() is defined in script.js (loaded before this file).
+  // It returns 'ka4alka_workouts_<username>' so each account has isolated data.
 
   /* ─── State ─── */
-  let exerciseCards = [];          // array of card state objects
-  let currentTimerCardId = null;   // which card's timer is being edited
-  let currentWorkoutId = null;     // id of workout being edited (null = new)
-  let savedWorkouts = [];          // workouts from localStorage
+  let exerciseCards = [];
+  let currentTimerCardId = null;
+  let currentWorkoutId = null;
+  let savedWorkouts = [];
 
   /* ─── DOM refs ─── */
   const btnCreateNew   = document.getElementById("btn-create-new");
@@ -19,14 +20,12 @@
   const workoutList    = document.getElementById("workout-list");
   const sidebarSearch  = document.getElementById("sidebar-search");
 
-  // Exercise picker modal
   const modalOverlay   = document.getElementById("modal-overlay");
   const modalClose     = document.getElementById("modal-close");
   const categoryTabs   = document.getElementById("category-tabs");
   const modalSearch    = document.getElementById("modal-search");
   const exerciseGrid   = document.getElementById("exercise-grid");
 
-  // Timer modal
   const timerOverlay   = document.getElementById("timer-overlay");
   const timerClose     = document.getElementById("timer-close");
   const timerMinInput  = document.getElementById("timer-min-input");
@@ -49,9 +48,7 @@
 
   function normalizeImagePath(image) {
     if (!image) return "";
-    if (image.startsWith("http") || image.startsWith("exercise-images/")) {
-      return image;
-    }
+    if (image.startsWith("http") || image.startsWith("exercise-images/")) return image;
     return `exercise-images/${image}`;
   }
 
@@ -63,10 +60,10 @@
       .replace(/"/g, "&quot;");
   }
 
-  /* ─── Local storage ─── */
+  /* ─── Local storage (per-user key) ─── */
   function loadWorkoutsFromStorage() {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      const raw = localStorage.getItem(getWorkoutStorageKey());
       savedWorkouts = raw ? JSON.parse(raw) : [];
       if (!Array.isArray(savedWorkouts)) savedWorkouts = [];
     } catch (e) {
@@ -75,7 +72,7 @@
   }
 
   function persistWorkouts() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(savedWorkouts));
+    localStorage.setItem(getWorkoutStorageKey(), JSON.stringify(savedWorkouts));
   }
 
   function showBuilder() {
@@ -219,8 +216,8 @@
      EXERCISE PICKER MODAL
   ════════════════════════════════════════════ */
 
-  let currentCategory  = "exercises_abs";
-  let allExercises     = [];   // exercises for current category
+  let currentCategory = "exercises_abs";
+  let allExercises    = [];
 
   function openExercisePicker() {
     modalOverlay.style.display = "flex";
@@ -236,7 +233,6 @@
     if (e.target === modalOverlay) modalOverlay.style.display = "none";
   });
 
-  // Category tab clicks
   categoryTabs.addEventListener("click", function (e) {
     const tab = e.target.closest(".cat-tab");
     if (!tab) return;
@@ -247,7 +243,6 @@
     loadCategory(currentCategory);
   });
 
-  // Search filter
   modalSearch.addEventListener("input", function () {
     renderExerciseGrid(filterExercises(modalSearch.value));
   });
@@ -288,14 +283,13 @@
            <div class="exercise-tile-placeholder" style="display:none;">💪</div>`
         : `<div class="exercise-tile-placeholder">💪</div>`;
       return `<div class="exercise-tile" data-name="${ex.name}"
-                   data-muscles="${(ex.tags||[]).join(",") }"
+                   data-muscles="${(ex.tags||[]).join(",")}"
                    data-image="${imgSrc}">
                 ${imgEl}
                 <div class="exercise-tile-name">${escapeHtml(ex.name)}</div>
               </div>`;
     }).join("");
 
-    // Tile click → add card
     exerciseGrid.querySelectorAll(".exercise-tile").forEach(function (tile) {
       tile.addEventListener("click", function () {
         addExerciseCard({
@@ -318,14 +312,13 @@
       exercise: exercise,
       timerMin: 1,
       timerSec: 30,
-      sets: [{ id: uid(), weight: "", reps: "" }]  // 1 default set
+      sets: [{ id: uid(), weight: "", reps: "" }]
     };
     exerciseCards.push(card);
     renderCard(card);
   }
 
   function renderCard(card) {
-    // Remove existing card DOM if re-rendering
     const existing = document.getElementById(`card-${card.id}`);
     if (existing) existing.remove();
 
@@ -400,10 +393,7 @@
   }
 
   function bindCardEvents(el, card) {
-
-    // Delete entire card
     el.querySelector(".card-delete-btn").addEventListener("click", function () {
-      el.style.animation = "none";
       el.style.opacity = "0";
       el.style.transform = "translateY(-8px)";
       el.style.transition = "opacity 0.2s, transform 0.2s";
@@ -413,19 +403,16 @@
       }, 200);
     });
 
-    // Add set
     el.querySelector(".add-set-btn").addEventListener("click", function () {
       const newSet = { id: uid(), weight: "", reps: "" };
       card.sets.push(newSet);
       appendSetRow(card, newSet);
     });
 
-    // Edit timer
     el.querySelector(".edit-timer-btn").addEventListener("click", function () {
       openTimerModal(card.id, card.timerMin, card.timerSec);
     });
 
-    // Set inputs (delegation on tbody)
     const tbody = el.querySelector(`#sets-body-${card.id}`);
     tbody.addEventListener("input", function (e) {
       const inp = e.target;
@@ -436,22 +423,19 @@
       if (set) set[field] = inp.value;
     });
 
-    // Delete set row (delegation)
     tbody.addEventListener("click", function (e) {
       const btn = e.target.closest(".set-delete-btn");
       if (!btn) return;
       const setId = btn.dataset.setId;
-      if (card.sets.length === 1) return; // keep at least 1 set
+      if (card.sets.length === 1) return;
       card.sets = card.sets.filter(s => s.id !== setId);
-      // Re-render sets inside card
       refreshSetsBody(card, tbody);
     });
   }
 
-  /* Append a single new set row (no full re-render) */
   function appendSetRow(card, set) {
     const tbody = document.getElementById(`sets-body-${card.id}`);
-    const idx   = card.sets.length; // 1-based index for display
+    const idx   = card.sets.length;
     const tr    = document.createElement("tr");
     tr.dataset.setId = set.id;
     tr.innerHTML = `
@@ -469,11 +453,9 @@
       </td>
     `;
     tbody.appendChild(tr);
-    // Focus first input of new row
     tr.querySelector(".weight-input").focus();
   }
 
-  /* Re-render all set rows in-place (used after delete) */
   function refreshSetsBody(card, tbody) {
     tbody.innerHTML = card.sets.map(function (set, idx) {
       return `<tr data-set-id="${set.id}">
@@ -492,7 +474,6 @@
       </tr>`;
     }).join("");
   }
-
 
   function openTimerModal(cardId, mins, secs) {
     currentTimerCardId  = cardId;
@@ -518,35 +499,27 @@
     if (card) {
       card.timerMin = mins;
       card.timerSec = secs;
-      // Update display in card
       const display = document.getElementById(`timer-display-${card.id}`);
       if (display) display.textContent = formatTimer(mins, secs);
     }
     timerOverlay.style.display = "none";
   });
 
-  // Clamp on blur
   timerMinInput.addEventListener("blur", function () {
-    timerMinInput.value = clamp(parseInt(timerMinInput.value)||0, 0, 10);
+    timerMinInput.value = clamp(parseInt(timerMinInput.value) || 0, 0, 10);
   });
   timerSecInput.addEventListener("blur", function () {
-    timerSecInput.value = clamp(parseInt(timerSecInput.value)||0, 0, 59);
+    timerSecInput.value = clamp(parseInt(timerSecInput.value) || 0, 0, 59);
   });
 
   /* ════════════════════════════════════════════
-     SAVE WORKOUT (localStorage)
+     SAVE WORKOUT
   ════════════════════════════════════════════ */
 
   document.getElementById("btn-save-workout").addEventListener("click", function () {
     const title = workoutTitle.value.trim();
-    if (!title) {
-      workoutTitle.focus();
-      return;
-    }
-    if (!exerciseCards.length) {
-      alert("Add at least one exercise before saving.");
-      return;
-    }
+    if (!title) { workoutTitle.focus(); return; }
+    if (!exerciseCards.length) { alert("Add at least one exercise before saving."); return; }
 
     const payload = buildWorkoutPayload(title);
     const now = new Date().toISOString();
@@ -571,14 +544,12 @@
     renderWorkoutList();
   });
 
-/* ─── Init ─── */
-loadWorkoutsFromStorage();
-renderWorkoutList();
+  /* ─── Init ─── */
+  loadWorkoutsFromStorage();
+  renderWorkoutList();
 
-/* ─── Load from URL param ─── */
-const urlParams = new URLSearchParams(window.location.search);
-const idFromUrl = urlParams.get("id");
-if (idFromUrl) loadWorkoutIntoBuilder(idFromUrl);
+  const urlParams = new URLSearchParams(window.location.search);
+  const idFromUrl = urlParams.get("id");
+  if (idFromUrl) loadWorkoutIntoBuilder(idFromUrl);
 
 })();
-

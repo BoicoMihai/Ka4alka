@@ -1,15 +1,44 @@
+<?php require_once __DIR__ . '/session_user.php'; ?>
+<?php
+$muscle = $_GET['muscle'] ?? 'chest';
+$exercises = json_decode(file_get_contents(__DIR__ . "/data/exercises_{$muscle}.json"), true);
+$activeFilter = $_GET['category'] ?? 'all';
+
+$filtered = array_filter($exercises, function($ex) use ($activeFilter) {
+  return $activeFilter === 'all' || strtolower($ex['category']) === strtolower($activeFilter);
+});
+$filtered = array_values($filtered);
+
+$perPage = 30;
+$totalPages = max(1, ceil(count($filtered) / $perPage));
+$currentPage = max(1, min((int)($_GET['page'] ?? 1), $totalPages));
+$offset = ($currentPage - 1) * $perPage;
+$pageExercises = array_slice($filtered, $offset, $perPage);
+
+$muscles = ['chest', 'shoulders', 'biceps', 'legs', 'Back', 'Abs', 'triceps'];
+$currentIndex = array_search($muscle, $muscles);
+$nextMuscle = $muscles[$currentIndex + 1] ?? $muscles[0];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Exercise Library – Ka4alka</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/library.css">
+
 </head>
 <body>
+
+  <!-- Inject user so sidebar localStorage key matches other pages -->
+  <script>
+    window.KA4ALKA_USER    = <?= json_encode($safe_raw) ?>;
+    window.KA4ALKA_DISPLAY = <?= json_encode($safe_display) ?>;
+  </script>
+
   <header class="header">
     <div class="header-left">
       <a href="index.php">
@@ -32,23 +61,27 @@
           <img src="images/Exercise library.png" alt="Exercise Library">
         </button>
       </a>
-       <div class="account-menu-wrapper">
-      <button class="header-icon account" id="account-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="Account menu">
-        <img src="images/Account.png" alt="Account">
-      </button>
-      <div class="account-dropdown" id="account-dropdown" role="menu">
-    <button class="account-dropdown-item" id="theme-toggle" type="button" role="menuitem">
-        <span class="theme-toggle-icon" id="theme-toggle-icon" aria-hidden="true"></span>
-        <span id="theme-toggle-label">Light Mode</span>
-    </button>
-    <button class="account-dropdown-item" id="contact-open" type="button" role="menuitem">
-      <span class="theme-toggle-icon">📩</span>
-      <span>Contact</span>
-    </button>
-    <a href="logout.php" class="account-dropdown-item" role="menuitem">
-        <span class="theme-toggle-icon"></span>
-        <span>Log Out</span>
-    </a>
+      <div class="account-menu-wrapper">
+        <button class="header-icon account" id="account-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="Account menu">
+          <img src="images/Account.png" alt="Account">
+        </button>
+        <div class="account-dropdown" id="account-dropdown" role="menu">
+          <div class="account-dropdown-user">
+            <span class="account-dropdown-username"><?= $safe_display ?></span>
+          </div>
+          <button class="account-dropdown-item" id="theme-toggle" type="button" role="menuitem">
+            <span class="theme-toggle-icon" id="theme-toggle-icon" aria-hidden="true"></span>
+            <span id="theme-toggle-label">Light Mode</span>
+          </button>
+          <button class="account-dropdown-item" id="contact-open" type="button" role="menuitem">
+            <span class="theme-toggle-icon">📩</span>
+            <span>Contact</span>
+          </button>
+          <a href="logout.php" class="account-dropdown-item" role="menuitem">
+            <span class="theme-toggle-icon">🚪</span>
+            <span>Log Out</span>
+          </a>
+        </div>
       </div>
     </div>
   </header>
@@ -73,25 +106,6 @@
 
     <div class="library-content">
 
-      <?php
-        $muscle = $_GET['muscle'] ?? 'chest';
-        $exercises = json_decode(file_get_contents(__DIR__ . "/data/exercises_{$muscle}.json"), true);
-        $activeFilter = $_GET['category'] ?? 'all';
-
-        // Filter
-        $filtered = array_filter($exercises, function($ex) use ($activeFilter) {
-          return $activeFilter === 'all' || strtolower($ex['category']) === strtolower($activeFilter);
-        });
-        $filtered = array_values($filtered);
-
-        // Pagination
-        $perPage = 30;
-        $totalPages = max(1, ceil(count($filtered) / $perPage));
-        $currentPage = max(1, min((int)($_GET['page'] ?? 1), $totalPages));
-        $offset = ($currentPage - 1) * $perPage;
-        $pageExercises = array_slice($filtered, $offset, $perPage);
-      ?>
-
       <div class="filter-bar">
         <div class="filter-trigger" id="filter-toggle">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -105,23 +119,23 @@
 
         <div class="filter-chips" id="filter-chips">
           <?php
-           $categories = [
-  ['value' => 'all',         'label' => 'All',         'icon' => ''],
-  ['value' => 'dumbbell',    'label' => 'Dumbbell',    'icon' => 'images/streamline-plump_dumbell.png'],
-  ['value' => 'body weight', 'label' => 'Body weight', 'icon' => 'images/ion_body.png'],
-  ['value' => 'machine',     'label' => 'Machines',    'icon' => 'images/Vector.png'],
-];
-foreach ($categories as $cat):
-  $isActive = $activeFilter === $cat['value'];
-?>
-  <a href="?muscle=<?= urlencode($muscle) ?>&category=<?= urlencode($cat['value']) ?>"
-     class="filter-chip <?= $isActive ? 'active' : '' ?>">
-    <?php if (!empty($cat['icon'])): ?>
-      <img class="chip-icon" src="<?= $cat['icon'] ?>" alt="<?= htmlspecialchars($cat['label']) ?>">
-    <?php endif; ?>
-    <?= htmlspecialchars($cat['label']) ?>
-  </a>
-<?php endforeach; ?>
+          $categories = [
+            ['value' => 'all',         'label' => 'All',         'icon' => ''],
+            ['value' => 'dumbbell',    'label' => 'Dumbbell',    'icon' => 'images/streamline-plump_dumbell.png'],
+            ['value' => 'body weight', 'label' => 'Body weight', 'icon' => 'images/ion_body.png'],
+            ['value' => 'machine',     'label' => 'Machines',    'icon' => 'images/Vector.png'],
+          ];
+          foreach ($categories as $cat):
+            $isActive = $activeFilter === $cat['value'];
+          ?>
+            <a href="?muscle=<?= urlencode($muscle) ?>&category=<?= urlencode($cat['value']) ?>"
+               class="filter-chip <?= $isActive ? 'active' : '' ?>">
+              <?php if (!empty($cat['icon'])): ?>
+                <img class="chip-icon" src="<?= $cat['icon'] ?>" alt="<?= htmlspecialchars($cat['label']) ?>">
+              <?php endif; ?>
+              <?= htmlspecialchars($cat['label']) ?>
+            </a>
+          <?php endforeach; ?>
         </div>
       </div>
 
@@ -145,38 +159,6 @@ foreach ($categories as $cat):
       </div>
 
     </div>
-
-  </div>
-
-  <?php
-    $muscles = ['chest', 'shoulders', 'biceps', 'legs', 'Back', 'Abs', 'triceps'];
-    $currentIndex = array_search($muscle, $muscles);
-    $nextMuscle = $muscles[$currentIndex + 1] ?? $muscles[0];
-  ?>
-
-  <div class="contact-modal-overlay" id="contact-modal-overlay" aria-hidden="true">
-    <div class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
-      <button class="contact-modal-close" id="contact-modal-close" type="button" aria-label="Close contact modal">×</button>
-      <p class="contact-modal-eyebrow">Support</p>
-      <h2 id="contact-modal-title">Contact us</h2>
-      <p class="contact-modal-text">Need help with your workouts or the app? Send us a quick message and we’ll get back to you soon.</p>
-      <form class="contact-modal-form" id="contact-modal-form">
-        <label>
-          Full name
-          <input type="text" name="name" placeholder="Your name" required>
-        </label>
-        <label>
-          Email
-          <input type="email" name="email" placeholder="you@example.com" required>
-        </label>
-        <label>
-          Message
-          <textarea name="message" rows="4" placeholder="Tell us how we can help..." required></textarea>
-        </label>
-        <button class="contact-modal-submit" type="submit">Send message</button>
-        <p class="contact-modal-status" id="contact-modal-status" aria-live="polite"></p>
-      </form>
-    </div>
   </div>
 
   <div class="pagination">
@@ -186,6 +168,22 @@ foreach ($categories as $cat):
       </a>
     <?php endforeach; ?>
     <a href="?muscle=<?= $nextMuscle ?>" class="page-btn next">next</a>
+  </div>
+
+  <div class="contact-modal-overlay" id="contact-modal-overlay" aria-hidden="true">
+    <div class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+      <button class="contact-modal-close" id="contact-modal-close" type="button" aria-label="Close contact modal">×</button>
+      <p class="contact-modal-eyebrow">Support</p>
+      <h2 id="contact-modal-title">Contact us</h2>
+      <p class="contact-modal-text">Need help with your workouts or the app? Send us a quick message and we'll get back to you soon.</p>
+      <form class="contact-modal-form" id="contact-modal-form">
+        <label>Full name<input type="text" name="name" placeholder="Your name" required></label>
+        <label>Email<input type="email" name="email" placeholder="you@example.com" required></label>
+        <label>Message<textarea name="message" rows="4" placeholder="Tell us how we can help..." required></textarea></label>
+        <button class="contact-modal-submit" type="submit">Send message</button>
+        <p class="contact-modal-status" id="contact-modal-status" aria-live="polite"></p>
+      </form>
+    </div>
   </div>
 
   <script src="js/script.js"></script>
