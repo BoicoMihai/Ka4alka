@@ -41,6 +41,10 @@
         <span class="theme-toggle-icon" id="theme-toggle-icon" aria-hidden="true"></span>
         <span id="theme-toggle-label">Light Mode</span>
     </button>
+    <button class="account-dropdown-item" id="contact-open" type="button" role="menuitem">
+      <span class="theme-toggle-icon">📩</span>
+      <span>Contact</span>
+    </button>
     <a href="logout.php" class="account-dropdown-item" role="menuitem">
         <span class="theme-toggle-icon"></span>
         <span>Log Out</span>
@@ -149,6 +153,31 @@ foreach ($categories as $cat):
     $currentIndex = array_search($muscle, $muscles);
     $nextMuscle = $muscles[$currentIndex + 1] ?? $muscles[0];
   ?>
+
+  <div class="contact-modal-overlay" id="contact-modal-overlay" aria-hidden="true">
+    <div class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+      <button class="contact-modal-close" id="contact-modal-close" type="button" aria-label="Close contact modal">×</button>
+      <p class="contact-modal-eyebrow">Support</p>
+      <h2 id="contact-modal-title">Contact us</h2>
+      <p class="contact-modal-text">Need help with your workouts or the app? Send us a quick message and we’ll get back to you soon.</p>
+      <form class="contact-modal-form" id="contact-modal-form">
+        <label>
+          Full name
+          <input type="text" name="name" placeholder="Your name" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" placeholder="you@example.com" required>
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="4" placeholder="Tell us how we can help..." required></textarea>
+        </label>
+        <button class="contact-modal-submit" type="submit">Send message</button>
+        <p class="contact-modal-status" id="contact-modal-status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
 
   <div class="pagination">
     <?php foreach ($muscles as $i => $m): ?>

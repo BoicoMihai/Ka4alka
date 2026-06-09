@@ -1021,6 +1021,150 @@ body.light-mode .create-new-workout p {
     color: #FFFFFF;
 }
 
+/* ── Contact modal ── */
+.contact-modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(5, 8, 12, 0.72);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 1000;
+}
+
+.contact-modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.contact-modal {
+    width: min(100%, 460px);
+    background: #18191B;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    padding: 20px;
+    position: relative;
+    color: #FFFFFF;
+}
+
+.contact-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border: none;
+    background: transparent;
+    color: #FFFFFF;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.contact-modal-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 12px;
+    color: #8AB4FF;
+    margin: 4px 0 6px;
+}
+
+.contact-modal h2 {
+    margin: 0 0 8px;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 28px;
+}
+
+.contact-modal-text {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #D8DBDF;
+    margin-bottom: 14px;
+}
+
+.contact-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-modal-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 14px;
+    color: #F2F4F7;
+}
+
+.contact-modal-form input,
+.contact-modal-form textarea {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #0B0C0E;
+    color: #FFFFFF;
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.contact-modal-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-modal-submit {
+    border: none;
+    border-radius: 12px;
+    background: #0568F6;
+    color: #FFFFFF;
+    padding: 10px 14px;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.contact-modal-submit:hover {
+    background: #114a99;
+}
+
+.contact-modal-status {
+    min-height: 18px;
+    margin: 0;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 13px;
+    color: #B7F0C9;
+}
+
+body.light-mode .contact-modal {
+    background: #FFFFFF;
+    border-color: rgba(0, 0, 0, 0.08);
+    color: #0B0C0E;
+}
+
+body.light-mode .contact-modal-close,
+body.light-mode .contact-modal h2,
+body.light-mode .contact-modal-text,
+body.light-mode .contact-modal-form label {
+    color: #0B0C0E;
+}
+
+body.light-mode .contact-modal-form input,
+body.light-mode .contact-modal-form textarea {
+    background: #F0F1F3;
+    color: #0B0C0E;
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+body.light-mode .contact-modal-text {
+    color: #4A4C50;
+}
+
 /* ── Light mode: workout builder ── */
 
 body.light-mode .workout-title-input {
