@@ -101,23 +101,23 @@
 
         <div class="filter-chips" id="filter-chips">
           <?php
-            $categories = [
-              ['value' => 'all',         'label' => 'All'],
-              ['value' => 'dumbbell',    'label' => 'Dumbbell',    'icon' => '🏋️'],
-              ['value' => 'body weight', 'label' => 'Body weight', 'icon' => '🚶'],
-              ['value' => 'machine',     'label' => 'Machines',    'icon' => '⚙️'],
-            ];
-            foreach ($categories as $cat):
-              $isActive = $activeFilter === $cat['value'];
-          ?>
-            <a href="?muscle=<?= urlencode($muscle) ?>&category=<?= urlencode($cat['value']) ?>"
-               class="filter-chip <?= $isActive ? 'active' : '' ?>">
-              <?php if (!empty($cat['icon'])): ?>
-                <span class="chip-icon"><?= $cat['icon'] ?></span>
-              <?php endif; ?>
-              <?= htmlspecialchars($cat['label']) ?>
-            </a>
-          <?php endforeach; ?>
+           $categories = [
+  ['value' => 'all',         'label' => 'All',         'icon' => ''],
+  ['value' => 'dumbbell',    'label' => 'Dumbbell',    'icon' => 'images/streamline-plump_dumbell.png'],
+  ['value' => 'body weight', 'label' => 'Body weight', 'icon' => 'images/ion_body.png'],
+  ['value' => 'machine',     'label' => 'Machines',    'icon' => 'images/Vector.png'],
+];
+foreach ($categories as $cat):
+  $isActive = $activeFilter === $cat['value'];
+?>
+  <a href="?muscle=<?= urlencode($muscle) ?>&category=<?= urlencode($cat['value']) ?>"
+     class="filter-chip <?= $isActive ? 'active' : '' ?>">
+    <?php if (!empty($cat['icon'])): ?>
+      <img class="chip-icon" src="<?= $cat['icon'] ?>" alt="<?= htmlspecialchars($cat['label']) ?>">
+    <?php endif; ?>
+    <?= htmlspecialchars($cat['label']) ?>
+  </a>
+<?php endforeach; ?>
         </div>
       </div>
 

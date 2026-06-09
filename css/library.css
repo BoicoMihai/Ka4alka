@@ -683,3 +683,9 @@ body.light-mode .filter-chip.active {
   border-color: #0568F6;
   color: #0B0C0E;
 }
+
+.chip-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
