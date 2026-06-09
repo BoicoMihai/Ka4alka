@@ -113,7 +113,7 @@
     </div>
 
     <div class="despre-map reveal">
-      <img src="sarcinaimg/Property_1_Default.png" alt="Harta Mîndic">
+      <img src="sarcinaimg/Property 1=Default.png" alt="Harta Mîndic">
       <div class="map-overlay">
         <span>View Full Map</span>
       </div>

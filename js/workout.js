@@ -493,9 +493,6 @@
     }).join("");
   }
 
-  /* ════════════════════════════════════════════
-     REST TIMER MODAL
-  ════════════════════════════════════════════ */
 
   function openTimerModal(cardId, mins, secs) {
     currentTimerCardId  = cardId;

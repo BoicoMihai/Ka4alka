@@ -29,11 +29,8 @@ nextBtn.addEventListener('click', () => slide(1));
 
 window.addEventListener('resize', () => updateCarousel());
 
-// init button opacity
 updateCarousel();
 
-
-// ── SCROLL REVEAL ──
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
