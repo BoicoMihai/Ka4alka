@@ -544,13 +544,75 @@
     renderWorkoutList();
   });
 
-  /* ─── Init ─── */
+  /* ─── Pre-made explore workouts ─── */
+  var EXPLORE_WORKOUTS = {
+    'explore-push-day': {
+      name: 'Push Day',
+      exercises: [
+        { name: 'Dumbbell Bench Press',        muscles: ['Chest', 'Shoulders', 'Triceps'],        image: 'exercise-images/dumbbell-bench-press.png' },
+        { name: 'Incline Bench Press',          muscles: ['Chest', 'Shoulders', 'Triceps'],        image: 'exercise-images/incline-bench-press.png' },
+        { name: 'Incline Dumbbell Bench Press', muscles: ['Chest', 'Shoulders', 'Triceps'],        image: 'exercise-images/incline-dumbbell-bench-press.png' },
+        { name: 'Chest Dip',                    muscles: ['Chest', 'Shoulders', 'Triceps', 'Abs'], image: 'exercise-images/chest-dip.png' }
+      ]
+    },
+    'explore-pull-day': {
+      name: 'Pull Day',
+      exercises: [
+        { name: 'Deadlift',     muscles: ['Back', 'Hamstrings'], image: 'exercise-images/deadlift.png' },
+        { name: 'Pull-Ups',     muscles: ['Back', 'Biceps'],     image: 'exercise-images/pull-ups.png' },
+        { name: 'Barbell Row',  muscles: ['Back', 'Biceps'],     image: 'exercise-images/barbell-row.png' },
+        { name: 'Barbell Curl', muscles: ['Biceps'],             image: 'exercise-images/barbell-curl.png' }
+      ]
+    },
+    'explore-leg-day': {
+      name: 'Leg Day',
+      exercises: [
+        { name: 'Squat',             muscles: ['Quads', 'Glutes'],      image: 'exercise-images/squat.png' },
+        { name: 'Romanian Deadlift', muscles: ['Hamstrings', 'Glutes'], image: 'exercise-images/romanian-deadlift.png' },
+        { name: 'Leg Press',         muscles: ['Quads', 'Glutes'],      image: 'exercise-images/leg-press.png' },
+        { name: 'Leg Curl',          muscles: ['Hamstrings'],           image: 'exercise-images/leg-curl.png' }
+      ]
+    },
+    'explore-full-body': {
+      name: 'Full Body',
+      exercises: [
+        { name: 'Squat',               muscles: ['Quads', 'Glutes'],              image: 'exercise-images/squat.png' },
+        { name: 'Incline Bench Press',  muscles: ['Chest', 'Shoulders', 'Triceps'], image: 'exercise-images/incline-bench-press.png' },
+        { name: 'Deadlift',            muscles: ['Back', 'Hamstrings'],           image: 'exercise-images/deadlift.png' },
+        { name: 'Barbell Row',         muscles: ['Back', 'Biceps'],               image: 'exercise-images/barbell-row.png' },
+        { name: 'Barbell Curl',        muscles: ['Biceps'],                       image: 'exercise-images/barbell-curl.png' },
+        { name: 'Chest Dip',           muscles: ['Chest', 'Shoulders', 'Triceps', 'Abs'], image: 'exercise-images/chest-dip.png' }
+      ]
+    }
+  };
+
+  /* ─── Init: load from URL id ─── */
   loadWorkoutsFromStorage();
   renderWorkoutList();
 
   const urlParams = new URLSearchParams(window.location.search);
   const idFromUrl = urlParams.get("id");
-  if (idFromUrl) loadWorkoutIntoBuilder(idFromUrl);
+
+  if (idFromUrl) {
+    if (EXPLORE_WORKOUTS[idFromUrl]) {
+      // Load pre-made explore workout as a template
+      var template = EXPLORE_WORKOUTS[idFromUrl];
+      clearBuilder();
+      workoutTitle.value = template.name;
+      exerciseCards = template.exercises.map(function (ex) {
+        return {
+          id:       uid(),
+          exercise: { name: ex.name, muscles: ex.muscles, image: ex.image },
+          timerMin: 1,
+          timerSec: 30,
+          sets: [{ id: uid(), weight: "", reps: "" }]
+        };
+      });
+      exerciseCards.forEach(renderCard);
+      showBuilder();
+    } else {
+      loadWorkoutIntoBuilder(idFromUrl);
+    }
+  }
 
 })();
-
