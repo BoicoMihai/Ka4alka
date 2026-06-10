@@ -11,33 +11,26 @@ class RegisterUser{
 
 
     public function __construct($username, $password, $confirm_password = null){
-        // Check passwords match before anything else if a confirmation value exists
         if($confirm_password !== null && $password !== $confirm_password){
             $this->error = "Passwords do not match.";
             return;
         }
-
-        // Normalize email to lowercase
         $this->username = strtolower(trim($username));
         $this->username = htmlspecialchars($this->username, ENT_QUOTES, 'UTF-8');
 
         $this->raw_password = trim($password);
         $this->raw_password = htmlspecialchars($this->raw_password, ENT_QUOTES, 'UTF-8');
         $this->encrypted_password = password_hash($this->raw_password, PASSWORD_DEFAULT);
-
         if(file_exists($this->storage)){
             $this->stored_users = json_decode(file_get_contents($this->storage), true);
         }
-
         if(!is_array($this->stored_users)){
             $this->stored_users = [];
         }
-
         $this->new_user = [
             "username" => $this->username,
             "password" => $this->encrypted_password
         ];
-
         if($this->checkFieldValues()){
             $this->insertUser();
         }

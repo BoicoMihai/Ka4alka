@@ -823,3 +823,7 @@ body.light-mode .account-dropdown-user {
 body.light-mode .account-dropdown-username {
     color: #0B0C0E;
 }
+
+#explore-workouts-toggle[aria-expanded="true"] #explore-workouts-chevron {
+    transform: rotate(90deg);
+}

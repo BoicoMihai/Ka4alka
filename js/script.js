@@ -28,14 +28,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    var signupModal   = document.getElementById('signup-modal');
-    var loginModal    = document.getElementById('login-modal');
+    var signupModal    = document.getElementById('signup-modal');
+    var loginModal     = document.getElementById('login-modal');
     var switchToSignup = document.getElementById('switch-to-signup');
     var switchToLogin  = document.getElementById('switch-to-login');
-    var closeSignup   = document.getElementById('close-signup');
-    var closeLogin    = document.getElementById('close-login');
-    var headerSignup  = document.querySelector('.header-auth.signup');
-    var headerLogin   = document.querySelector('.header-auth.login');
+    var closeSignup    = document.getElementById('close-signup');
+    var closeLogin     = document.getElementById('close-login');
+    var headerSignup   = document.querySelector('.header-auth.signup');
+    var headerLogin    = document.querySelector('.header-auth.login');
 
     function openSignupModal() {
         if (loginModal)  loginModal.classList.remove('active');
@@ -282,6 +282,84 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!toggle || !dropdown) return;
 
         renderMainDropdown();
+
+        toggle.addEventListener('click', function () {
+            var isOpen = dropdown.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen);
+        });
+    });
+})();
+
+// ─── Explore Workouts expandable dropdown (index.php) ────────────────────────
+
+(function () {
+    // !! ARRAY not object — so .map() works in renderExploreDropdown !!
+    var EXPLORE_WORKOUTS = [
+        {
+            id: 'explore-push-day',
+            name: 'Push Day',
+            exercises: [
+                { name: 'Dumbbell Bench Press',         muscles: ['Chest', 'Shoulders', 'Triceps'], image: 'exercise-images/dumbbell-bench-press.png' },
+                { name: 'Incline Bench Press',           muscles: ['Chest', 'Shoulders', 'Triceps'], image: 'exercise-images/incline-bench-press.png' },
+                { name: 'Incline Dumbbell Bench Press',  muscles: ['Chest', 'Shoulders', 'Triceps'], image: 'exercise-images/incline-dumbbell-bench-press.png' },
+                { name: 'Chest Dip',                     muscles: ['Chest', 'Shoulders', 'Triceps', 'Abs'], image: 'exercise-images/chest-dip.png' }
+            ]
+        },
+        {
+            id: 'explore-pull-day',
+            name: 'Pull Day',
+            exercises: [
+                { name: 'Deadlift',     muscles: ['Back', 'Hamstrings'], image: 'exercise-images/deadlift.png' },
+                { name: 'Pull-Ups',     muscles: ['Back', 'Biceps'],     image: 'exercise-images/pull-ups.png' },
+                { name: 'Barbell Row',  muscles: ['Back', 'Biceps'],     image: 'exercise-images/barbell-row.png' },
+                { name: 'Barbell Curl', muscles: ['Biceps'],             image: 'exercise-images/barbell-curl.png' }
+            ]
+        },
+        {
+            id: 'explore-leg-day',
+            name: 'Leg Day',
+            exercises: [
+                { name: 'Squat',             muscles: ['Quads', 'Glutes'],      image: 'exercise-images/squat.png' },
+                { name: 'Romanian Deadlift', muscles: ['Hamstrings', 'Glutes'], image: 'exercise-images/romanian-deadlift.png' },
+                { name: 'Leg Press',         muscles: ['Quads', 'Glutes'],      image: 'exercise-images/leg-press.png' },
+                { name: 'Leg Curl',          muscles: ['Hamstrings'],           image: 'exercise-images/leg-curl.png' }
+            ]
+        },
+        {
+            id: 'explore-full-body',
+            name: 'Full Body',
+            exercises: [
+                { name: 'Squat',                muscles: ['Quads', 'Glutes'],              image: 'exercise-images/squat.png' },
+                { name: 'Incline Bench Press',   muscles: ['Chest', 'Shoulders', 'Triceps'], image: 'exercise-images/incline-bench-press.png' },
+                { name: 'Deadlift',              muscles: ['Back', 'Hamstrings'],           image: 'exercise-images/deadlift.png' },
+                { name: 'Barbell Row',           muscles: ['Back', 'Biceps'],               image: 'exercise-images/barbell-row.png' },
+                { name: 'Barbell Curl',          muscles: ['Biceps'],                       image: 'exercise-images/barbell-curl.png' },
+                { name: 'Chest Dip',             muscles: ['Chest', 'Shoulders', 'Triceps', 'Abs'], image: 'exercise-images/chest-dip.png' }
+            ]
+        }
+    ];
+
+    function renderExploreDropdown() {
+        var dropdown = document.getElementById('explore-workout-dropdown');
+        if (!dropdown) return;
+
+        dropdown.innerHTML = EXPLORE_WORKOUTS.map(function (w) {
+            var count = w.exercises.length;
+            var label = count === 1 ? '1 exercise' : count + ' exercises';
+            return '<a href="new_workout.php?id=' + w.id + '" class="main-workout-dropdown-item">'
+                 + '<div>'
+                 + '<p class="main-workout-dropdown-item-name">' + w.name + '</p>'
+                 + '<p class="main-workout-dropdown-item-meta">' + label + '</p>'
+                 + '</div></a>';
+        }).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var toggle   = document.getElementById('explore-workouts-toggle');
+        var dropdown = document.getElementById('explore-workout-dropdown');
+        if (!toggle || !dropdown) return;
+
+        renderExploreDropdown();
 
         toggle.addEventListener('click', function () {
             var isOpen = dropdown.classList.toggle('open');

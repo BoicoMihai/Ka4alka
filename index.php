@@ -101,12 +101,13 @@
 
       <p id="Routines-text">Routines</p>
 
-      <div class="explore-workouts main-containers">
-        <button>
-          <img src="images/more.png" alt="Add" class="more-image">
+      <div class="explore-workouts main-containers expandable" id="explore-workouts-main">
+        <button type="button" id="explore-workouts-toggle">
+          <img src="images/more.png" alt="Add" class="more-image" id="explore-workouts-chevron">
           <p>Explore Workout</p>
           <img src="images/Folder.png" alt="Programs" class="main-button">
         </button>
+        <div class="main-workout-dropdown" id="explore-workout-dropdown"></div>
       </div>
 
       <div class="workouts-main main-containers expandable" id="my-workouts-main">
