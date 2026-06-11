@@ -47,11 +47,16 @@ $nextMuscle = $muscles[$currentIndex + 1] ?? $muscles[0];
         </button>
       </a>
       <p>Ka4alka</p>
+        <button class="sidebar-toggle" id="sidebar-toggle" type="button"
+          aria-label="Toggle sidebar" aria-expanded="false" aria-controls="side-bar">
+          <span></span><span></span><span></span>
+        </button>
     </div>
     <div class="header-right">
       <div class="searchbar">
-        <input type="text" placeholder="Search exercise..." class="search-input">
-        <img src="images/search.png" alt="Search" class="search">
+          <input type="text" placeholder="Search exercise..." class="search-input">
+          <img src="images/search.png" alt="Search" class="search">
+          <div class="search-dropdown" id="search-dropdown"></div>  <!-- ADD THIS -->
       </div>
       <button class="header-icon programs" type="button">
         <img src="images/programs.png" alt="Programs">
@@ -189,7 +194,7 @@ $nextMuscle = $muscles[$currentIndex + 1] ?? $muscles[0];
       </form>
     </div>
   </div>
-
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
   <script src="js/script.js"></script>
 </body>
 </html>

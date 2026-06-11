@@ -1066,17 +1066,19 @@ body.light-mode .sidebar-toggle span {
 
 /* ── Sidebar overlay (mobile) ── */
 .sidebar-overlay {
-    display: none;
+    display: block;          /* change from 'none' to 'block' */
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
     z-index: 199;
     opacity: 0;
+    pointer-events: none;    /* ← ADD THIS */
     transition: opacity 0.3s ease;
 }
 
 .sidebar-overlay.visible {
     opacity: 1;
+    pointer-events: auto;    /* ← ADD THIS */
 }
 
 /* ── Tablet: 769px–1024px ── */
@@ -1306,5 +1308,85 @@ body.light-mode .sidebar-toggle span {
 
     .header-right .programs {
         display: none;
+    }
+}
+
+/* ── Mobile: library-specific fixes ── */
+@media (max-width: 768px) {
+
+    /* Exercise grid: single column on mobile */
+    .exercise-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        width: 100%;
+    }
+
+    /* Cards stretch full width */
+    .exercise-card {
+        width: 100%;
+        height: auto;
+        min-height: 100px;
+    }
+
+    .card-image {
+        width: 110px;
+        min-width: 110px;
+        height: 100%;
+        min-height: 100px;
+    }
+
+    /* Library content loses fixed padding */
+    .library-content {
+        padding: 12px 0;
+        width: 100%;
+    }
+
+    /* Filter bar full width, wraps */
+    .filter-bar {
+        flex-wrap: wrap;
+        max-width: 100%;
+        padding: 0 4px;
+    }
+
+    /* Filter chips always visible on mobile (no toggle needed) */
+    .filter-chips {
+        max-height: none;
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    /* Pagination tighter */
+    .pagination {
+        padding: 16px 0 24px;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+
+    .page-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+    }
+
+    .page-btn:last-child {
+        width: auto;
+    }
+}
+
+@media (max-width: 380px) {
+    /* 2-col grid on very small screens */
+    .exercise-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .exercise-card {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .card-image {
+        width: 100%;
+        min-width: unset;
+        height: 120px;
     }
 }

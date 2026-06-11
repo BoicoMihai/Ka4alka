@@ -20,12 +20,16 @@
 
   <header class="header">
     <div class="header-left">
-      <a href="index.php">
-        <button type="button">
-          <img src="images/logo.png" alt="Logo" class="logo">
-        </button>
-      </a>
+        <a href="index.php">
+          <button type="button">
+            <img src="images/logo.png" alt="Logo" class="logo">
+          </button>
+        </a>
       <p>Ka4alka</p>
+      <button class="sidebar-toggle" id="sidebar-toggle" type="button"
+        aria-label="Toggle sidebar" aria-expanded="false" aria-controls="side-bar">
+        <span></span><span></span><span></span>
+      </button>
     </div>
     <div class="header-right">
       <div class="searchbar">
@@ -169,7 +173,7 @@
       <button class="save-timer-btn" id="save-timer-btn">Set Timer</button>
     </div>
   </div>
-
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
   <script src="js/script.js"></script>
   <script src="js/workout.js"></script>
 </body>

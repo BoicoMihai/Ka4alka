@@ -1038,17 +1038,19 @@ body.light-mode .sidebar-toggle span {
 
 /* ── Sidebar overlay (mobile) ── */
 .sidebar-overlay {
-    display: none;
+    display: block;          /* change from 'none' to 'block' */
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
     z-index: 199;
     opacity: 0;
+    pointer-events: none;    /* ← ADD THIS */
     transition: opacity 0.3s ease;
 }
 
 .sidebar-overlay.visible {
     opacity: 1;
+    pointer-events: auto;    /* ← ADD THIS */
 }
 
 /* ── Tablet: 769px–1024px ── */

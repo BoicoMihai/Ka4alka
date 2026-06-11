@@ -1602,17 +1602,19 @@ body.light-mode .sidebar-toggle span {
 
 /* ── Sidebar overlay (mobile) ── */
 .sidebar-overlay {
-    display: none;
+    display: block;          /* change from 'none' to 'block' */
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
     z-index: 199;
     opacity: 0;
+    pointer-events: none;    /* ← ADD THIS */
     transition: opacity 0.3s ease;
 }
 
 .sidebar-overlay.visible {
     opacity: 1;
+    pointer-events: auto;    /* ← ADD THIS */
 }
 
 /* ── Tablet: 769px–1024px ── */
@@ -1835,6 +1837,123 @@ body.light-mode .sidebar-toggle span {
 }
 
 /* ── Very small: ≤380px ── */
+@media (max-width: 380px) {
+    .exercise-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-right .programs {
+        display: none;
+    }
+}
+
+/* ── Mobile: new_workout-specific fixes ── */
+@media (max-width: 768px) {
+
+    /* Workout area full width */
+    .workout-area {
+        width: 100%;
+        min-height: unset;
+    }
+
+    /* Builder header stacks */
+    .builder-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .workout-title-input {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .save-workout-btn {
+        width: 100%;
+    }
+
+    /* Exercise cards in builder: tighter padding */
+    .exercise-card {
+        padding: 12px 14px 16px;
+    }
+
+    .card-top {
+        gap: 10px;
+    }
+
+    .card-exercise-img {
+        width: 80px;
+        height: 56px;
+    }
+
+    .card-exercise-name {
+        font-size: 16px;
+    }
+
+    /* Sets table: smaller inputs */
+    .set-input {
+        font-size: 14px;
+        padding: 6px 4px;
+    }
+
+    /* Modal: full screen */
+    .modal-overlay {
+        align-items: flex-end; /* sheet slides from bottom on mobile */
+    }
+
+    .modal {
+        width: 100%;
+        height: 92dvh;
+        max-height: 92dvh;
+        border-radius: 20px 20px 0 0;
+        margin: 0;
+    }
+
+    /* Exercise grid inside modal: 3 columns */
+    .exercise-grid {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 12px 14px 20px;
+        gap: 8px;
+    }
+
+    .exercise-tile img,
+    .exercise-tile-placeholder {
+        height: 72px;
+        min-height: 72px;
+    }
+
+    .exercise-tile-name {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+
+    /* Category tabs scroll horizontally */
+    .category-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 12px 14px 0;
+        gap: 6px;
+        scrollbar-width: none;
+    }
+
+    .category-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .cat-tab {
+        flex-shrink: 0;
+    }
+
+    /* Timer modal stays centered, not bottom-sheet */
+    .timer-modal {
+        width: calc(100% - 32px);
+        max-width: 340px;
+        border-radius: 20px;
+        margin: 0 auto;
+        height: auto;
+        max-height: unset;
+    }
+}
+
 @media (max-width: 380px) {
     .exercise-grid {
         grid-template-columns: repeat(2, 1fr);
