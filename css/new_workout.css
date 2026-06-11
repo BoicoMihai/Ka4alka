@@ -1405,7 +1405,6 @@ body.light-mode .empty-icon img{
     height: 16px;
     object-fit: contain;
     display: block;
-    filter: invert(1);
 }
 
 body.light-mode .dropdown-icon {

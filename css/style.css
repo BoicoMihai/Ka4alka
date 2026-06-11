@@ -840,7 +840,6 @@ body.light-mode .account-dropdown-username {
     height: 16px;
     object-fit: contain;
     display: block;
-    filter: invert(1);
 }
 
 body.light-mode .dropdown-icon {
