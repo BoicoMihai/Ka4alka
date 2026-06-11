@@ -71,15 +71,14 @@ body{
     color: #ffffff;
 }
 
-.searchbar{
-  width: 229px;
-  height: 35.2px;
-  border-radius: 16.5px;
-  background-color: #0B0C0E;
-  display: flex;
-  align-items: center;
-
-
+.searchbar {
+    position: relative; /* ← ADD THIS */
+    width: 229px;
+    height: 35.2px;
+    border-radius: 16.5px;
+    background-color: #0B0C0E;
+    display: flex;
+    align-items: center;
 }
 
 .header-icon img{
