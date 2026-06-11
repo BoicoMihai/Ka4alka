@@ -2,9 +2,6 @@ body{
     background-color: #0B0C0E;
 }
 
-
-/*header*/
-
 .header{
     width: 98%;
     height: 60px;
@@ -88,8 +85,6 @@ body{
     height: 32px;
 }
 
-/*main content*/
-
 .main-content {
     display: flex;
     align-items: flex-start;
@@ -98,8 +93,6 @@ body{
     margin: 18px auto 0;
     padding-bottom: 20px;
 }
-
-/*side bar*/
 
 .side-bar{
     width: 264px;
@@ -269,13 +262,10 @@ body{
   color: #e05555;
 }
 
-/* ── Account dropdown ── */
-
 .account-menu-wrapper {
     position: relative;
 }
 
-/* Username chip at top of account dropdown */
 .account-dropdown-user {
     padding: 10px 12px 8px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
@@ -362,7 +352,6 @@ body.light-mode .account-dropdown-username {
   flex-direction: column;
 }
 
-/* Empty state */
 .empty-state {
   flex: 1;
   display: flex;
@@ -398,7 +387,6 @@ body.light-mode .account-dropdown-username {
   color: #6A6C70;
 }
 
-/* on click*/
 .builder {
   display: flex;
   flex-direction: column;
@@ -447,7 +435,6 @@ body.light-mode .account-dropdown-username {
 .save-workout-btn:hover { background: #1256c4; }
 .save-workout-btn:active { scale: 0.97; }
 
-/* ── Exercise card ── */
 .exercise-list {
   display: flex;
   flex-direction: column;
@@ -469,7 +456,6 @@ body.light-mode .account-dropdown-username {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Card top row: image + info + rest timer */
 .card-top {
   display: flex;
   align-items: center;
@@ -559,7 +545,6 @@ body.light-mode .account-dropdown-username {
 
 .edit-timer-btn:hover { color: #0568F6; }
 
-/* Card delete button */
 .card-delete-btn {
   background: none;
   border: none;
@@ -574,7 +559,6 @@ body.light-mode .account-dropdown-username {
 
 .card-delete-btn:hover { color: #e05555; scale: 1.15; }
 
-/* Sets table */
 .sets-table {
   width: 100%;
   border-collapse: collapse;
@@ -630,7 +614,6 @@ body.light-mode .account-dropdown-username {
   text-align: center;
   outline: none;
   transition: background 0.2s, box-shadow 0.2s;
-  /* hide number spinners */
   -moz-appearance: textfield;
 }
 
@@ -663,7 +646,6 @@ body.light-mode .account-dropdown-username {
 
 .set-delete-btn:hover { color: #e05555; }
 
-/* Add Set button */
 .add-set-btn {
   width: 100%;
   margin-top: 10px;
@@ -682,7 +664,6 @@ body.light-mode .account-dropdown-username {
 .add-set-btn:hover { background: #1256c4; }
 .add-set-btn:active { scale: 0.98; }
 
-/* Add exercise button */
 .add-exercise-btn {
   display: flex;
   align-items: center;
@@ -713,7 +694,6 @@ body.light-mode .account-dropdown-username {
   line-height: 1;
 }
 
-/* ── Modal overlay ── */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -774,7 +754,6 @@ body.light-mode .account-dropdown-username {
 
 .modal-close:hover { color: #ffffff; }
 
-/* Category tabs */
 .category-tabs {
   display: flex;
   gap: 6px;
@@ -802,7 +781,6 @@ body.light-mode .account-dropdown-username {
   color: #ffffff;
 }
 
-/* Modal search */
 .modal-search-wrap {
   padding: 12px 22px 6px;
 }
@@ -822,7 +800,6 @@ body.light-mode .account-dropdown-username {
 
 .modal-search-input::placeholder { color: #3A3C40; }
 
-/* Exercise grid inside modal */
 .exercise-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 10fr));
@@ -899,7 +876,6 @@ body.light-mode .account-dropdown-username {
   margin: 0;
 }
 
-/* ── Rest Timer modal ── */
 .timer-modal {
   width: 340px;
   max-height: unset;
@@ -970,12 +946,10 @@ body.light-mode .account-dropdown-username {
 
 .save-timer-btn:hover { background: #1256c4; }
 
-/* ── Scrollbar for workout area ── */
 .workout-area::-webkit-scrollbar { width: 6px; }
 .workout-area::-webkit-scrollbar-track { background: transparent; }
 .workout-area::-webkit-scrollbar-thumb { background: #2A2C30; border-radius: 3px; }
 
-/* ── Light mode overrides ── */
 body.light-mode {
     background-color: #F0F1F3;
 }
@@ -1047,7 +1021,6 @@ body.light-mode .create-new-workout p {
     color: #FFFFFF;
 }
 
-/* ── Contact modal ── */
 .contact-modal-overlay {
     position: fixed;
     inset: 0;
@@ -1191,8 +1164,6 @@ body.light-mode .contact-modal-text {
     color: #4A4C50;
 }
 
-/* ── Light mode: workout builder ── */
-
 body.light-mode .workout-title-input {
     background: #FFFFFF;
     color: #0B0C0E;
@@ -1264,8 +1235,6 @@ body.light-mode .add-exercise-btn:hover {
     color: #0568F6;
 }
 
-/* ── Light mode: sidebar workout list ── */
-
 body.light-mode .side-bar {
     background-color: #FFFFFF;
 }
@@ -1297,8 +1266,6 @@ body.light-mode .workout-list-empty {
 body.light-mode .searchbar-sidebar input {
     color: #0B0C0E;
 }
-
-/* ── Light mode: modal ── */
 
 body.light-mode .modal {
     background: #FFFFFF;

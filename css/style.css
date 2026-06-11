@@ -6,9 +6,6 @@ body{
     overflow-x: hidden;
 }
 
-
-/*header*/
-
 .header{
     width: 98%;
     height: 60px;
@@ -78,8 +75,6 @@ body{
   background-color: #0B0C0E;
   display: flex;
   align-items: center;
-
-
 }
 
 .header-icon img{
@@ -92,8 +87,6 @@ body{
     height: 32px;
 }
 
-/*main content*/
-
 .main-content {
     display: flex;
     align-items: flex-start;
@@ -102,8 +95,6 @@ body{
     margin: 18px auto 0;
     padding-bottom: 20px;
 }
-
-/*side bar*/
 
 .side-bar{
     width: 264px;
@@ -248,8 +239,6 @@ body{
     height: 10px;
 }
 
-/* ── Account dropdown ── */
-
 .account-menu-wrapper {
     position: relative;
 }
@@ -306,8 +295,6 @@ body{
     line-height: 1;
     flex-shrink: 0;
 }
-
-/* ── Light mode overrides ── */
 
 body.light-mode {
     background-color: #F0F1F3;
@@ -380,7 +367,6 @@ body.light-mode .create-new-workout p {
     color: #FFFFFF;
 }
 
-/* ── Contact modal ── */
 .contact-modal-overlay {
     position: fixed;
     inset: 0;
@@ -524,9 +510,6 @@ body.light-mode .contact-modal-text {
     color: #4A4C50;
 }
 
-/* ── Responsive improvements ── */
-
-/* Tablet portrait: sidebar goes below header but stays visible as a bar */
 @media (max-width: 1180px) and (min-width: 769px) {
     .main-content {
         flex-direction: column;
@@ -595,8 +578,6 @@ body.light-mode .contact-modal-text {
         right: -8px;
     }
 }
-
-/* ── Sidebar workout list ── */
 
 .workout-list {
     flex: 1;
@@ -669,8 +650,6 @@ body.light-mode .contact-modal-text {
     margin: 2px 0 0;
 }
 
-/* ── Light mode: sidebar workout list ── */
-
 body.light-mode .workout-list-item {
     background: #F0F1F3;
 }
@@ -694,8 +673,6 @@ body.light-mode .workout-list-item-meta {
 body.light-mode .workout-list-empty {
     color: #AAAAAA;
 }
-
-/* ── My Workouts main dropdown ── */
 
 .expandable {
     flex-direction: column;
@@ -765,14 +742,9 @@ body.light-mode .workout-list-empty {
     margin: 0;
 }
 
-/* chevron rotation */
-
-
 #my-workouts-toggle[aria-expanded="true"] #my-workouts-chevron {
     transform: rotate(90deg);
 }
-
-/* ── Light mode ── */
 
 body.light-mode .main-workout-dropdown-item {
     background: #F0F1F3;
@@ -803,8 +775,7 @@ body.light-mode .main-workout-dropdown-empty {
 body.light-mode .hello-greeting {
     color: #0B0C0E;
 }
- 
-/* Username chip at top of account dropdown */
+
 .account-dropdown-user {
     padding: 10px 12px 8px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
@@ -834,7 +805,7 @@ body.light-mode .account-dropdown-username {
 #explore-workouts-toggle[aria-expanded="true"] #explore-workouts-chevron {
     transform: rotate(90deg);
 }
-/* ── Dropdown icon images ── */
+
 .dropdown-icon {
     width: 16px;
     height: 16px;
@@ -845,8 +816,6 @@ body.light-mode .account-dropdown-username {
 body.light-mode .dropdown-icon {
     filter: invert(1);
 }
-
-/* ── Header exercise search dropdown ── */
 
 .searchbar {
     position: relative;
@@ -990,12 +959,6 @@ body.light-mode .search-drop-empty {
     color: #AAAAAA;
 }
 
-/* ============================================================
-   RESPONSIVE ADDITIONS — paste into style.css, library.css,
-   and new_workout.css (each file already has the base styles)
-   ============================================================ */
-
-/* ── Hamburger button (hidden on desktop) ── */
 .sidebar-toggle {
     display: none;
     background: transparent;
@@ -1035,24 +998,22 @@ body.light-mode .sidebar-toggle span {
     background: #0B0C0E;
 }
 
-/* ── Sidebar overlay (mobile) ── */
 .sidebar-overlay {
-    display: block;          /* change from 'none' to 'block' */
+    display: block;          
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
     z-index: 199;
     opacity: 0;
-    pointer-events: none;    /* ← ADD THIS */
+    pointer-events: none;    
     transition: opacity 0.3s ease;
 }
 
 .sidebar-overlay.visible {
     opacity: 1;
-    pointer-events: auto;    /* ← ADD THIS */
+    pointer-events: auto;    
 }
 
-/* ── Tablet: 769px–1024px ── */
 @media (max-width: 1024px) {
 
     .main-content {
@@ -1078,10 +1039,8 @@ body.light-mode .sidebar-toggle span {
     }
 }
 
-/* ── Mobile: ≤768px ── */
 @media (max-width: 768px) {
 
-    /* Header shrinks */
     .header {
         width: 100%;
         border-radius: 0;
@@ -1093,12 +1052,10 @@ body.light-mode .sidebar-toggle span {
         z-index: 100;
     }
 
-    /* Show hamburger */
     .sidebar-toggle {
         display: flex;
     }
 
-    /* Hide desktop search in header, show only icon */
     .header .searchbar {
         width: 36px;
         height: 36px;
@@ -1137,17 +1094,14 @@ body.light-mode .sidebar-toggle span {
         margin: 0 auto;
     }
 
-    /* Hide "Ka4alka" text on small screens */
     .header-left > p {
         display: none;
     }
 
-    /* Header right: tighten gap */
     .header-right {
         gap: 8px;
     }
 
-    /* Sidebar becomes a drawer */
     .side-bar {
         position: fixed;
         top: 0;
@@ -1165,12 +1119,10 @@ body.light-mode .sidebar-toggle span {
         transform: translateX(0);
     }
 
-    /* Overlay activates on mobile */
     .sidebar-overlay {
         display: block;
     }
 
-    /* Main content: full width, top margin accounts for sticky header */
     .main-content {
         width: 100%;
         margin: 12px auto 0;
@@ -1180,7 +1132,6 @@ body.light-mode .sidebar-toggle span {
         gap: 12px;
     }
 
-    /* Boxes / workout area: full width */
     .boxes,
     .workout-area,
     .library-content {
@@ -1188,7 +1139,6 @@ body.light-mode .sidebar-toggle span {
         min-width: 0;
     }
 
-    /* ── index.php: main card buttons ── */
     .empty-workout,
     .explore-workouts,
     .workouts-main {
@@ -1199,7 +1149,6 @@ body.light-mode .sidebar-toggle span {
         font-size: 24px;
     }
 
-    /* ── library.php: exercise grid → single column ── */
     .exercise-grid {
         grid-template-columns: 1fr;
         gap: 14px;
@@ -1217,13 +1166,11 @@ body.light-mode .sidebar-toggle span {
         height: 100px;
     }
 
-    /* Filter bar wraps nicely */
     .filter-bar {
         flex-wrap: wrap;
         max-width: 100%;
     }
 
-    /* ── new_workout.php: exercise modal ── */
     .modal {
         width: 100%;
         height: 100dvh;
@@ -1232,7 +1179,6 @@ body.light-mode .sidebar-toggle span {
         margin: 0;
     }
 
-    /* Builder: full width inputs */
     .builder-header {
         flex-wrap: wrap;
         gap: 10px;
@@ -1248,13 +1194,11 @@ body.light-mode .sidebar-toggle span {
         width: 100%;
     }
 
-    /* Sets table: tighter */
     .set-input {
         font-size: 14px;
         padding: 6px 4px;
     }
 
-    /* Pagination */
     .pagination {
         padding: 16px 0 24px;
         gap: 6px;
@@ -1266,26 +1210,22 @@ body.light-mode .sidebar-toggle span {
         font-size: 13px;
     }
 
-    /* Main containers full-width with no side margin */
     .main-containers {
         margin: 8px 0;
         width: 100%;
         box-sizing: border-box;
     }
 
-    /* Routines label flush left */
     #Routines-text {
         margin-left: 0;
         font-size: 26px;
     }
 
-    /* Hello greeting smaller on mobile */
     .hello-greeting {
         font-size: 28px;
     }
 }
 
-/* ── Very small: ≤380px ── */
 @media (max-width: 380px) {
     .exercise-grid {
         grid-template-columns: repeat(2, 1fr);

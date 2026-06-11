@@ -114,7 +114,6 @@
     </div>
   </div>
 
-  <!-- Exercise picker modal -->
   <div class="modal-overlay" id="modal-overlay" style="display:none;">
     <div class="modal" id="exercise-modal">
       <div class="modal-header">
@@ -139,7 +138,6 @@
     </div>
   </div>
 
-  <!-- Contact modal -->
   <div class="contact-modal-overlay" id="contact-modal-overlay" aria-hidden="true">
     <div class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
       <button class="contact-modal-close" id="contact-modal-close" type="button" aria-label="Close contact modal">×</button>
@@ -156,7 +154,6 @@
     </div>
   </div>
 
-  <!-- Rest timer modal -->
   <div class="modal-overlay" id="timer-overlay" style="display:none;">
     <div class="modal timer-modal" id="timer-modal">
       <div class="modal-header">

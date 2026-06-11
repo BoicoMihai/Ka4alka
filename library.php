@@ -32,8 +32,6 @@ $nextMuscle = $muscles[$currentIndex + 1] ?? $muscles[0];
 
 </head>
 <body>
-
-  <!-- Inject user so sidebar localStorage key matches other pages -->
   <script>
     window.KA4ALKA_USER    = <?= json_encode($safe_raw) ?>;
     window.KA4ALKA_DISPLAY = <?= json_encode($safe_display) ?>;
@@ -56,7 +54,7 @@ $nextMuscle = $muscles[$currentIndex + 1] ?? $muscles[0];
       <div class="searchbar">
           <input type="text" placeholder="Search exercise..." class="search-input">
           <img src="images/search.png" alt="Search" class="search">
-          <div class="search-dropdown" id="search-dropdown"></div>  <!-- ADD THIS -->
+          <div class="search-dropdown" id="search-dropdown"></div> 
       </div>
       <button class="header-icon programs" type="button">
         <img src="images/programs.png" alt="Programs">

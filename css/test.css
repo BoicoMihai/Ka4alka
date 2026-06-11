@@ -163,8 +163,6 @@ body {
     animation: slideIn 0.3s ease-out;
 }
 
-
-/* Responsive Design */
 @media (max-width: 480px) {
     .form-wrapper {
         border-radius: 0;
