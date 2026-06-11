@@ -865,3 +865,15 @@ body.light-mode .filter-chip.active {
 body.light-mode .chip-icon {
   filter: invert(1);
 }
+
+/* ── Dropdown icon images ── */
+.dropdown-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    display: block;
+}
+
+body.light-mode .dropdown-icon {
+    filter: invert(1);
+}

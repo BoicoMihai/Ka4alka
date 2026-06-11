@@ -54,15 +54,15 @@
             <span id="theme-toggle-label">Light Mode</span>
           </button>
           <button class="account-dropdown-item" id="lang-toggle" type="button" role="menuitem">
-            <span class="theme-toggle-icon">🌐</span>
+            <img src="images/ic_outline-language.png" alt="Language" class="dropdown-icon">
             <span id="lang-toggle-label">Română</span>
           </button>
           <button class="account-dropdown-item" id="contact-open" type="button" role="menuitem">
-            <span class="theme-toggle-icon">📩</span>
+            <img src="images/mdi_contact.png" alt="Contact" class="dropdown-icon">
             <span>Contact</span>
           </button>
           <a href="logout.php" class="account-dropdown-item" role="menuitem">
-            <span class="theme-toggle-icon">🚪</span>
+            <img src="images/majesticons_logout.png" alt="Log out" class="dropdown-icon">
             <span>Log Out</span>
           </a>
         </div>

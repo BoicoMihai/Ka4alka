@@ -1399,3 +1399,97 @@ body.light-mode .create-new-workout p {
 body.light-mode .empty-icon img{
   color: #0B0C0E;
 }
+/* ── Dropdown icon images ── */
+.dropdown-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    display: block;
+    filter: invert(1);
+}
+
+body.light-mode .dropdown-icon {
+    filter: invert(1);
+}
+.search-drop-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 0;
+}
+
+.search-drop-name {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-drop-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.search-drop-tag {
+    background: #313131;
+    color: #ffffff;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 20px;
+}
+
+.search-drop-arrow {
+    font-size: 22px;
+    color: #5A5C60;
+    padding-right: 14px;
+    flex-shrink: 0;
+}
+
+.search-drop-empty {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 14px;
+    color: #5A5C60;
+    text-align: center;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.search-dropdown::-webkit-scrollbar { width: 5px; }
+.search-dropdown::-webkit-scrollbar-track { background: transparent; }
+.search-dropdown::-webkit-scrollbar-thumb { background: #2A2C30; border-radius: 3px; }
+
+/* Light mode */
+body.light-mode .search-dropdown {
+    background: #FFFFFF;
+    border-color: rgba(0,0,0,0.08);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.14);
+}
+
+body.light-mode .search-drop-item {
+    background: #F0F1F3;
+}
+
+body.light-mode .search-drop-item:hover {
+    background: #E8E9EB;
+}
+
+body.light-mode .search-drop-name {
+    color: #0B0C0E;
+}
+
+body.light-mode .search-drop-tag {
+    background: #E4E5E7;
+    color: #0B0C0E;
+}
+
+body.light-mode .search-drop-empty {
+    color: #AAAAAA;
+}

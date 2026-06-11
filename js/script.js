@@ -81,7 +81,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function syncThemeUI() {
             var isLight = document.body.classList.contains('light-mode');
-            if (themeIcon)  themeIcon.textContent  = isLight ? '🌙' : '☀️';
+            if (themeIcon)  themeIcon.innerHTML    = isLight
+                ? '<img src="images/tabler_sun-filled.png" alt="Sun" class="dropdown-icon">'
+                : '<img src="images/mynaui_moon-solid.png" alt="Moon" class="dropdown-icon">';
             if (themeLabel) themeLabel.textContent = isLight ? 'Dark Mode' : 'Light Mode';
         }
         syncThemeUI();
@@ -612,6 +614,127 @@ document.addEventListener('DOMContentLoaded', function () {
             var next    = current === 'en' ? 'ro' : 'en';
             localStorage.setItem(LANG_KEY, next);
             applyLang(next);
+        });
+    });
+})();
+// ─── Header exercise search ───────────────────────────────────────────────────
+
+(function () {
+    var MUSCLES = ['abs', 'back', 'biceps', 'chest', 'legs', 'shoulders', 'triceps'];
+    var allExercises = null;   // null = not loaded yet, [] = loaded (possibly empty)
+    var loadPromise  = null;
+
+    function loadAllExercises() {
+        if (loadPromise) return loadPromise;
+        loadPromise = Promise.all(
+            MUSCLES.map(function (m) {
+                return fetch('data/exercises_' + m + '.json')
+                    .then(function (r) { return r.ok ? r.json() : []; })
+                    .catch(function ()  { return []; });
+            })
+        ).then(function (arrays) {
+            allExercises = [].concat.apply([], arrays);
+            return allExercises;
+        });
+        return loadPromise;
+    }
+
+    function buildDropdown(input) {
+        var wrapper = input.closest('.searchbar');
+        if (!wrapper) return null;
+        wrapper.style.position = 'relative';
+
+        var drop = document.createElement('div');
+        drop.className = 'search-dropdown';
+        drop.setAttribute('role', 'listbox');
+        wrapper.appendChild(drop);
+        return drop;
+    }
+
+    function renderResults(drop, query, exercises) {
+        var q = query.trim().toLowerCase();
+        if (!q) { closeDropdown(drop); return; }
+
+        var results = exercises.filter(function (ex) {
+            return ex.name.toLowerCase().includes(q);
+        }).slice(0, 6);
+
+        if (!results.length) {
+            drop.innerHTML = '<p class="search-drop-empty">No exercises found</p>';
+            openDropdown(drop);
+            return;
+        }
+
+        drop.innerHTML = results.map(function (ex) {
+            var tags = (ex.tags || []).map(function (t) {
+                return '<span class="search-drop-tag">' + t + '</span>';
+            }).join('');
+            return '<a class="search-drop-item" href="' + ex.url + '" target="_blank" rel="noopener">'
+                + '<img class="search-drop-img" src="' + ex.image + '" alt="' + ex.name + '">'
+                + '<div class="search-drop-body">'
+                + '<p class="search-drop-name">' + ex.name + '</p>'
+                + '<div class="search-drop-tags">' + tags + '</div>'
+                + '</div>'
+                + '<span class="search-drop-arrow">›</span>'
+                + '</a>';
+        }).join('');
+        openDropdown(drop);
+    }
+
+    function openDropdown(drop)  { drop.classList.add('open'); }
+    function closeDropdown(drop) { drop.classList.remove('open'); }
+
+    function debounce(fn, ms) {
+        var t;
+        return function () {
+            var args = arguments, ctx = this;
+            clearTimeout(t);
+            t = setTimeout(function () { fn.apply(ctx, args); }, ms);
+        };
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var input = document.querySelector('.header .search-input');
+        if (!input) return;
+
+        var drop = buildDropdown(input);
+        if (!drop) return;
+
+        // Load data on first focus so it's ready when they type
+        input.addEventListener('focus', function () {
+            loadAllExercises();
+        }, { once: true });
+
+        var onInput = debounce(function () {
+            var q = input.value;
+            if (!q.trim()) { closeDropdown(drop); return; }
+            loadAllExercises().then(function (exercises) {
+                renderResults(drop, q, exercises);
+            });
+        }, 200);
+
+        input.addEventListener('input', onInput);
+
+        // Close when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!drop.contains(e.target) && e.target !== input) {
+                closeDropdown(drop);
+            }
+        });
+
+        // Close on Escape
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeDropdown(drop);
+                input.blur();
+            }
+        });
+
+        // Reopen if input still has text and regains focus
+        input.addEventListener('focus', function () {
+            if (input.value.trim() && allExercises) {
+                renderResults(drop, input.value, allExercises);
+            }
         });
     });
 })();
