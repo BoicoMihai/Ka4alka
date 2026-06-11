@@ -738,3 +738,81 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 })();
+
+// ─── Responsive sidebar drawer ────────────────────────────────────────────────
+// Add this block to the bottom of script.js
+
+(function () {
+    document.addEventListener('DOMContentLoaded', function () {
+        var sidebar  = document.querySelector('.side-bar');
+        var toggle   = document.querySelector('.sidebar-toggle');
+        var overlay  = document.querySelector('.sidebar-overlay');
+        if (!sidebar || !toggle || !overlay) return;
+
+        function openSidebar() {
+            sidebar.classList.add('open');
+            toggle.classList.add('open');
+            toggle.setAttribute('aria-expanded', 'true');
+            overlay.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            overlay.classList.remove('visible');
+            document.body.style.overflow = '';
+        }
+
+        toggle.addEventListener('click', function () {
+            sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+        });
+
+        overlay.addEventListener('click', closeSidebar);
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+                closeSidebar();
+            }
+        });
+
+        // Close sidebar when a workout link is tapped (mobile nav)
+        sidebar.addEventListener('click', function (e) {
+            if (window.innerWidth <= 768 && e.target.closest('a')) {
+                closeSidebar();
+            }
+        });
+
+        // Expandable search in header (mobile)
+        var searchBar   = document.querySelector('.header .searchbar');
+        var searchIcon  = searchBar && searchBar.querySelector('.search');
+        var searchInput = searchBar && searchBar.querySelector('.search-input');
+
+        if (searchIcon && searchInput) {
+            searchIcon.addEventListener('click', function () {
+                if (window.innerWidth > 768) return;
+                searchBar.classList.toggle('expanded');
+                if (searchBar.classList.contains('expanded')) {
+                    searchInput.focus();
+                } else {
+                    searchInput.value = '';
+                    searchInput.blur();
+                    // Close dropdown if open
+                    var drop = searchBar.querySelector('.search-dropdown');
+                    if (drop) drop.classList.remove('open');
+                }
+            });
+
+            // Collapse on blur if empty
+            searchInput.addEventListener('blur', function () {
+                if (window.innerWidth > 768) return;
+                setTimeout(function () {
+                    if (!searchInput.value.trim()) {
+                        searchBar.classList.remove('expanded');
+                    }
+                }, 200);
+            });
+        }
+    });
+})();

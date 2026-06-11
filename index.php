@@ -27,6 +27,11 @@
         </button>
       </a>
       <p>Ka4alka</p>
+      <button class="sidebar-toggle" id="sidebar-toggle"
+        type="button" aria-label="Toggle sidebar"
+        aria-expanded="false" aria-controls="side-bar">
+        <span></span><span></span><span></span>
+      </button>
     </div>
     <div class="header-right">
       <div class="searchbar">
@@ -71,7 +76,7 @@
   </header>
 
   <div class="main-content">
-    <div class="side-bar">
+    <div class="side-bar" id="side-bar">
       <button class="create-new-workout side-bar-button" onclick="location.href='new_workout.php'">
         <img src="images/add.png" alt="Create New Workout">
         <p>Create New Workout</p>
@@ -137,7 +142,7 @@
       </form>
     </div>
   </div>
-
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
   <script src="js/script.js"></script>
   <script src="js/workout.js"></script>
 </body>
