@@ -42,7 +42,7 @@ body{
 
 .header p{
     font-family: 'League Spartan', sans-serif;
-    font-size: 32px;
+    font-size: 24px;
     color: #FFFFFF;
     margin: 0;
 }
@@ -911,7 +911,7 @@ body.light-mode .dropdown-icon {
 
 .search-drop-name {
     font-family: 'League Spartan', sans-serif;
-    font-size: 12px;
+    font-size:32px;
     font-weight: 200;
     color: #ffffff;
     margin: 0;
