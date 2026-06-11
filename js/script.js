@@ -399,6 +399,25 @@ document.addEventListener('DOMContentLoaded', function () {
             tabShoulders:           'Shoulders',
             tabTriceps:             'Triceps',
             emptyState:             'Click <strong>Create New Workout</strong> to get started',
+            // Library filter chips
+            filterAll:              'All',
+            filterDumbbell:         'Dumbbell',
+            filterBodyweight:       'Body weight',
+            filterMachine:          'Machines',
+            moreDetails:            'More details',
+            // Contact modal
+            contactEyebrow:         'Support',
+            contactTitle:           'Contact us',
+            contactText:            'Need help with your workouts or the app? Send us a quick message and we\'ll get back to you soon.',
+            contactName:            'Full name',
+            contactNamePh:          'Your name',
+            contactEmail:           'Email',
+            contactEmailPh:         'you@example.com',
+            contactMessage:         'Message',
+            contactMessagePh:       'Tell us how we can help...',
+            contactSubmit:          'Send message',
+            contactSending:         'Sending your message...',
+            contactSuccess:         'Message sent! We\'ll be in touch soon.',
         },
         ro: {
             searchExercise:         'Caută exercițiu...',
@@ -425,6 +444,25 @@ document.addEventListener('DOMContentLoaded', function () {
             tabShoulders:           'Umeri',
             tabTriceps:             'Triceps',
             emptyState:             'Apasă <strong>Antrenament Nou</strong> pentru a începe',
+            // Library filter chips
+            filterAll:              'Toate',
+            filterDumbbell:         'Gantere',
+            filterBodyweight:       'Greutatea corpului',
+            filterMachine:          'Aparate',
+            moreDetails:            'Mai multe detalii',
+            // Contact modal
+            contactEyebrow:         'Suport',
+            contactTitle:           'Contactează-ne',
+            contactText:            'Ai nevoie de ajutor cu antrenamentele sau aplicația? Trimite-ne un mesaj și îți răspundem în curând.',
+            contactName:            'Nume complet',
+            contactNamePh:          'Numele tău',
+            contactEmail:           'Email',
+            contactEmailPh:         'tu@exemplu.com',
+            contactMessage:         'Mesaj',
+            contactMessagePh:       'Spune-ne cum te putem ajuta...',
+            contactSubmit:          'Trimite mesajul',
+            contactSending:         'Se trimite mesajul...',
+            contactSuccess:         'Mesaj trimis! Te contactăm în curând.',
         }
     };
 
@@ -482,6 +520,79 @@ document.addEventListener('DOMContentLoaded', function () {
         var logoutSpan = document.querySelector('a[href="logout.php"] span:last-child');
         if (langLabel)  langLabel.textContent  = t.langToggle;
         if (logoutSpan) logoutSpan.textContent = t.logOut;
+
+        // ── Library filter chips (skip — exercise names stay in English) ──
+        var chipMap = {
+            'all':         t.filterAll,
+            'dumbbell':    t.filterDumbbell,
+            'body weight': t.filterBodyweight,
+            'machine':     t.filterMachine,
+        };
+        document.querySelectorAll('.filter-chip').forEach(function (chip) {
+            var val = (chip.getAttribute('href') || '').match(/category=([^&]*)/);
+            if (val) {
+                var key = decodeURIComponent(val[1]);
+                if (chipMap[key]) {
+                    // Preserve the icon <img> if present, only replace text node
+                    var icon = chip.querySelector('.chip-icon');
+                    chip.textContent = chipMap[key];
+                    if (icon) chip.prepend(icon);
+                }
+            }
+        });
+
+        // ── Library muscle tags ──
+        var muscleMap = {
+            'Chest':     lang === 'ro' ? 'Piept'    : 'Chest',
+            'Shoulders': lang === 'ro' ? 'Umeri'    : 'Shoulders',
+            'Triceps':   lang === 'ro' ? 'Triceps'  : 'Triceps',
+            'Biceps':    lang === 'ro' ? 'Biceps'   : 'Biceps',
+            'Back':      lang === 'ro' ? 'Spate'    : 'Back',
+            'Legs':      lang === 'ro' ? 'Picioare' : 'Legs',
+            'Abs':       lang === 'ro' ? 'Abdomen'  : 'Abs',
+            'Forearms':  lang === 'ro' ? 'Antebrațe': 'Forearms',
+            'Glutes':    lang === 'ro' ? 'Fese'     : 'Glutes',
+            'Hamstrings':lang === 'ro' ? 'Ischio'   : 'Hamstrings',
+            'Calves':    lang === 'ro' ? 'Gambe'    : 'Calves',
+            'Quads':     lang === 'ro' ? 'Cvadriceps': 'Quads',
+        };
+        document.querySelectorAll('.tag').forEach(function (tag) {
+            var en = tag.dataset.en || tag.textContent.trim();
+            tag.dataset.en = en; // store original so we can re-translate
+            tag.textContent = muscleMap[en] || en;
+        });
+
+        // ── Library "More details" buttons ──
+        document.querySelectorAll('.card-btn').forEach(function (btn) {
+            var arrow = btn.querySelector('.arrow');
+            btn.textContent = t.moreDetails + ' ';
+            if (arrow) btn.appendChild(arrow);
+        });
+
+        // ── Contact modal ──
+        var cmEyebrow  = document.querySelector('.contact-modal-eyebrow');
+        var cmTitle    = document.getElementById('contact-modal-title');
+        var cmText     = document.querySelector('.contact-modal-text');
+        var cmSubmit   = document.querySelector('.contact-modal-submit');
+        if (cmEyebrow) cmEyebrow.textContent = t.contactEyebrow;
+        if (cmTitle)   cmTitle.textContent   = t.contactTitle;
+        if (cmText)    cmText.textContent    = t.contactText;
+        if (cmSubmit)  cmSubmit.textContent  = t.contactSubmit;
+
+        var cmLabels = document.querySelectorAll('.contact-modal-form label');
+        var labelKeys = [
+            { text: t.contactName,    ph: t.contactNamePh,    inputSel: 'input[name="name"]' },
+            { text: t.contactEmail,   ph: t.contactEmailPh,   inputSel: 'input[name="email"]' },
+            { text: t.contactMessage, ph: t.contactMessagePh, inputSel: 'textarea[name="message"]' },
+        ];
+        cmLabels.forEach(function (label, i) {
+            if (!labelKeys[i]) return;
+            // Update only the text node (first child), not the input inside
+            var textNode = Array.from(label.childNodes).find(function (n) { return n.nodeType === 3; });
+            if (textNode) textNode.textContent = labelKeys[i].text;
+            var field = label.querySelector(labelKeys[i].inputSel);
+            if (field) field.placeholder = labelKeys[i].ph;
+        });
 
         document.documentElement.lang = lang;
     }
