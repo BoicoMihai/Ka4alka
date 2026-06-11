@@ -795,6 +795,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 searchBar.classList.toggle('expanded');
                 if (searchBar.classList.contains('expanded')) {
                     searchInput.focus();
+                    // On mobile, anchor dropdown to right edge to avoid overflow
+                    var drop = searchBar.querySelector('.search-dropdown');
+                    if (drop) {
+                        drop.style.left  = 'auto';
+                        drop.style.right = '0';
+                        drop.style.width = '94vw';
+                    }
                 } else {
                     searchInput.value = '';
                     searchInput.blur();

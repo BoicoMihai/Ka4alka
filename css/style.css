@@ -1,5 +1,9 @@
 body{
     background-color: #0B0C0E;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 
@@ -236,7 +240,7 @@ body{
     font-size: 32px;
     color: #ffffff;
     align-self: flex-start;
-    margin-left: 215px;
+    margin-left: 10px;
 }
 
 .more-image{
@@ -521,7 +525,9 @@ body.light-mode .contact-modal-text {
 }
 
 /* ── Responsive improvements ── */
-@media (max-width: 1180px) {
+
+/* Tablet portrait: sidebar goes below header but stays visible as a bar */
+@media (max-width: 1180px) and (min-width: 769px) {
     .main-content {
         flex-direction: column;
     }
@@ -541,7 +547,7 @@ body.light-mode .contact-modal-text {
     }
 }
 
-@media (max-width: 980px) {
+@media (max-width: 980px) and (min-width: 769px) {
     .header {
         height: auto;
         flex-wrap: wrap;
@@ -561,7 +567,7 @@ body.light-mode .contact-modal-text {
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 640px) and (min-width: 769px) {
     .header p {
         font-size: 24px;
     }
@@ -620,7 +626,7 @@ body.light-mode .contact-modal-text {
     align-items: center;
     justify-content: space-between;
     gap: 8px;
-    width: 200px;
+    width: 100%;
     background: #0B0C0E;
     border: 2px solid transparent;
     border-radius: 14px;
@@ -628,6 +634,7 @@ body.light-mode .contact-modal-text {
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
     text-decoration: none;
+    box-sizing: border-box;
 }
 
 .workout-list-item:hover {
@@ -788,7 +795,7 @@ body.light-mode .main-workout-dropdown-empty {
     font-size: 40px;
     font-weight: 700;
     color: #ffffff;
-    align-self: center;
+    align-self: flex-start;
     margin: 0 0 4px;
     letter-spacing: -0.5px;
 }
@@ -851,6 +858,7 @@ body.light-mode .dropdown-icon {
     top: calc(100% + 8px);
     left: 0;
     width: 320px;
+    max-width: calc(100vw - 28px);
     background: #18191B;
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 20px;
@@ -1223,10 +1231,6 @@ body.light-mode .sidebar-toggle span {
         margin: 0;
     }
 
-    .exercise-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
     /* Builder: full width inputs */
     .builder-header {
         flex-wrap: wrap;
@@ -1260,6 +1264,24 @@ body.light-mode .sidebar-toggle span {
         height: 28px;
         font-size: 13px;
     }
+
+    /* Main containers full-width with no side margin */
+    .main-containers {
+        margin: 8px 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Routines label flush left */
+    #Routines-text {
+        margin-left: 0;
+        font-size: 26px;
+    }
+
+    /* Hello greeting smaller on mobile */
+    .hello-greeting {
+        font-size: 28px;
+    }
 }
 
 /* ── Very small: ≤380px ── */
@@ -1270,5 +1292,10 @@ body.light-mode .sidebar-toggle span {
 
     .header-right .programs {
         display: none;
+    }
+
+    .account-dropdown {
+        right: -4px;
+        width: 150px;
     }
 }
