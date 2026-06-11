@@ -5,6 +5,10 @@ body{
 
 /*header*/
 
+.searchbar {
+    position: relative;
+}
+
 .header{
     width: 98%;
     height: 60px;
@@ -492,6 +496,144 @@ body.light-mode .create-new-workout p {
     color: #FFFFFF;
 }
 
+/* ── Header exercise search dropdown ── */
+
+.search-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 320px;
+    background: #18191B;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.55);
+    padding: 8px;
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 480px;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+.search-dropdown.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.search-drop-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #0B0C0E;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: background 0.2s;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.search-drop-item:hover {
+    background: #141517;
+}
+
+.search-drop-img {
+    width: 100px;
+    min-width: 100px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0;
+    flex-shrink: 0;
+}
+
+.search-drop-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 0;
+}
+
+.search-drop-name {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 12px;
+    font-weight: 200;
+    color: #ffffff;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-drop-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.search-drop-tag {
+    background: #313131;
+    color: #ffffff;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 20px;
+}
+
+.search-drop-arrow {
+    font-size: 22px;
+    color: #5A5C60;
+    padding-right: 14px;
+    flex-shrink: 0;
+}
+
+.search-drop-empty {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 14px;
+    color: #5A5C60;
+    text-align: center;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.search-dropdown::-webkit-scrollbar { width: 5px; }
+.search-dropdown::-webkit-scrollbar-track { background: transparent; }
+.search-dropdown::-webkit-scrollbar-thumb { background: #2A2C30; border-radius: 3px; }
+
+body.light-mode .search-dropdown {
+    background: #FFFFFF;
+    border-color: rgba(0,0,0,0.08);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.14);
+}
+
+body.light-mode .search-drop-item {
+    background: #F0F1F3;
+}
+
+body.light-mode .search-drop-item:hover {
+    background: #E8E9EB;
+}
+
+body.light-mode .search-drop-name {
+    color: #0B0C0E;
+}
+
+body.light-mode .search-drop-tag {
+    background: #E4E5E7;
+    color: #0B0C0E;
+}
+
+body.light-mode .search-drop-empty {
+    color: #AAAAAA;
+}
+
 /* ── Contact modal ── */
 .contact-modal-overlay {
     position: fixed;
@@ -877,3 +1019,4 @@ body.light-mode .chip-icon {
 body.light-mode .dropdown-icon {
     filter: invert(1);
 }
+

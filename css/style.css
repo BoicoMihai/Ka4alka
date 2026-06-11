@@ -850,7 +850,7 @@ body.light-mode .dropdown-icon {
     position: absolute;
     top: calc(100% + 8px);
     left: 0;
-    width: 420px;
+    width: 320px;
     background: #18191B;
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 20px;
@@ -911,8 +911,8 @@ body.light-mode .dropdown-icon {
 
 .search-drop-name {
     font-family: 'League Spartan', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 200;
     color: #ffffff;
     margin: 0;
     white-space: nowrap;

@@ -1411,6 +1411,67 @@ body.light-mode .empty-icon img{
 body.light-mode .dropdown-icon {
     filter: invert(1);
 }
+
+/* ── Header exercise search dropdown ── */
+
+.searchbar {
+    position: relative;
+}
+
+.search-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 320px;
+    background: #18191B;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.55);
+    padding: 8px;
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 480px;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+.search-dropdown.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.search-drop-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #0B0C0E;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: background 0.2s;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.search-drop-item:hover {
+    background: #141517;
+}
+
+.search-drop-img {
+    width: 100px;
+    min-width: 100px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0;
+    flex-shrink: 0;
+}
+
 .search-drop-body {
     flex: 1;
     min-width: 0;
@@ -1422,8 +1483,8 @@ body.light-mode .dropdown-icon {
 
 .search-drop-name {
     font-family: 'League Spartan', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 200;
     color: #ffffff;
     margin: 0;
     white-space: nowrap;
